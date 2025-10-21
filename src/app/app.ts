@@ -1,6 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Firestore, collectionData, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { FbService } from './services/fb-service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,20 @@ import { Firestore, collectionData, collection, doc, onSnapshot } from '@angular
   styleUrl: './app.scss'
 })
 export class App {
-  //protected readonly title = signal('join');
- public db=inject(Firestore);
-}
+  protected readonly title = signal('join');
 
+  db = inject(FbService).db;
+
+  constructor( public fbService: FbService) {
+
+  }
+
+  getTestSammlung() {
+    return this.fbService.testSammlungArray;
+  }
+
+  getData() {
+    return this.fbService.dataArray;
+  }
+
+}
