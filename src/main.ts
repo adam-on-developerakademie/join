@@ -5,11 +5,10 @@ import { appConfig } from './app/app.config';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
-import { environment } from './environment';
+import { environment } from './environments/environment';
 
 bootstrapApplication(App, {
   providers: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     ...appConfig.providers,
   ],
