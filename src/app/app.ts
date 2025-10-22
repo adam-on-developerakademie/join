@@ -1,30 +1,18 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FbService } from './services/fb-service';
-
+import { Adam } from './adam/adam';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Adam],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected readonly title = signal('join');
 
-  db = inject(FbService).db;
+  constructor( ) {}
 
-  constructor( public fbService: FbService) {
-
-  }
-
-  getTestSammlung() {
-    return this.fbService.testSammlungArray;
-  }
-
-  getData() {
-    return this.fbService.dataArray;
-  }
 
 }

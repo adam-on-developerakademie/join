@@ -7,22 +7,24 @@ import { Firestore, collectionData, collection, doc, onSnapshot } from '@angular
 export class FbService {
   public db = inject(Firestore);
 
-  data;
-  dataArray: any[] = [];
-  testSammlung;
-  testSammlungArray: any[] = [];
-constructor() {
+  contactsCollection = collection(this.db, 'contacts');
+  dataCollection = collection(this.db, 'data');
 
-  this.testSammlung = onSnapshot(collection(this.db, 'testSammlung'), (snapshot) => {
-    this.testSammlungArray = snapshot.docs.map((doc) => doc.data());
-    console.log(this.testSammlungArray);
-    
-  });
+  myContacts;
+  contacts: any[] = [];
+  myData;
+  data: any[] = [];
+  constructor() {
 
-    this.data = onSnapshot(collection(this.db, 'data'), (snapshot) => {
-    this.dataArray = snapshot.docs.map((doc) => doc.data());
-    console.log(this.dataArray);
-  });
-}
+    this.myContacts = onSnapshot(this.contactsCollection, (snapshot) => {
+      this.contacts = snapshot.docs.map((doc) => doc.data());
+      console.log(this.contacts);
+    });
+
+    this.myData = onSnapshot(this.dataCollection, (snapshot) => {
+      this.data = snapshot.docs.map((doc) => doc.data());
+      console.log(this.data);
+    });
+  }
 
 }
