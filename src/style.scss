@@ -175,6 +175,11 @@ header {
   box-sizing: border-box;
   font-size: 16px;
   background-color: #2a3647;
+  img {
+    width: 100px;
+    height: auto;
+    margin: 0 auto;
+  }
 }
 
 .menu {
@@ -190,12 +195,14 @@ header {
   align-items: center;
   width: 186px;
   padding: 8px 30px;
-
   gap: 8px;
   cursor: pointer;
   text-decoration: none;
   color: white;
   box-sizing: border-box;
+  img {
+    margin: 0px;
+  }
 }
 
 .topic:hover {
