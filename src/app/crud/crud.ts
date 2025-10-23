@@ -18,6 +18,10 @@ export class CRUD {
   constructor(public fbService: FbService) {
   }
 
+  getContacts() {
+    return this.fbService.contactsArray;
+  }
+
   addContact() {
     this.fbService.addContact(this.contact);
     console.log(this.contact);
@@ -25,13 +29,15 @@ export class CRUD {
 
   }
 
-  getContacts() {
-    return this.fbService.contactsArray;
+  upContact() {
+    this.fbService.updateContact(this.id, this.contact);
+    console.log("Updated contact with ID:", this.id);
+    this.clearInput();
   }
 
-  delContact(id: number = 0) {
-    this.fbService.delContact(id);
-    console.log("Deleted contact with ID:", id);
+  delContact() {
+    this.fbService.delContact(this.id);
+    console.log("Deleted contact with ID:", this.id);
   }
 
   getData() {

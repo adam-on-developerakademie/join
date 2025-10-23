@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collectionData, collection, doc, onSnapshot, orderBy, query } from '@angular/fire/firestore';
-import { addDoc, deleteDoc } from '@angular/fire/firestore';
+import { addDoc, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { IContact } from '../interfaces/i-contact';
 
 @Injectable({
@@ -49,6 +49,10 @@ export class FbService {
 
   async addContact(contact: IContact) {
     await addDoc(this.contactsCollection, { date: new Date(), ...contact });
+  }
+
+  async updateContact(id: number, contact: IContact) {
+    await updateDoc(doc(this.contactsCollection, this.contactsArray[id].id), { ...contact });
   }
 
   async delContact(id: number) {
