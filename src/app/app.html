@@ -1,11 +1,10 @@
+<!-- Globale Layout-Struktur -->
+<div class="join-app">
+  <app-header></app-header>
+  <app-sidenav></app-sidenav>
 
-@for( item of getTestSammlung() ; track item ){
-    <p>{{item.title}}</p>
-}
-
-@for( item of getData() ; track item ){
-    <p>{{item.name}}</p>
-}
-
-
-<router-outlet />
+  <!-- Hauptinhalt -->
+  <main id="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>
