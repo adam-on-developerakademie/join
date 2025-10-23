@@ -174,7 +174,7 @@ header {
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   box-sizing: border-box;
   font-size: 16px;
-  color: #42526e;
+  background-color: #2a3647;
 }
 
 .menu {
@@ -190,15 +190,16 @@ header {
   align-items: center;
   width: 186px;
   padding: 8px 30px;
+
   gap: 8px;
   cursor: pointer;
   text-decoration: none;
-  color: #42526e;
+  color: white;
   box-sizing: border-box;
 }
 
 .topic:hover {
-  background-color: #e3eeff;
+  background-color: #091931;
 }
 
 .topic img {
@@ -208,7 +209,7 @@ header {
 }
 
 .topic span {
-  color: #42526e;
+  color: white;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
