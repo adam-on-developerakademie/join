@@ -1,0 +1,19 @@
+/* Keine @import Zeilen mehr hier – die Dateien stehen in angular.json */
+
+@font-face {
+  font-family: 'aste';
+  src: url('../font/aste.woff2') format('woff2'),
+       url('../font/aste.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'aste' !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
