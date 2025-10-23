@@ -5,12 +5,12 @@ import { IContact } from '../interfaces/i-contact';
 
 
 @Component({
-  selector: 'app-adam',
+  selector: 'app-crud',
   imports: [FormsModule],
-  templateUrl: './adam.html',
-  styleUrl: './adam.scss'
+  templateUrl: './crud.html',
+  styleUrl: './crud.scss'
 })
-export class Adam {
+export class CRUD {
   db = inject(FbService).db;
   contact: IContact = {} as IContact;
   id: number = 0;

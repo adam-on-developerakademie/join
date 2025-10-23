@@ -1,11 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Adam } from './adam/adam';
+import { CRUD } from './crud/crud';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Adam],
+  imports: [RouterOutlet, CRUD],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
