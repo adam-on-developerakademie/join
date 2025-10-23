@@ -166,11 +166,12 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   width: 232px;
   height: calc(100% - 97px);
   top: 97px;
-  padding: 66px 20px;
+  padding: 66px 0px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
   box-sizing: border-box;
   font-size: 16px;
@@ -179,6 +180,11 @@ header {
     width: 100px;
     height: auto;
     margin: 0 auto;
+    div {
+      a {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -192,9 +198,12 @@ header {
 
 .topic {
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 186px;
-  padding: 8px 30px;
+  width: 100%;
+  // padding: 8px 30px;
+  padding: 8px 0px;
+  margin: 0 auto;
   gap: 8px;
   cursor: pointer;
   text-decoration: none;
