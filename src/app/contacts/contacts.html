@@ -1,0 +1,44 @@
+<div class="contacts-canvas">
+  <!-- Linkes Panel (Kontaktliste) -->
+  <section class="list-panel">
+    <div class="list-panel__inner">
+      <button class="primary-contact" (click)="onAddContactClick()">
+        <span>Add new contact</span>
+        <span class="plus">+</span>
+      </button>
+
+      <ng-container *ngFor="let entry of grouped | keyvalue">
+        <div class="letter">{{ entry.key }}</div>
+        <div class="divider"></div>
+
+        <ng-container *ngFor="let c of entry.value">
+          <div class="contact-row">
+            <div class="badge">
+              <div class="badge__circle" [style.background]="c.color"></div>
+              <div class="badge__initials">{{ c.initials }}</div>
+            </div>
+
+            <div class="contact-row__text">
+              <div class="name">{{ c.name }}</div>
+              <div class="mail">{{ c.email }}</div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <!-- Fake Scrollbar wie in Figma (Deko) -->
+    <div class="fakebar">
+      <i class="fakebar__thumb"></i>
+      <i class="fakebar__cap fakebar__cap--top"></i>
+      <i class="fakebar__cap fakebar__cap--bottom"></i>
+    </div>
+  </section>
+
+  <!-- Heading rechts -->
+  <section class="heading">
+    <h1>Contacts</h1>
+    <i class="heading__divider"></i>
+    <p>Better with a team</p>
+  </section>
+</div>

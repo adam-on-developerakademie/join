@@ -1,15 +1,32 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Firestore, collectionData, collection, doc, onSnapshot } from '@angular/fire/firestore';
+import { HeaderComponent } from './shared/header/header';
+import { SidenavComponent } from './shared/sidenav/sidenav';
+import { FbService } from './services/fb-service';
+import { Contacts } from './contacts/contacts';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Contacts, HeaderComponent, SidenavComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  //protected readonly title = signal('join');
- public db=inject(Firestore);
-}
+  protected readonly title = signal('join');
 
+  db = inject(FbService).db;
+
+  constructor( public fbService: FbService) {
+
+  }
+
+  getTestSammlung() {
+    return this.fbService.testSammlungArray;
+  }
+
+  getData() {
+    return this.fbService.dataArray;
+  }
+
+}
