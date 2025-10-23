@@ -7,7 +7,24 @@
         <span class="plus">+</span>
       </button>
 
-      <ng-container *ngFor="let entry of grouped | keyvalue">
+      @for( group of getContactsGroups(); track group ){
+      <p class="letter">{{ group }} </p>
+      <div class="divider"></div>
+      @for( item of getContacts() ; track item ){
+      @if( item.name.charAt(0).toUpperCase() == group ){
+      <div class="contact-row">
+        <div class="badge">
+          <div class="badge__circle" [style.background]="item.color"></div>
+          <div class="badge__initials">{{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}</div>
+        </div>
+        <div class="contact-row__text">
+          <div class="name">{{ item.name + ' ' + item.surname}}</div>
+          <div class="mail">{{ item.email }}</div>
+        </div>
+      </div>
+      }}}
+
+<!--       <ng-container *ngFor="let entry of grouped | keyvalue">
         <div class="letter">{{ entry.key }}</div>
         <div class="divider"></div>
 
@@ -24,7 +41,8 @@
             </div>
           </div>
         </ng-container>
-      </ng-container>
+      </ng-container> -->
+
     </div>
   </section>
 

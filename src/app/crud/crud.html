@@ -3,7 +3,7 @@
     <h3>{{ group }}</h3>
     @for( item of getContacts() ; track item ){
     @if( item.name.charAt(0).toUpperCase() == group ){
-    <p [style.backgroundColor]="item.color">{{ $index + ': ' + item.name + ', ' + item.surname + ', ' + item.email}}</p>
+    <p [style.backgroundColor]="item.color">{{ $index + ': ' + item.name + ', ' + item.surname + ', ' + item.email + ', '+ item.color}}</p>
     }}}
 
     <h4>Neues Kontakt:</h4>
@@ -11,6 +11,7 @@
         <input name="name" [(ngModel)]="contact.name" placeholder="Name" required>
         <input name="surname" [(ngModel)]="contact.surname" placeholder="Surname" required>
         <input name="email" [(ngModel)]="contact.email" placeholder="Email" required>
+        <input name="color" [(ngModel)]="contact.color" placeholder="Color" required>
         <button type="submit" [disabled]="!contact.name">Add Contact</button>
     </form>
 
@@ -20,6 +21,7 @@
         <input name="name" [(ngModel)]="contact.name" placeholder="Name" required>
         <input name="surname" [(ngModel)]="contact.surname" placeholder="Surname" required>
         <input name="email" [(ngModel)]="contact.email" placeholder="Email" required>
+        <input name="color" [(ngModel)]="contact.color" placeholder="Color" required>
         <button type="submit" [disabled]="!contact.name">Update Contact</button>
     </form>
 
