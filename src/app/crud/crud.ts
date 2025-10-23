@@ -18,6 +18,10 @@ export class CRUD {
   constructor(public fbService: FbService) {
   }
 
+  getContactsGroups() {
+    return this.fbService.contactsGroups;
+  }
+
   getContacts() {
     return this.fbService.contactsArray;
   }
@@ -36,8 +40,7 @@ export class CRUD {
   }
 
   delContact() {
-    this.fbService.delContact(this.id);
-    console.log("Deleted contact with ID:", this.id);
+    this.fbService.contactsGroups.length > 0 ? this.fbService.delContact(this.id) : null;
   }
 
   getData() {

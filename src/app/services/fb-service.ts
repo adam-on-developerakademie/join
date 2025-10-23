@@ -16,16 +16,23 @@ export class FbService {
 
   myContacts;
   contactsArray: IContact[] = [];
+  contactsGroups: string[] = [];
   myData;
   data: any[] = [];
+
+
   constructor() {
     this.contact = {} as IContact;
+    this.contactsArray = [];
 
     this.myContacts = onSnapshot(this.contactsCollectionSorted, (snapshot) => {
       this.contactsArray = [];
+      this.contactsGroups = [];
       snapshot.forEach((element) => {
         this.contactsArray.push({ id: element.id, ...element.data() } as IContact);
-        console.log(this.contactsArray);
+        this.contactsGroups.push(element.data()['name'].charAt(0).toUpperCase());
+        this.contactsGroups = Array.from(new Set(this.contactsGroups)).sort();
+        console.log(this.contactsArray, this.contactsGroups);
       });
     });
 
@@ -48,7 +55,7 @@ export class FbService {
   }
 
   async addContact(contact: IContact) {
-    await addDoc(this.contactsCollection, { date: new Date(), ...contact });
+    await addDoc(this.contactsCollection, { date: new Date(), color: this.getRandomColor(), ...contact });
   }
 
   async updateContact(id: number, contact: IContact) {
@@ -56,13 +63,28 @@ export class FbService {
   }
 
   async delContact(id: number) {
-    await deleteDoc(doc(this.contactsCollection, this.contactsArray[id].id));
+    //this.contactsArray.splice(id, 1);
+    this.contactsArray.length >= 0 ? await deleteDoc(doc(this.contactsCollection, this.contactsArray[id].id)) : null;
   }
 
 
   onDestroy() {
     this.myContacts();
     this.myData();
+  }
+
+  getRandomColor() {
+    const r = Math.floor(Math.random() * 222);
+    const g = Math.floor(Math.random() * 222);
+    const b = Math.floor(Math.random() * 222);
+
+    const toHex = (c: number) => {
+      const hex = c.toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    };
+
+    const color = `#${toHex(r)}${toHex(g)}${toHex(b)}`
+    return color;
   }
 
 

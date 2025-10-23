@@ -1,7 +1,10 @@
 <section class="crud">
+    @for( group of getContactsGroups(); track group ){
+    <h3>{{ group }}</h3>
     @for( item of getContacts() ; track item ){
-    <p>{{ $index + ': ' + item.name + ', ' + item.surname + ', ' + item.email}}</p>
-    }
+    @if( item.name.charAt(0).toUpperCase() == group ){
+    <p [style.backgroundColor]="item.color">{{ $index + ': ' + item.name + ', ' + item.surname + ', ' + item.email}}</p>
+    }}}
 
     <h4>Neues Kontakt:</h4>
     <form (ngSubmit)="addContact()">
@@ -11,7 +14,7 @@
         <button type="submit" [disabled]="!contact.name">Add Contact</button>
     </form>
 
-        <h4>Kontakt ändern:</h4>
+    <h4>Kontakt ändern:</h4>
     <form (ngSubmit)="upContact()">
         <input name="id" [(ngModel)]="id" placeholder="ID" required>
         <input name="name" [(ngModel)]="contact.name" placeholder="Name" required>
