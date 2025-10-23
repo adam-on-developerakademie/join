@@ -5,28 +5,16 @@ import { SidenavComponent } from './shared/sidenav/sidenav';
 import { FbService } from './services/fb-service';
 import { Contacts } from './contacts/contacts';
 
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Contacts, HeaderComponent, SidenavComponent],
+  imports: [RouterOutlet, HeaderComponent, SidenavComponent, Contacts],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('join');
 
-  db = inject(FbService).db;
+  constructor( ) {}
 
-  constructor( public fbService: FbService) {
-
-  }
-
-  getTestSammlung() {
-    return this.fbService.testSammlungArray;
-  }
-
-  getData() {
-    return this.fbService.dataArray;
-  }
 
 }

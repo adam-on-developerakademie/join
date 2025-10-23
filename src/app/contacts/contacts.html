@@ -7,7 +7,24 @@
         <span class="plus">+</span>
       </button>
 
-      <ng-container *ngFor="let entry of grouped | keyvalue">
+      @for( group of getContactsGroups(); track group ){
+      <p class="letter">{{ group }} </p>
+      <div class="divider"></div>
+      @for( item of getContacts() ; track item ){
+      @if( item.name.charAt(0).toUpperCase() == group ){
+      <div class="contact-row">
+        <div class="badge">
+          <div class="badge__circle" [style.background]="item.color"></div>
+          <div class="badge__initials">{{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}</div>
+        </div>
+        <div class="contact-row__text">
+          <div class="name">{{ item.name + ' ' + item.surname}}</div>
+          <div class="mail">{{ item.email }}</div>
+        </div>
+      </div>
+      }}}
+
+<!--       <ng-container *ngFor="let entry of grouped | keyvalue">
         <div class="letter">{{ entry.key }}</div>
         <div class="divider"></div>
 
@@ -24,21 +41,15 @@
             </div>
           </div>
         </ng-container>
-      </ng-container>
-    </div>
+      </ng-container> -->
 
-    <!-- Fake Scrollbar wie in Figma (Deko) -->
-    <div class="fakebar">
-      <i class="fakebar__thumb"></i>
-      <i class="fakebar__cap fakebar__cap--top"></i>
-      <i class="fakebar__cap fakebar__cap--bottom"></i>
     </div>
   </section>
 
   <!-- Heading rechts -->
   <section class="heading">
     <h1>Contacts</h1>
-    <i class="heading__divider"></i>
+    <span class="blue_line"></span>
     <p>Better with a team</p>
   </section>
 </div>
