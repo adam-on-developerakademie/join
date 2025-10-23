@@ -40,7 +40,8 @@ export class CRUD {
   }
 
   delContact() {
-    this.fbService.contactsGroups.length > 0 ? this.fbService.delContact(this.id) : null;
+    console.log(this.fbService.contactsGroups.length, this.id);
+    this.fbService.addContact.length > 0 && this.fbService.contactsGroups.length > 0 ? this.fbService.delContact(this.id) : null;
   }
 
   getData() {
