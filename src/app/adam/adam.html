@@ -1,8 +1,24 @@
+<section class="tests">
+    @for( item of getContacts() ; track item ){
+    <p>{{ $index + ': ' + item.name + ', ' + item.surname + ', ' + item.email}}</p>
+    }
 
-@for( item of getContacts() ; track item ){
+    @for( item of getData() ; track item ){
     <p>{{item.name}}</p>
-}
+    }
 
-@for( item of getData() ; track item ){
-    <p>{{item.name}}</p>
-}
+    <h4>Kontakt Löschen:</h4>
+    <form (ngSubmit)="delContact(id)">
+        <input name="id" [(ngModel)]="id" placeholder="ID" required>
+        <button type="submit">Delete Contact</button>
+    </form>
+
+    <h4>Neues Kontakt:</h4>
+    <form (ngSubmit)="addContact()">
+        <input name="name" [(ngModel)]="contact.name" placeholder="Name" required>
+        <input name="surname" [(ngModel)]="contact.surname" placeholder="Surname" required>
+        <input name="email" [(ngModel)]="contact.email" placeholder="Email" required>
+        <button type="submit" [disabled]="!contact.name">Add Contact</button>
+    </form>
+
+</section>
