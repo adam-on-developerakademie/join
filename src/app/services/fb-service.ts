@@ -34,6 +34,7 @@ export class FbService {
         this.contactsGroups = Array.from(new Set(this.contactsGroups)).sort();
         console.log(this.contactsArray, this.contactsGroups);
       });
+      this.saveToLocalStorage()
     });
 
     this.myData = onSnapshot(this.dataCollection, (snapshot) => {
@@ -41,6 +42,7 @@ export class FbService {
       console.log(this.data);
     });
 
+    
   }
 
 
@@ -87,5 +89,8 @@ export class FbService {
     return color;
   }
 
+  saveToLocalStorage() {
+    localStorage.setItem('JoinFirebase', JSON.stringify(this.contactsArray));
+  }
 
 }
