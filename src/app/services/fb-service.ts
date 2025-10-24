@@ -32,19 +32,17 @@ export class FbService {
         this.contactsArray.push({ id: element.id, ...element.data() } as IContact);
         this.contactsGroups.push(element.data()['name'].charAt(0).toUpperCase());
         this.contactsGroups = Array.from(new Set(this.contactsGroups)).sort();
-        console.log(this.contactsArray, this.contactsGroups);
+        //console.log(this.contactsArray, this.contactsGroups);
       });
+      console.log(this.contactsArray, this.contactsGroups);
       this.saveToLocalStorage()
     });
 
     this.myData = onSnapshot(this.dataCollection, (snapshot) => {
       this.data = snapshot.docs.map((doc) => doc.data());
-      console.log(this.data);
+      //console.log(this.data);
     });
-
-    
   }
-
 
   setAddContact(name: string, surname: string, email: string, phone: string) {
     this.contact = {
@@ -70,7 +68,6 @@ export class FbService {
     this.contactsArray.length >= 0 ? await deleteDoc(doc(this.contactsCollection, this.contactsArray[id].id)) : null;
   }
 
-
   onDestroy() {
     this.myContacts();
     this.myData();
@@ -88,6 +85,12 @@ export class FbService {
 
     const color = `#${toHex(r)}${toHex(g)}${toHex(b)}`
     return color;
+  }
+
+  getRandomColorOld() {
+    const colors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#FF4646'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    return randomColor;
   }
 
   saveToLocalStorage() {
