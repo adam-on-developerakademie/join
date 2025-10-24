@@ -2,7 +2,7 @@
   <!-- Linkes Panel (Kontaktliste) -->
   <section class="list-panel">
     <div class="list-panel__inner">
-      <button class="primary-contact" (click)="onAddContactClick()">
+      <button class="primary-contact" (click)="showContactOverlay()">
         <span>Add new contact</span>
         <img src="assets/components/contacts/add_contact.svg" alt="" />
         <!-- <span class="plus">+</span> -->
@@ -25,25 +25,6 @@
       </div>
       }}}
 
-<!--       <ng-container *ngFor="let entry of grouped | keyvalue">
-        <div class="letter">{{ entry.key }}</div>
-        <div class="divider"></div>
-
-        <ng-container *ngFor="let c of entry.value">
-          <div class="contact-row">
-            <div class="badge">
-              <div class="badge__circle" [style.background]="c.color"></div>
-              <div class="badge__initials">{{ c.initials }}</div>
-            </div>
-
-            <div class="contact-row__text">
-              <div class="name">{{ c.name }}</div>
-              <div class="mail">{{ c.email }}</div>
-            </div>
-          </div>
-        </ng-container>
-      </ng-container> -->
-
     </div>
   </section>
 
@@ -55,8 +36,7 @@
   </section>
 </div>
 
+
 @if (showAddContact) {
-  <app-add-contact
-  (close)="onCloseOverlay()"
-  (contactAdded)="onContactAdded($event)"></app-add-contact>
+<app-add-contact (close)="onCloseOverlay()"></app-add-contact>
 }

@@ -46,11 +46,12 @@ export class FbService {
   }
 
 
-  setAddContact(name: string, surname: string, email: string) {
+  setAddContact(name: string, surname: string, email: string, phone: string) {
     this.contact = {
       name: name,
       surname: surname,
-      email: email
+      email: email,
+      phone: phone
     };
     console.log(this.contact);
     this.addContact(this.contact);
