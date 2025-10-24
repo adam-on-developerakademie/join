@@ -16,6 +16,10 @@
   --link: #007cee;
 }
 
+.blue-line {
+  background-color: #007cee;
+}
+
 .contacts-page {
   position: relative;
   width: 1440px; /* Figma Desktop */
@@ -229,7 +233,7 @@
   height: 928px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  overflow-y: scroll;
 }
 .list-panel__inner {
   position: absolute;

@@ -4,7 +4,8 @@
     <div class="list-panel__inner">
       <button class="primary-contact" (click)="onAddContactClick()">
         <span>Add new contact</span>
-        <span class="plus">+</span>
+        <img src="assets/components/contacts/add_contact.svg" alt="" />
+        <!-- <span class="plus">+</span> -->
       </button>
 
       @for( group of getContactsGroups(); track group ){
