@@ -14,15 +14,7 @@ import { Contacts } from './contacts/contacts';
 export class App {
   protected readonly title = signal('join');
 
-  db = inject(FbService).db;
+  constructor( ) {}
 
-  constructor(public fbService: FbService) {}
 
-  getTestSammlung() {
-    return this.fbService.testSammlungArray;
-  }
-
-  getData() {
-    return this.fbService.dataArray;
-  }
 }

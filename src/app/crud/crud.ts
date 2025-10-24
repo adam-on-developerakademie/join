@@ -1,37 +1,21 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FbService } from '../services/fb-service';
 import { FormsModule } from '@angular/forms';
 import { IContact } from '../interfaces/i-contact';
-import { AddContactComponent } from '../add-contact/add-contact'; 
 
-type Contact = {
-  name: string;
-  email: string;
-  color: string;
-  initials?: string;
-  letter?: string;
-  phone?: string;
-};
 
 @Component({
-  selector: 'app-contacts',
-  standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent],
-  templateUrl: './contacts.html',
-  styleUrl: './contacts.scss'
+  selector: 'app-crud',
+  imports: [FormsModule],
+  templateUrl: './crud.html',
+  styleUrl: './crud.scss'
 })
-export class Contacts {
+export class CRUD {
   db = inject(FbService).db;
   contact: IContact = {} as IContact;
   id: number = 0;
-  showAddContact: boolean = false;
 
-  topbarTitle = 'Kanban Project Management Tool';
-  constructor(public fbService: FbService) {}
-
-  onAddContactClick() {
-    alert('Add new contact (Dialog/Firebase kommt später).');
+  constructor(public fbService: FbService) {
   }
 
   getContactsGroups() {
@@ -46,6 +30,7 @@ export class Contacts {
     this.fbService.addContact(this.contact);
     console.log(this.contact);
     this.clearInput();
+
   }
 
   upContact() {
@@ -64,18 +49,11 @@ export class Contacts {
     return this.fbService.data;
   }
 
+
   clearInput() {
     this.contact.name = "";
     this.contact.surname = "";
     this.contact.email = "";
-  }
-
-  showContactOverlay() {
-    this.showAddContact == false ? this.showAddContact = true : this.showAddContact = false;
-  }
-
-    onCloseOverlay() {
-    this.showAddContact = false;
   }
 
 }
