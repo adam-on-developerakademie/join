@@ -1,0 +1,21 @@
+:host { display:block; }
+
+/* Gesamter Content-Bereich unter dem fixen Header/Sidenav */
+.page-area{
+  position: relative;
+  z-index: 0;           /* liegt UNTER der Sidenav */
+  min-height: 100dvh;
+  background: var(--bg, #F6F7F8);
+  padding-left: var(--sidebar-w, 232px);
+  padding-top: var(--header-h, 96px);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+
+.page-inner{
+  width: 100%;
+  max-width: 1920px;
+  box-sizing: border-box;
+  padding: 24px;
+}
