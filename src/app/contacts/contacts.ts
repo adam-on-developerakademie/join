@@ -1,24 +1,27 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AddContactComponent } from '../add-contact/add-contact'; // Importieren!
 
 type Contact = {
   name: string;
   email: string;
-  color: string;   // Badge-Farbe
+  color: string;
   initials?: string;
   letter?: string;
+  phone?: string;
 };
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AddContactComponent], // AddContactComponent hinzufügen!
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss'
 })
 export class Contacts {
   topbarTitle = 'Kanban Project Management Tool';
-
+  showAddContact = false; // State für Overlay
+  
   contacts: Contact[] = [
     { name: 'Anton Mayer',      email: 'antonm@gmail.com',     color: '#FF7A00' },
     { name: 'Anja Schulz',      email: 'schulz@hotmail.com',   color: '#9327FF' },
@@ -28,10 +31,12 @@ export class Contacts {
     { name: 'Emmanuel Mauer',   email: 'emmanuelm@gmail.com',  color: '#1FD7C1' },
     { name: 'Tajiana Weiß',     email: 'tajiana@gmail.com',    color: '#FF4646' },
   ];
-
+  
   grouped = new Map<string, Contact[]>();
 
-  constructor() { this.prepare(); }
+  constructor() { 
+    this.prepare(); 
+  }
 
   private prepare() {
     const addInitials = (c: Contact) => {
@@ -49,6 +54,30 @@ export class Contacts {
   }
 
   onAddContactClick() {
-    alert('Add new contact (Dialog/Firebase kommt später).');
+    this.showAddContact = true; // Overlay öffnen
+  }
+
+  onContactAdded(newContact: any) {
+    // Zufällige Farbe für neuen Kontakt
+    const colors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#FF4646'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    const contact: Contact = {
+      name: newContact.name,
+      email: newContact.email,
+      phone: newContact.phone,
+      color: randomColor
+    };
+    
+    this.contacts.push(contact);
+    this.prepare(); 
+    this.showAddContact = false; 
+    
+    console.log('Contact added:', contact);
+  
+  }
+
+  onCloseOverlay() {
+    this.showAddContact = false;
   }
 }
