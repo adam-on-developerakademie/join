@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { TestComponent } from './test/test'; 
-
+import{CRUD} from './crud/crud';
 export const routes: Routes = [
-  { path: 'test', component: TestComponent }
+  //  { path: '', component: CRUD },
+    { path: 'CRUD', component: CRUD },
+    { path: 'crud', component: CRUD },
 ];
