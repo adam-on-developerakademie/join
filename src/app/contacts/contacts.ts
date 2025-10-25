@@ -89,7 +89,7 @@ export class Contacts {
   // Toast zeigen
   if (this.toastTimer) clearTimeout(this.toastTimer);
   this.toastOpen = true;
-  this.toastTimer = setTimeout(() => (this.toastOpen = false), 800);
+  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
 }
 
 }
