@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./contact-created-toast.scss'],
 })
 export class ContactCreatedToast {
-  @Input() show = false;
+  @Input() show = false; // Sichtbarkeit durch [show]="toastOpen"
 }

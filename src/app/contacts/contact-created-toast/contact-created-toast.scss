@@ -1,11 +1,11 @@
 /* Wrapper: zentriert über der Seite */
 .toast-wrap{
-  position: fixed; /* überlagert Canvas */
+  position: fixed;
   left: 50%; top: 160px; transform: translateX(-50%);
   width: 326px; height: 74px; padding: 0;
   display:flex; align-items:center; justify-content:center;
   filter: drop-shadow(0 0 4px rgba(0,0,0,0.1));
-  z-index: 1000;
+  z-index: 5000; /* <-- höher als Overlay */
 }
 
 /* Frame 73: eigentlicher Toast */
