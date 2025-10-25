@@ -4,10 +4,11 @@ import { HeaderComponent } from './shared/header/header';
 import { SidenavComponent } from './shared/sidenav/sidenav';
 import { FbService } from './services/fb-service';
 import { Contacts } from './contacts/contacts';
+import { ContactCard } from './contact-card/contact-card';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidenavComponent, Contacts],
+  imports: [RouterOutlet, HeaderComponent, SidenavComponent, Contacts, ContactCard],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })

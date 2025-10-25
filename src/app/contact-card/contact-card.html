@@ -1,1 +1,53 @@
-<p>contact-card works!</p>
+<div class="floating-contact">
+      <!-- Header section with avatar and name -->
+      <div class="header-frame">
+        <!-- Avatar circle -->
+        <div class="avatar-container">
+          <div class="avatar-circle">
+            <span class="avatar-initials">AM</span>
+          </div>
+        </div>
+        
+        <!-- Name and actions section -->
+        <div class="name-section">
+          <div class="name-container">
+            <h2 class="contact-name">Anton Mayer</h2>
+          </div>
+          
+          <!-- Action buttons -->
+          <div class="actions-container">
+            <!-- Edit button -->
+            <button class="edit-contact" (click)="onEdit()">
+<img src="assets/components/contact-card/edit.svg" alt="Edit contact button">
+              <span>Edit</span>
+            </button>
+            
+            <!-- Delete button -->
+            <button class="delete-contact" (click)="onDelete()">
+<img src="assets/components/contact-card/delete.svg" alt="Delete contact button">
+              <span>Delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contact Information section -->
+      <div class="contact-info-section">
+        <h3 class="section-title">Contact Information</h3>
+      </div>
+      
+      <!-- Contact details -->
+      <div class="contact-details">
+        <!-- Email -->
+        <div class="detail-group">
+          <label class="detail-label">Email</label>
+          <a href="mailto:antom@gmail.com" class="email-link">antom@gmail.com</a>
+        </div>
+        
+        <!-- Phone -->
+        <div class="detail-group">
+          <label class="detail-label">Phone</label>
+          <span class="phone-number">+49 1111 111 11 1</span>
+        </div>
+      </div>
+    </div>
