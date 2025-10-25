@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, EventEmitter, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FbService } from '../services/fb-service';
 import { FormsModule } from '@angular/forms';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from '../add-contact/add-contact'; 
-
+import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 type Contact = {
   name: string;
   email: string;
@@ -17,15 +17,19 @@ type Contact = {
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent],
+  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast],
   templateUrl: './contacts.html',
   styleUrl: './contacts.scss'
 })
 export class Contacts {
+  
   db = inject(FbService).db;
   contact: IContact = {} as IContact;
   id: number = 0;
   showAddContact: boolean = false;
+  private toastTimer?: any;
+   @Output() close = new EventEmitter<void>();
+
 
   topbarTitle = 'Kanban Project Management Tool';
   constructor(public fbService: FbService) {}
@@ -46,6 +50,9 @@ export class Contacts {
     this.fbService.addContact(this.contact);
     console.log(this.contact);
     this.clearInput();
+    clearTimeout(this.toastTimer);
+    this.toastOpen = true;
+    this.toastTimer = setTimeout(() => this.toastOpen = false, 800);
   }
 
   upContact() {
