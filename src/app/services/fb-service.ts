@@ -10,10 +10,12 @@ export class FbService {
   public db = inject(Firestore);
 
   contact: IContact;
+  currentContact: IContact;
   contactsCollection = collection(this.db, 'contacts');
   contactsCollectionFiltered = query(this.contactsCollection, where('ownerId', '==', this.getCurrentUserId()));
   //contactsCollectionSorted = query(this.contactsCollection, orderBy('date', 'desc'));
   dataCollection = collection(this.db, 'data');
+
 
   myContacts;
   contactsArray: IContact[] = [];
@@ -25,6 +27,7 @@ export class FbService {
   constructor() {
     this.contact = {} as IContact;
     this.contactsArray = [];
+    this.currentContact = { name: '', surname: '', email: '', phone: '' } as IContact;
 
     this.myContacts = onSnapshot(this.contactsCollectionFiltered, (snapshot) => {
       this.contactsArray = [];
@@ -35,6 +38,7 @@ export class FbService {
         this.contactsGroups = Array.from(new Set(this.contactsGroups)).sort();
         //console.log(this.contactsArray, this.contactsGroups);
       });
+      this.currentContact = this.contactsArray[0];
       console.log(this.contactsArray, this.contactsGroups);
       this.saveToLocalStorage()
     });
@@ -43,6 +47,7 @@ export class FbService {
       this.data = snapshot.docs.map((doc) => doc.data());
       //console.log(this.data);
     });
+
   }
 
   setAddContact(name: string, surname: string, email: string, phone: string) {
@@ -101,6 +106,12 @@ export class FbService {
   getCurrentUserId(): string {
     // Placeholder for actual user ID retrieval logic
     return 'ownerId';
+  }
+
+  setCurrentContact(id: number): IContact {
+    this.currentContact = this.contactsArray.length > 0 ? this.contactsArray[id] : { name: '', surname: '', email: '', phone: '' } as IContact;
+    // console.log(id, this.contactsArray.length, this.currentContact);
+    return this.currentContact;
   }
 
 }

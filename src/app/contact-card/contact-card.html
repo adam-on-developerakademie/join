@@ -4,14 +4,14 @@
         <!-- Avatar circle -->
         <div class="avatar-container">
           <div class="avatar-circle">
-            <span class="avatar-initials">AM</span>
+            <span class="avatar-initials"> {{ currentContact.name.substring(0, 1) + currentContact.surname.substring(0, 1) }}</span>
           </div>
         </div>
         
         <!-- Name and actions section -->
         <div class="name-section">
           <div class="name-container">
-            <h2 class="contact-name">Anton Mayer</h2>
+            <h2 class="contact-name">{{currentContact.name  + ' ' + currentContact.surname}}</h2>
           </div>
           
           <!-- Action buttons -->
@@ -41,13 +41,13 @@
         <!-- Email -->
         <div class="detail-group">
           <label class="detail-label">Email</label>
-          <a href="mailto:antom@gmail.com" class="email-link">antom@gmail.com</a>
+          <a href="mailto:{{currentContact.email}}" class="email-link">{{currentContact.email}}</a>
         </div>
         
         <!-- Phone -->
         <div class="detail-group">
           <label class="detail-label">Phone</label>
-          <span class="phone-number">+49 1111 111 11 1</span>
+          <span class="phone-number">{{currentContact.phone}}</span>
         </div>
       </div>
     </div>

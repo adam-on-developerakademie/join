@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IContact } from '../interfaces/i-contact';
+import { FbService } from '../services/fb-service';
+
 
 @Component({
   selector: 'app-contact-card',
@@ -13,9 +16,17 @@ onEdit(): void {
     console.log('Edit contact clicked');
     // Implement edit functionality
   }
+
+  constructor(private fbService: FbService) {  }
+  
   
   onDelete(): void {
     console.log('Delete contact clicked');
     // Implement delete functionality
   }
+
+  get currentContact(): IContact {
+    return this.fbService.currentContact;
+  }
+
 }
