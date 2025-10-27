@@ -371,4 +371,8 @@
   .heading {
     display: none !important;
   }
+  .list-panel,
+  .list-panel__inner {
+    width: 100%;
+  }
 }
