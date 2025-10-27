@@ -6,7 +6,10 @@
 
 /* Desktop */
 .sidenav{
-  position: fixed; inset: 0 auto 0 0; width: var(--sidenav-w); z-index: 2000;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidenav-w);
+  z-index: 2000;
 }
 .main{
   min-height: 100dvh;
@@ -21,11 +24,9 @@
   .main{
     padding-top: var(--header-h-mobile);
     padding-left: 0;
-    padding-bottom: 80px;  /* Platz für Bottom-Nav */
-    display: flex; justify-content: center;
+    padding-bottom: 88px; /* 80px Nav + etwas Luft */
+    display: flex;
+    justify-content: center;
   }
   .main > *{ width: 100%; max-width: 428px; }
-}
-@media (max-width:900px){
-  .main{ padding-bottom: 88px; } /* 80px Nav + etwas Luft */
 }

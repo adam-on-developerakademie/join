@@ -72,3 +72,10 @@ img{ max-width: 100%; display: block; }
 
 /* (Optional) bottom mobile menu aus Altcode vollständig entfernt, 
    weil wir figma-sidenav/figma-header verwenden. */
+
+   /* Platz unten, damit Content nicht von der Leiste überdeckt wird */
+@media (max-width: 900px){
+  .main{ padding-bottom: 88px; } /* 80px + Luft */
+}
+/* Body voll hochziehen (hilft bei fixed bottom auf manchen Setups) */
+html, body { min-height: 100dvh; }

@@ -1,16 +1,46 @@
-:host{ display: contents; }
-.bottom-nav{
-  position: fixed; left:0; right:0; bottom:0; height:80px;
-  background:#2A3647; color:#CDCDCD; box-shadow:0 -4px 6px rgba(0,0,0,.08);
-  display:none; z-index:2000; padding-bottom: env(safe-area-inset-bottom);
+/* Host und Tag selektieren (wegen encapsulation: none ist das robust) */
+figma-bottom-nav,
+figma-bottom-nav:host {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  z-index: 4000;
+  display: none; /* Desktop aus */
 }
-.item{
-  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  gap:6px; font:12px/1.2 Inter,system-ui,Arial,sans-serif; text-decoration:none; color:inherit;
-}
-.item img{ width:20px; height:20px; display:block; }
-.item--active{ color:#29ABE2; }  /* Figma: aktiv = blau */
 
-@media (max-width:900px){
-  .bottom-nav{ display:flex; }
+/* Nur ≤900px anzeigen */
+@media (max-width: 900px) {
+  figma-bottom-nav,
+  figma-bottom-nav:host {
+    display: block;
+  }
 }
+
+/* Leisteninhalt */
+figma-bottom-nav .bottom-nav {
+  height: 100%;
+  background: #2A3647;
+  color: #CDCDCD;
+  box-shadow: 0 -4px 6px rgba(0,0,0,.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+figma-bottom-nav .item{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font: 12px/1.2 Inter, system-ui, Arial, sans-serif;
+  color: inherit;
+  text-decoration: none;
+}
+
+figma-bottom-nav .item img{ width: 20px; height: 20px; display: block; }
+figma-bottom-nav .item--active{ color: #29ABE2; }
