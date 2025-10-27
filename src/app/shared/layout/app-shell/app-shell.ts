@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FigmaHeader } from '../figma-header/figma-header';
 import { FigmaSidenav } from '../figma-sidenav/figma-sidenav';
+import { FigmaBottomNav } from '../figma-bottom-nav/figma-bottom-nav';
 
 @Component({
   selector: 'app-shell',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FigmaHeader, FigmaSidenav],
+  imports: [RouterOutlet, FigmaHeader, FigmaSidenav, FigmaBottomNav],
   templateUrl: './app-shell.html',
   styleUrls: ['./app-shell.scss'],
 })

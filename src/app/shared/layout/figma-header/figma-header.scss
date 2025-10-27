@@ -85,3 +85,30 @@
 .dropdown-link:hover{ background:#f3f5f8; }
 .dropdown-link.danger{ color:#b3261e; }
 .dropdown-link.danger:hover{ background:#fdebea; }
+
+@media (max-width: 900px){
+  :host{
+    left: 0;                 /* keine Sidebar auf Mobile */
+    height: var(--header-h-mobile, 80px);
+  }
+  .wrap{
+    padding: 16px 16px;
+    height: 80px;
+    box-shadow: 0 4px 6px rgba(0,0,0,.08);
+  }
+}
+
+/* Desktop bleibt wie bei dir (96px) */
+
+@media (max-width: 900px){
+  :host{
+    left: 0;
+    height: var(--header-h-mobile, 80px);
+  }
+  .wrap{
+    height: 80px;
+    padding: 16px;                    /* Figma mobile spacing */
+    box-shadow: 0 4px 6px rgba(0,0,0,.08);
+  }
+  .title{ display: none; }            /* Kein Desktop-Titel auf Mobile */
+}

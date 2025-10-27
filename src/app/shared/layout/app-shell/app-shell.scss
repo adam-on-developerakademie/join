@@ -1,39 +1,28 @@
-:host { display:block; }
+:root{
+  --header-h-desktop: 96px;
+  --header-h-mobile: 80px;
+  --sidenav-w: 232px;
+}
 
-/* Gesamter Content-Bereich unter dem fixen Header/Sidenav */
-.page-area{
-  position: relative;
-  z-index: 0;           /* liegt UNTER der Sidenav */
+/* Desktop */
+.sidenav{
+  position: fixed; inset: 0 auto 0 0; width: var(--sidenav-w); z-index: 2000;
+}
+.main{
   min-height: 100dvh;
-  background: var(--bg, #F6F7F8);
-  padding-left: var(--sidebar-w, 232px);
-  padding-top: var(--header-h, 96px);
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
+  background: #F6F7F8;
+  padding-top: var(--header-h-desktop);
+  padding-left: var(--sidenav-w);
 }
 
-.page-inner{
-  width: 100%;
-  max-width: 1920px;
-  box-sizing: border-box;
-  padding: 24px;
-}
-
-/* ====== MOBILE LAYOUT VARIABLEN (<=768px) ====== */
-@media (max-width: 768px){
-  :root{
-    --sidebar-w: 0px;
-    --header-h: 80px;  /* Figma Mobile Header */
+/* ===== Mobile ≤900px ===== */
+@media (max-width: 900px){
+  .sidenav{ display: none; }
+  .main{
+    padding-top: var(--header-h-mobile);
+    padding-left: 0;
+    padding-bottom: 80px;  /* Platz für Bottom-Nav */
+    display: flex; justify-content: center;
   }
-
-  .page-area{
-    padding-left: 0;                 /* keine Sidenav-Einrückung */
-    padding-top: var(--header-h);    /* Platz für mobilen Header */
-    justify-content: center;
-  }
-
-  .page-inner{
-    padding: 0;                      /* Mobile meist engere Ränder, Liste hat eigenes Padding */
-  }
+  .main > *{ width: 100%; max-width: 428px; }
 }

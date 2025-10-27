@@ -503,3 +503,73 @@
     width: 100%;
   }
 }
+
+/* Mobile Container exakt wie Figma: 400px innen, 24px Padding */
+@media (max-width: 900px){
+  .contacts-canvas,
+  .contacts-page,
+  .list-panel,
+  .detail-panel{
+    width: 100%;
+    max-width: 428px;      /* Außenrahmen */
+    margin: 0 auto;
+    background: transparent;
+  }
+
+  .list-panel__inner{
+    width: 400px;
+    margin: 0 auto;
+    padding: 24px 0;
+  }
+
+  /* Divider, Zeilen, Avatar usw. sind schon bei dir gestylt;
+     stelle sicher: Zeilenbreite 352px + 24px Seitenabstand */
+  .contact-row,
+  .divider,
+  .letter{
+    width: 352px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 900px){
+  /* Außenrahmen wie Figma: 428px */
+  :host, .contacts-canvas, .contacts-page{ max-width: 428px; margin: 0 auto; }
+
+  /* Nur die Liste zeigen */
+  .detail-panel{ display: none !important; }
+
+  /* Innen 400px, 24px Padding oben/unten */
+  .list-panel__inner{
+    width: 400px; margin: 0 auto; padding: 24px 0;
+  }
+
+  /* Zeilen/Divider/Letters 352px Breite */
+  .contact-row, .divider, .letter{
+    width: 352px; margin-left: auto; margin-right: auto;
+  }
+
+  /* Typo/Abstände wie Figma */
+  .contact-row{
+    padding: 15px 24px; gap: 35px; border-radius: 10px; background: #FFFFFF;
+  }
+  .badge{ width:42px; height:42px; border-radius:50%; border:2px solid #fff; overflow:hidden; }
+  .divider{ height:1px; background:#D1D1D1; }
+  .letter{ font: 20px/1.2 Inter, system-ui, Arial, sans-serif; color:#2A3647; }
+  a.email{ color:#007CEE; text-decoration:none; }
+}
+
+@media (max-width: 900px){
+  .fab{
+    position: fixed;
+    right: 16px;
+    bottom: 96px; /* etwas über der Bottom-Nav (80px) */
+    width: 56px; height: 56px; border-radius: 50%;
+    background:#2A3647; color:#fff; border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    display: grid; place-items: center;
+  }
+}
+
+

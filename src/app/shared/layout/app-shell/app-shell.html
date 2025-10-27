@@ -1,10 +1,8 @@
-<!-- 🟣 Globales Join-Layout -->
 <figma-header></figma-header>
-<figma-sidenav></figma-sidenav>
+<figma-sidenav class="sidenav"></figma-sidenav>
 
-<!-- Haupt-Content -->
-<main class="page-area">
-  <div class="page-inner">
-    <router-outlet></router-outlet>
-  </div>
+<main class="main">
+  <router-outlet></router-outlet>
 </main>
+
+<figma-bottom-nav></figma-bottom-nav> <!-- sichtbar nur per CSS ≤900px -->
