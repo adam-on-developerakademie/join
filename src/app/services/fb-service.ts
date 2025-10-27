@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collectionData, collection, doc, onSnapshot, orderBy, query } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, doc, onSnapshot, orderBy, query, where } from '@angular/fire/firestore';
 import { addDoc, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { IContact } from '../interfaces/i-contact';
 
@@ -10,8 +10,9 @@ export class FbService {
   public db = inject(Firestore);
 
   contact: IContact;
-  contactsCollectionSorted = query(collection(this.db, 'contacts'), orderBy('date', 'desc'));
   contactsCollection = collection(this.db, 'contacts');
+  contactsCollectionFiltered = query(this.contactsCollection, where('ownerId', '==', this.getCurrentUserId()));
+  //contactsCollectionSorted = query(this.contactsCollection, orderBy('date', 'desc'));
   dataCollection = collection(this.db, 'data');
 
   myContacts;
@@ -25,7 +26,7 @@ export class FbService {
     this.contact = {} as IContact;
     this.contactsArray = [];
 
-    this.myContacts = onSnapshot(this.contactsCollectionSorted, (snapshot) => {
+    this.myContacts = onSnapshot(this.contactsCollectionFiltered, (snapshot) => {
       this.contactsArray = [];
       this.contactsGroups = [];
       snapshot.forEach((element) => {
@@ -56,7 +57,7 @@ export class FbService {
   }
 
   async addContact(contact: IContact) {
-    await addDoc(this.contactsCollection, { date: new Date(), color: this.getRandomColor(), ...contact });
+    await addDoc(this.contactsCollection, { ownerId: this.getCurrentUserId(), date: new Date(), color: this.getRandomColor(), ...contact });
   }
 
   async updateContact(id: number, contact: IContact) {
@@ -95,6 +96,11 @@ export class FbService {
 
   saveToLocalStorage() {
     localStorage.setItem('JoinFirebase', JSON.stringify(this.contactsArray));
+  }
+
+  getCurrentUserId(): string {
+    // Placeholder for actual user ID retrieval logic
+    return 'ownerId';
   }
 
 }
