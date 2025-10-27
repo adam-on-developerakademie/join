@@ -1,15 +1,15 @@
 <div class="overlay" (click)="onOverlayClick($event)">
   <div class="add-contact-container">
     <!-- Close Button (Top Right) -->
-    <button class="close-btn" (click)="closeOverlay()" type="button">
+    <button class="close-btn" (click)="closeOverlay()" type="button" aria-label="Close">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
-    
+
     <!-- Left Side: Title Section -->
     <div class="left-section">
-      <div class="logo">
+      <div class="logo" aria-hidden="true">
         <svg width="56" height="67" viewBox="0 0 56 67" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M39.8358 0H27.5203V13.8957H39.8358V0Z" fill="white"/>
           <path d="M27.5203 25.197H39.8358V44.7947C39.8921 49.5105 38.5236 54.1362 35.9043 58.0839C33.3181 61.9194 28.3256 66.4829 19.089 66.4829C9.02818 66.4829 3.16413 61.8167 0 59.2597L7.76822 49.8621C10.8566 52.3352 13.8312 54.3696 19.1363 54.3696C23.1531 54.3696 24.7541 52.7645 25.692 51.3646C26.967 49.4203 27.6265 47.1465 27.5866 44.8321L27.5203 25.197Z" fill="white"/>
@@ -23,87 +23,91 @@
       <p class="subtitle">Tasks are better with a team!</p>
       <div class="blue-line"></div>
     </div>
-    
+
     <!-- Right Side: Form Section -->
     <div class="right-section">
       <!-- Avatar Circle -->
-      <div class="avatar-circle">
+      <div class="avatar-circle" aria-hidden="true">
         <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
           <circle cx="32" cy="24" r="12" fill="#D1D1D1"/>
           <path d="M12 52C12 42 20 36 32 36C44 36 52 42 52 52" fill="#D1D1D1"/>
         </svg>
       </div>
-      
+
       <!-- Form -->
-      <form (ngSubmit)="onSubmit()" class="contact-form">
-        <!-- Name Input -->
+      <form (ngSubmit)="onSubmit()" #f="ngForm" class="contact-form" novalidate>
+        <!-- Name Input (required) -->
         <div class="input-wrapper">
-          <input 
-            type="text" 
-            id="name" 
-            [(ngModel)]="contact.name" 
+          <input
+            type="text"
+            id="name"
+            [(ngModel)]="contact.name"
             name="name"
             placeholder="Name"
-            required>
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            required
+            autocomplete="name">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
             <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
           </svg>
         </div>
-        
-        <!-- Surname Input -->
+
+        <!-- Surname Input (optional) -->
         <div class="input-wrapper">
-          <input 
-            type="text" 
-            id="surname" 
-            [(ngModel)]="contact.surname" 
+          <input
+            type="text"
+            id="surname"
+            [(ngModel)]="contact.surname"
             name="surname"
             placeholder="Surname"
-            required>
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            autocomplete="family-name">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
             <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
           </svg>
         </div>
-        
-        <!-- Email Input -->
+
+        <!-- Email Input (required) -->
         <div class="input-wrapper">
-          <input 
-            type="email" 
-            id="email" 
-            [(ngModel)]="contact.email" 
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="contact.email"
             name="email"
             placeholder="Email"
-            required>
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            required
+            autocomplete="email">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M2 4L10 10L18 4M2 4V16H18V4H2Z" stroke="#A8A8A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        
-        <!-- Phone Input -->
+
+        <!-- Phone Input (optional) -->
         <div class="input-wrapper">
-          <input 
-            type="tel" 
-            id="phone" 
-            [(ngModel)]="contact.phone" 
+          <input
+            type="tel"
+            id="phone"
+            [(ngModel)]="contact.phone"
             name="phone"
-            placeholder="Phone">
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            placeholder="Phone"
+            autocomplete="tel">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
             <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L8 8L5.5 9.5C7 12.5 9.5 15 12.5 16.5L14 14L19.1644 14.8607C19.6466 14.9411 20 15.3583 20 15.8471V19C20 19.5523 19.5523 20 19 20H17C8.71573 20 2 13.2843 2 5V3Z" fill="#A8A8A8"/>
           </svg>
         </div>
-        
+
         <!-- Buttons -->
         <div class="button-group">
           <button type="button" class="btn-cancel" (click)="closeOverlay()">
             Cancel
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </button>
-          <button type="submit" class="btn-create">
+
+          <button type="submit" class="btn-create" [disabled]="f.invalid">
             Create contact
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </button>
