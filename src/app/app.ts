@@ -9,6 +9,7 @@ import { FbService } from './services/fb-service';
 import { Contacts } from './contacts/contacts';
 import { ContactCard } from './contacts/contact-card/contact-card';
 import { FigmaBottomNav } from './shared/layout/figma-bottom-nav/figma-bottom-nav';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, FigmaHeader, FigmaSidenav, Contacts, ContactCard, FigmaBottomNav],

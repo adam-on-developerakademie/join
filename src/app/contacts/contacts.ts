@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
+import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact-overlay';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
@@ -17,11 +18,8 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
     CommonModule,
     FormsModule,
     AddContactComponent,
+    EditContactOverlayComponent,
     ContactCreatedToast,
-    ContactOptionsComponent,
-    OverlayEditContactComponent,
-    OverlayEditContact2Component,
-    ContactSuccessToastComponent,
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
