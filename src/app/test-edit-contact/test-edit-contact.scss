@@ -1,0 +1,65 @@
+.test-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
+padding: 20px;
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+font-family: ‘Inter’, sans-serif;
+
+h1 {
+color: white;
+font-size: 36px;
+margin-bottom: 40px;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.current-contact {
+background: white;
+padding: 30px;
+border-radius: 15px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+margin-bottom: 30px;
+min-width: 350px;
+
+h2 {
+  color: #2A3647;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #666;
+
+  strong {
+    color: #2A3647;
+  }
+}
+}
+
+.open-btn {
+padding: 15px 40px;
+background: #29ABE2;
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 18px;
+font-weight: 600;
+cursor: pointer;
+box-shadow: 0 4px 15px rgba(41, 171, 226, 0.4);
+transition: all 0.3s;
+
+&:hover {
+  background: #1e8bb8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 171, 226, 0.5);
+}
+
+&:active {
+  transform: translateY(0);
+}
+}
+}

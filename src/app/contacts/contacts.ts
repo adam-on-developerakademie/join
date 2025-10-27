@@ -106,10 +106,10 @@ export class Contacts {
     this.contact.email = "";
   }
   
-}
 
-    this.showAddContact = true; // Overlay öffnen
-  }
+
+    //this.showAddContact = true; // Overlay öffnen
+ // }
 
   onContactAdded(newContact: any) {
     // Zufällige Farbe für neuen Kontakt
@@ -123,15 +123,15 @@ export class Contacts {
       color: randomColor
     };
     
-    this.contacts.push(contact);
-    this.prepare(); 
-    this.showAddContact = false; 
+   // this.contacts.push(contact); Adam
+   // this.prepare(); 
+   // this.showAddContact = false; 
     
     console.log('Contact added:', contact);
   
   }
 
   onCloseOverlay() {
-    this.showAddContact = false;
+ //   this.showAddContact = false;
   }
 }
