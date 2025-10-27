@@ -7,7 +7,7 @@ import { IContact } from '../interfaces/i-contact';
   providedIn: 'root'
 })
 export class FbService {
-  public db = inject(Firestore);
+  private db = inject(Firestore);
 
   contact: IContact;
   currentContact: IContact;
@@ -36,10 +36,8 @@ export class FbService {
         this.contactsArray.push({ id: element.id, ...element.data() } as IContact);
         this.contactsGroups.push(element.data()['name'].charAt(0).toUpperCase());
         this.contactsGroups = Array.from(new Set(this.contactsGroups)).sort();
-        //console.log(this.contactsArray, this.contactsGroups);
       });
       this.currentContact = this.contactsArray[0];
-      console.log(this.contactsArray, this.contactsGroups);
       this.saveToLocalStorage()
     });
 
