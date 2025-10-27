@@ -2,61 +2,50 @@
   <!-- Linkes Panel (Kontaktliste) -->
   <section class="list-panel">
     <div class="list-panel__inner">
-      <button class="primary-contact" (click)="onAddContactClick()">
+      <button class="primary-contact" (click)="showContactOverlay()">
         <span>Add new contact</span>
         <img src="assets/components/contacts/add_contact.svg" alt="" />
-        <!-- <span class="plus">+</span> -->
       </button>
 
-      @for( group of getContactsGroups(); track group ){
-      <p class="letter">{{ group }} </p>
+      @for (group of getContactsGroups(); track group) {
+      <p class="letter">{{ group }}</p>
       <div class="divider"></div>
-      @for( item of getContacts() ; track item ){
-      @if( item.name.charAt(0).toUpperCase() == group ){
-      <div class="contact-row">
+
+      @for (item of getContacts(); track item) {
+      @if (item.name.charAt(0).toUpperCase() == group) {
+      <div class="contact-row" (click)="showContact($index)">
         <div class="badge">
           <div class="badge__circle" [style.background]="item.color"></div>
-          <div class="badge__initials">{{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}</div>
+          <div class="badge__initials">
+            {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+          </div>
         </div>
         <div class="contact-row__text">
-          <div class="name">{{ item.name + ' ' + item.surname}}</div>
+          <div class="name">{{ item.name + ' ' + item.surname }}</div>
           <div class="mail">{{ item.email }}</div>
         </div>
       </div>
-      }}}
-
-<!--       <ng-container *ngFor="let entry of grouped | keyvalue">
-        <div class="letter">{{ entry.key }}</div>
-        <div class="divider"></div>
-
-        <ng-container *ngFor="let c of entry.value">
-          <div class="contact-row">
-            <div class="badge">
-              <div class="badge__circle" [style.background]="c.color"></div>
-              <div class="badge__initials">{{ c.initials }}</div>
-            </div>
-
-            <div class="contact-row__text">
-              <div class="name">{{ c.name }}</div>
-              <div class="mail">{{ c.email }}</div>
-            </div>
-          </div>
-        </ng-container>
-      </ng-container> -->
-
+      }
+      }
+      }
     </div>
   </section>
 
   <!-- Heading rechts -->
-  <section class="heading">
-    <h1>Contacts</h1>
-    <span class="blue_line"></span>
-    <p>Better with a team</p>
+  <section>
+    <div class="heading">
+      <h1>Contacts</h1>
+      <img src="assets/components/contact-card/heading_blue_line.svg" class="blue_line" />
+      <p>Better with a team</p>
+    </div>
   </section>
 </div>
 
-<!-- @if (showAddContact) {
-  <app-add-contact
-  (close)="onCloseOverlay()"
-  (contactAdded)="onContactAdded($event)"></app-add-contact>
-} -->
+<!-- Overlay (nur wenn offen) -->
+@if (showAddContact) {
+<app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()">
+</app-add-contact>
+}
+
+<!-- ✅ Toast IMMER AUßERHALB des @if -->
+<app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>

@@ -1,0 +1,23 @@
+/* Wrapper: zentriert über der Seite */
+.toast-wrap{
+  position: fixed;
+  left: 50%; top: 160px; transform: translateX(-50%);
+  width: 326px; height: 74px; padding: 0;
+  display:flex; align-items:center; justify-content:center;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.1));
+  z-index: 5000; /* <-- höher als Overlay */
+}
+
+/* Frame 73: eigentlicher Toast */
+.toast{
+  width: 326px; height: 74px; padding: 0;
+  display:flex; align-items:center; justify-content:center;
+  background: #2A3647;
+  box-shadow: 0 0 4px rgba(0,0,0,0.15);
+  border-radius: 20px;
+  span{
+    font-family: 'Inter', system-ui, Arial, sans-serif;
+    font-weight: 400; font-size: 20px; line-height: 120%;
+    color: #FFFFFF;
+  }
+}

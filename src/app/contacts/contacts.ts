@@ -1,76 +1,33 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FbService } from '../services/fb-service';
 import { FormsModule } from '@angular/forms';
+import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
-
-import { AddContactComponent } from '../add-contact/add-contact'; // Importieren!
-
-type Contact = {
-  name: string;
-  email: string;
-  color: string;
-  initials?: string;
-  letter?: string;
-  phone?: string;
-};
+import { AddContactComponent } from '../add-contact/add-contact';
+import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent],
+  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast],
   templateUrl: './contacts.html',
-  styleUrl: './contacts.scss'
+  styleUrls: ['./contacts.scss']
 })
 export class Contacts {
-  db = inject(FbService).db;
-  contact: IContact = {} as IContact;
-  id: number = 0;
 
   topbarTitle = 'Kanban Project Management Tool';
-   constructor(public fbService: FbService) {/*  this.prepare(); */ }
 
-/* 
-  showAddContact = false; // State für Overlay
+  contact: IContact = {} as IContact;
+  id = 0;
   
-  contacts: Contact[] = [
-    { name: 'Anton Mayer',      email: 'antonm@gmail.com',     color: '#FF7A00' },
-    { name: 'Anja Schulz',      email: 'schulz@hotmail.com',   color: '#9327FF' },
-    { name: 'Benedikt Ziegler', email: 'benedikt@gmail.com',   color: '#6E52FF' },
-    { name: 'David Eisenberg',  email: 'davidberg@gmail.com',  color: '#FC71FF' },
-    { name: 'Eva Fischer',      email: 'eva@gmail.com',        color: '#FFBB2B' },
-    { name: 'Emmanuel Mauer',   email: 'emmanuelm@gmail.com',  color: '#1FD7C1' },
-    { name: 'Tajiana Weiß',     email: 'tajiana@gmail.com',    color: '#FF4646' },
-  ];
-  
-  grouped = new Map<string, Contact[]>();
 
- 
-  constructor() { 
-    this.prepare(); 
-  }
+  showAddContact = false;
+  toastOpen = false;
+  private toastTimer?: ReturnType<typeof setTimeout>;
 
-  private prepare() {
-    const addInitials = (c: Contact) => {
-      const parts = c.name.trim().split(' ');
-      c.initials = (parts[0][0] + (parts[1]?.[0] ?? '')).toUpperCase();
-      c.letter = c.name[0].toUpperCase();
-      return c;
-    };
-    const enriched = this.contacts.map(addInitials).sort((a, b) => a.name.localeCompare(b.name));
-    this.grouped = enriched.reduce((m, c) => {
-      if (!m.has(c.letter!)) m.set(c.letter!, []);
-      m.get(c.letter!)!.push(c);
-      return m;
-    }, new Map<string, Contact[]>());
-  }
-   */
+  constructor(private fbService: FbService) {}
 
-  onAddContactClick() {
-    alert('Add new contact (Dialog/Firebase kommt später).');
-  }
-
-    getContactsGroups() {
+  getContactsGroups() {
     return this.fbService.contactsGroups;
   }
 
@@ -81,19 +38,24 @@ export class Contacts {
   addContact() {
     this.fbService.addContact(this.contact);
     console.log(this.contact);
+
     this.clearInput();
+
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.toastOpen = true;
+    this.toastTimer = setTimeout(() => (this.toastOpen = false), 800);
   }
 
   upContact() {
     this.fbService.updateContact(this.id, this.contact);
-    console.log("Updated contact with ID:", this.id);
+    console.log('Updated contact with ID:', this.id);
     this.clearInput();
   }
 
   delContact() {
-    console.log(this.fbService.contactsGroups.length, this.id, this.fbService.addContact.length);
-    this.fbService.contactsArray.length > 0 && this.fbService.contactsGroups.length > 0 &&
-      this.fbService.contactsArray.length > this.id ? this.fbService.delContact(this.id) : null;
+    if (this.fbService.contactsArray.length > this.id) {
+      this.fbService.delContact(this.id);
+    }
   }
 
   getData() {
@@ -101,37 +63,33 @@ export class Contacts {
   }
 
   clearInput() {
-    this.contact.name = "";
-    this.contact.surname = "";
-    this.contact.email = "";
+    this.contact.name = '';
+    // @ts-ignore falls surname im Interface fehlt
+    this.contact.surname = '';
+    this.contact.email = '';
   }
-  
 
-
-    //this.showAddContact = true; // Overlay öffnen
- // }
-
-  onContactAdded(newContact: any) {
-    // Zufällige Farbe für neuen Kontakt
-    const colors = ['#FF7A00', '#9327FF', '#6E52FF', '#FC71FF', '#FFBB2B', '#1FD7C1', '#FF4646'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-    
-    const contact: Contact = {
-      name: newContact.name,
-      email: newContact.email,
-      phone: newContact.phone,
-      color: randomColor
-    };
-    
-   // this.contacts.push(contact); Adam
-   // this.prepare(); 
-   // this.showAddContact = false; 
-    
-    console.log('Contact added:', contact);
-  
+  showContactOverlay() {
+    this.showAddContact = !this.showAddContact;
   }
 
   onCloseOverlay() {
  //   this.showAddContact = false;
   }
+
+  onContactCreated() {
+  // Overlay schließen (optional – wenn du offen lassen willst, Zeile entfernen)
+  this.showAddContact = false;
+
+  // Toast zeigen
+  if (this.toastTimer) clearTimeout(this.toastTimer);
+  this.toastOpen = true;
+  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
+}
+
+showContact(id: number) {
+  this.fbService.id=id;
+  this.fbService.setCurrentContact(id); 
+}
+
 }
