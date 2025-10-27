@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
-import { AddContactComponent } from '../add-contact/add-contact';
+import { AddContactComponent } from './add-contact/add-contact';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
@@ -35,6 +35,7 @@ export class Contacts {
   
 
   showAddContact = false;
+  showEditContact = true;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
@@ -75,9 +76,9 @@ export class Contacts {
 
   clearInput() {
     this.contact.name = '';
-    // @ts-ignore falls surname im Interface fehlt
     this.contact.surname = '';
     this.contact.email = '';
+    this.contact.phone = '';
   }
 
   showContactOverlay() {
@@ -85,7 +86,7 @@ export class Contacts {
   }
 
   onCloseOverlay() {
- //   this.showAddContact = false;
+    this.showAddContact = false;
   }
 
   onContactCreated() {

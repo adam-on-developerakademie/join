@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FbService } from '../services/fb-service';
-import { IContact } from '../interfaces/i-contact';
+import { FbService } from '../../services/fb-service';
+import { IContact } from  '../../interfaces/i-contact';
 
 @Component({
   selector: 'app-add-contact',

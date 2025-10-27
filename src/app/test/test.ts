@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AddContactComponent } from '../add-contact/add-contact';
+import { AddContactComponent } from '../contacts/add-contact/add-contact';
 
 @Component({
   selector: 'app-test',

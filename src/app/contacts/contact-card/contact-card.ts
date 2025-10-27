@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IContact } from '../interfaces/i-contact';
-import { FbService } from '../services/fb-service';
+import { IContact } from '../../interfaces/i-contact';
+import { FbService } from '../../services/fb-service';
 
 
 @Component({

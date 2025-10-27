@@ -7,7 +7,7 @@ import { FigmaSidenav } from './shared/layout/figma-sidenav/figma-sidenav';
 //
 import { FbService } from './services/fb-service';
 import { Contacts } from './contacts/contacts';
-import { ContactCard } from './contact-card/contact-card';
+import { ContactCard } from './contacts/contact-card/contact-card';
 import { FigmaBottomNav } from './shared/layout/figma-bottom-nav/figma-bottom-nav';
 @Component({
   selector: 'app-root',
