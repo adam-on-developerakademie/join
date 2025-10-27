@@ -32,16 +32,18 @@
   </section>
 
   <!-- Heading rechts -->
-  <section>
-    <div class="heading">
-      <h1>Contacts</h1>
-      <img src="assets/components/contact-card/heading_blue_line.svg" class="blue_line" />
-      <p>Better with a team</p>
-    </div>
-  </section>
+<!-- Heading -->
+<section>
+  <div class="heading">
+    <h1>Contacts</h1>
+    <!-- Klasse angleichen -->
+    <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
+    <p>Better with a team</p>
+  </div>
+</section>
 </div>
 
-<!-- Overlay (nur wenn offen) -->
+<!-- Overlay Add Contact -->
 @if (showAddContact) {
 <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()">
 </app-add-contact>

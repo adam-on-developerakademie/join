@@ -372,6 +372,128 @@
   bottom: 20px;
   transform: rotate(180deg);
 }
+
+/* ====== MOBILE FIXES (<=768px) ====== */
+@media (max-width: 768px){
+
+  /* Grundfläche */
+  .contacts-page{
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    height: auto;
+    margin: 0;
+    background: var(--bg);
+    /* Falls unter einem fixen Header liegend: Abstand oben kommt aus app-shell */
+  }
+
+  /* Linkes Panel soll Vollbreite bekommen, kein absolutes Layout */
+  .list-panel{
+    position: static;
+    left: auto; top: auto;
+    width: 100%;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  /* Innerer Container auf 400px zentriert, aber flexibel */
+  .list-panel__inner{
+    position: static;
+    left: auto; transform: none;
+    width: 400px;
+    max-width: 100%;
+    height: auto;                 /* war 1188px fix */
+    padding: 24px;
+    margin: 0 auto;
+    background: #fff;             /* wie Figma Mobile-Karte */
+    overflow: visible;
+    scrollbar-width: auto;
+  }
+  .list-panel__inner::-webkit-scrollbar{ display: initial; }
+
+  /* Standardbreiten der Elemente: 352px, aber flexibel */
+  .primary-contact,
+  .letter,
+  .divider,
+  .contact-row{
+    width: 352px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .primary-contact{
+    height: 56px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+  .letter{
+    padding: 16px 0 0;   /* kein seitliches Figma-Padding nötig */
+    font-size: 20px;
+  }
+
+  .divider{
+    height: 1px;
+    border: 0;
+    background: #d1d1d1;
+    margin: 8px 0 16px;
+  }
+
+  .contact-row{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    padding: 15px 24px;
+    height: 78px;
+    background: #fff;
+    border-radius: 10px;
+  }
+
+  /* Heading rechts -> unter die Liste, normaler Flow */
+  .heading{
+    position: static;
+    width: 400px;
+    max-width: 100%;
+    margin: 24px auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+  .heading h1{
+    width: auto;
+    font-size: 47px;         /* Mobile Spec */
+    line-height: 120%;
+    text-align: left;
+  }
+  .heading__divider{
+    width: 59px; height: 0;
+    border: 0; border-top: 3px solid var(--blue);
+  }
+  .heading p{
+    width: auto;
+    font-size: 20px;
+    line-height: 120%;
+    color: #2a3647;
+    margin: 0;
+  }
+
+  /* Fake-Scrollbar ausblenden */
+  .fakebar{ display: none; }
+
+  /* Legacy-Layouts, die auf Mobile stören könnten, neutralisieren */
+  .sidebar, .topbar{
+    display: none !important;
+  }
+}
+
+.blue_line{ background-color: #007cee; } /* Alias für bestehende Klasse */
+
+
 @media (max-width: 1300px) {
   .heading {
     display: none !important;

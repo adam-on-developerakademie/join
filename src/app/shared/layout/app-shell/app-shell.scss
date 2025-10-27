@@ -19,3 +19,21 @@
   box-sizing: border-box;
   padding: 24px;
 }
+
+/* ====== MOBILE LAYOUT VARIABLEN (<=768px) ====== */
+@media (max-width: 768px){
+  :root{
+    --sidebar-w: 0px;
+    --header-h: 80px;  /* Figma Mobile Header */
+  }
+
+  .page-area{
+    padding-left: 0;                 /* keine Sidenav-Einrückung */
+    padding-top: var(--header-h);    /* Platz für mobilen Header */
+    justify-content: center;
+  }
+
+  .page-inner{
+    padding: 0;                      /* Mobile meist engere Ränder, Liste hat eigenes Padding */
+  }
+}

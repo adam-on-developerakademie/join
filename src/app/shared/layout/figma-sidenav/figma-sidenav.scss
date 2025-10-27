@@ -133,3 +133,10 @@
   background: #2F3B52;
   text-decoration: none;
 }
+
+@media (max-width: 1300px) {
+  .figma-sidenav {
+    display: none;
+  }
+ aside {display: none;}
+}
