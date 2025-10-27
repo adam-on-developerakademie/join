@@ -1,136 +1,87 @@
-/* === Host = der feste Header selbst === */
+/* === Host = fester Header === */
 :host {
   position: fixed;
   top: 0;
-  left: var(--sidebar-w, 232px);
+  left: 0;                 /* der sichtbare Balken kontrolliert den Sidebar-Offset */
   right: 0;
-
-  /* 🔹 Schmaler Header (Figma: ca. 72 px) */
-  height: 72px;
-
-  z-index: 1500; /* unterhalb der Sidenav (2000) */
-  --topbar-bg: #ffffff; /* Weiß erzwingen */
+  height: var(--header-h);
+  z-index: var(--z-header);
 }
 
-/* === Sichtbarer Balken im Header === */
-.wrap {
+/* === Sichtbarer Balken === */
+.wrap{
   position: relative;
   height: 100%;
-  background: #ffffff; /* behält Weiß */
+  background: var(--topbar-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 
-  /* 🔹 Abstand links/rechts reduziert für schmaleren Look */
-  padding: 0 40px 0 116px; /* 116 px laut Figma (ohne Sidebar) */
-  gap: 34px;
-
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Desktop: links Platz = 116px + Sidebarbreite */
+  padding: 20px 40px 20px calc(116px + var(--sidebar-w));
+  box-shadow: 0 4px 4px rgba(0,0,0,.1);
   font-family: Inter, system-ui, Arial, sans-serif;
 }
 
+/* Tablet: etwas kompakter */
+@media (max-width:1024px){
+  .wrap{
+    padding: 16px 24px 16px calc(72px + var(--sidebar-w));
+    box-shadow: 0 3px 4px rgba(0,0,0,.1);
+  }
+}
+
+/* Mobile: kein Sidebar-Offset */
+@media (max-width:768px){
+  .wrap{
+    padding: 12px 16px;
+  }
+}
+
 /* === Titel === */
-.title {
-  font-size: 18px; /* etwas kleiner, wirkt moderner */
+.title{
+  font-size: 18px;
   line-height: 120%;
   color: #000;
   font-weight: 500;
 }
 
 /* === Rechte Seite === */
-.right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.right{ display:flex; align-items:center; gap:16px; }
+
+/* Help-Button */
+.help{
+  width: 28px; height: 28px; border:0; background: transparent; padding:0; cursor:pointer; position: relative;
+}
+.help-dot{
+  position: absolute; inset: 6px; display:grid; place-items:center;
+  width: 16px; height:16px; border-radius:50%;
+  background:#d9d9d9; color:#a8a8a8; font-weight:700; font-size:11px;
 }
 
-/* === Help-Button === */
-.help {
-  width: 28px;
-  height: 28px;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  cursor: pointer;
-  position: relative;
+/* User */
+.user{ position: relative; }
+.circle{
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #ffffff; border: 2px solid #2a3647;
+  display: grid; place-items: center;
 }
+.initials{ color: #29abe2; font-weight:700; font-size:16px; }
 
-.help-dot {
-  position: absolute;
-  inset: 6px;
-  display: grid;
-  place-items: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #d9d9d9;
-  color: #a8a8a8;
-  font-weight: 700;
-  font-size: 11px;
+/* (Dropdown bleibt wie bei dir definiert – optional) */
+.dropdown{
+  position: absolute; right:0; top: calc(100% + 8px);
+  display:flex; flex-direction:column; min-width:180px; padding:8px;
+  background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12); z-index: 1001;
 }
-
-/* === User-Bereich === */
-.user {
-  position: relative;
+.dropdown-link{
+  appearance:none; display:flex; align-items:center; width:100%;
+  padding:8px 10px; background:transparent; border:0; text-align:left;
+  font-size:13px; color:#2a3647; text-decoration:none; border-radius:6px; cursor:pointer;
+  transition: background .1s;
 }
-
-.circle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #ffffff;
-  border: 2px solid #2a3647;
-  display: grid;
-  place-items: center;
-}
-
-.initials {
-  color: #29abe2;
-  font-weight: 700;
-  font-size: 16px;
-}
-
-/* === Dropdown (optional) === */
-.dropdown {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 8px);
-  display: flex;
-  flex-direction: column;
-  min-width: 180px;
-  padding: 8px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  z-index: 1001;
-}
-
-.dropdown-link {
-  appearance: none;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 8px 10px;
-  background: transparent;
-  border: 0;
-  text-align: left;
-  font-size: 13px;
-  color: #2a3647;
-  text-decoration: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.1s;
-}
-
-.dropdown-link:hover {
-  background: #f3f5f8;
-}
-
-.dropdown-link.danger {
-  color: #b3261e;
-}
-
-.dropdown-link.danger:hover {
-  background: #fdebea;
-}
+.dropdown-link:hover{ background:#f3f5f8; }
+.dropdown-link.danger{ color:#b3261e; }
+.dropdown-link.danger:hover{ background:#fdebea; }
