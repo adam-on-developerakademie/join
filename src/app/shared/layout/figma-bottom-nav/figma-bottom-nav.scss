@@ -8,5 +8,9 @@
   flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
   gap:6px; font:12px/1.2 Inter,system-ui,Arial,sans-serif; text-decoration:none; color:inherit;
 }
-.item--active{ color:#FFFFFF; }
-@media (max-width:900px){ .bottom-nav{ display:flex; } }
+.item img{ width:20px; height:20px; display:block; }
+.item--active{ color:#29ABE2; }  /* Figma: aktiv = blau */
+
+@media (max-width:900px){
+  .bottom-nav{ display:flex; }
+}
