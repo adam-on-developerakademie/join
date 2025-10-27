@@ -27,22 +27,18 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
   styleUrls: ['./contacts.scss']
 })
 export class Contacts {
-  db = inject(FbService).db;
+
   topbarTitle = 'Kanban Project Management Tool';
 
   contact: IContact = {} as IContact;
   id = 0;
+  
 
   showAddContact = false;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  constructor(public fbService: FbService) {}
-
-  // === Bestehende Logik ===
-  onAddContactClick() {
-    alert('Add new contact (Dialog/Firebase kommt später).');
-  }
+  constructor(private fbService: FbService) {}
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -96,11 +92,16 @@ export class Contacts {
     // Overlay schließen
     this.showAddContact = false;
 
-    // Toast zeigen
-    if (this.toastTimer) clearTimeout(this.toastTimer);
-    this.toastOpen = true;
-    this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
-  }
+  // Toast zeigen
+  if (this.toastTimer) clearTimeout(this.toastTimer);
+  this.toastOpen = true;
+  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
+}
+
+showContact(id: number) {
+  this.fbService.id=id;
+  this.fbService.setCurrentContact(id); 
+}
 
   // === NEU für Optionen + Edit Overlays ===
   optionsOpen = false;

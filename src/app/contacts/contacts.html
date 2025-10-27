@@ -8,25 +8,25 @@
       </button>
 
       @for (group of getContactsGroups(); track group) {
-        <p class="letter">{{ group }}</p>
-        <div class="divider"></div>
+      <p class="letter">{{ group }}</p>
+      <div class="divider"></div>
 
-        @for (item of getContacts(); track item) {
-          @if (item.name.charAt(0).toUpperCase() == group) {
-            <div class="contact-row" (click)="openOptions()">
-              <div class="badge">
-                <div class="badge__circle" [style.background]="item.color"></div>
-                <div class="badge__initials">
-                  {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
-                </div>
-              </div>
-              <div class="contact-row__text">
-                <div class="name">{{ item.name + ' ' + item.surname }}</div>
-                <div class="mail">{{ item.email }}</div>
-              </div>
-            </div>
-          }
-        }
+      @for (item of getContacts(); track item) {
+      @if (item.name.charAt(0).toUpperCase() == group) {
+      <div class="contact-row" (click)="showContact($index)">
+        <div class="badge">
+          <div class="badge__circle" [style.background]="item.color"></div>
+          <div class="badge__initials">
+            {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+          </div>
+        </div>
+        <div class="contact-row__text">
+          <div class="name">{{ item.name + ' ' + item.surname }}</div>
+          <div class="mail">{{ item.email }}</div>
+        </div>
+      </div>
+      }
+      }
       }
     </div>
   </section>
@@ -45,24 +45,9 @@
 
 <!-- Overlay Add Contact -->
 @if (showAddContact) {
-  <app-add-contact
-    (close)="onCloseOverlay()"
-    (created)="onContactCreated()">
-  </app-add-contact>
+<app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()">
+</app-add-contact>
 }
 
-<!-- ✅ Overlay Edit Contact -->
-<app-overlay-edit-contact *ngIf="editContactOpen"></app-overlay-edit-contact>
-
-<!-- ✅ Overlay Edit Contact 2 -->
-<app-overlay-edit-contact-2 *ngIf="editContact2Open"></app-overlay-edit-contact-2>
-
-<!-- ✅ Contact Options -->
-<app-contact-options
-  *ngIf="optionsOpen"
-  (edit)="onEdit()"
-  (delete)="onDelete()">
-</app-contact-options>
-
-<!-- ✅ Toast -->
-<app-contact-success-toast *ngIf="toastOpen"></app-contact-success-toast>
+<!-- ✅ Toast IMMER AUßERHALB des @if -->
+<app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>

@@ -1,324 +1,350 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
-    
-    .floating-contact {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 21px;
-      position: absolute;
-      width: 461px;
-      height: 364px;
-      left: 750px;
-      top: 311px;
-      font-family: 'Inter', sans-serif;
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    
-    .header-frame {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0px;
-      gap: 54px;
-      width: 461px;
-      height: 120px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .avatar-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 0px;
-      gap: 10px;
-      width: 120px;
-      height: 120px;
-      background: #FFFFFF;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 70px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .avatar-circle {
-      width: 120px;
-      height: 120px;
-      background: #FF7A00;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .avatar-initials {
-      width: 80px;
-      height: 28.57px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 47px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #FFFFFF;
-    }
-    
-    .name-section {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 8px;
-      width: 287px;
-      height: 88px;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-    }
-    
-    .name-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 5px;
-      width: 287px;
-      height: 56px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .contact-name {
-      width: 300px;
-      height: 56px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 47px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #000000;
-      margin: 0;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .actions-container {
-      width: 159px;
-      height: 24px;
-      position: relative;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-      display: flex;
-      gap: 20px;
-    }
-    
-    .edit-contact,
-    .delete-contact {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      padding: 0px;
-      gap: 8px;
-      height: 24px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    
-    .edit-contact:hover,
-    .delete-contact:hover {
-      opacity: 0.7;
-    }
-    
-    .edit-contact {
-      width: 62px;
-    }
-    
-    .delete-contact {
-      width: 81px;
-    }
-    
-    .icon {
-      width: 24px;
-      height: 24px;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .edit-contact span,
-    .delete-contact span {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #2A3647;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-    }
-    
-    .contact-info-section {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      padding: 0px;
-      gap: 59px;
-      width: 207px;
-      height: 74px;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-    }
-    
-    .section-title {
-      width: 207px;
-      height: 74px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 20px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #000000;
-      margin: 0;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 22px;
-      width: 140px;
-      height: 128px;
-      flex: none;
-      order: 2;
-      flex-grow: 0;
-    }
-    
-    .detail-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 0px;
-      gap: 15px;
-      width: 140px;
-      height: 53px;
-      flex: none;
-    }
-    
-    .detail-label {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #000000;
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-    }
-    
-    .email-link {
-      width: 140px;
-      height: 19px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #007CEE;
-      text-decoration: none;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-      transition: text-decoration 0.2s;
-    }
-    
-    .email-link:hover {
-      text-decoration: underline;
-    }
-    
-    .phone-number {
-      width: 124px;
-      height: 19px;
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 120%;
-      display: flex;
-      align-items: center;
-      color: #000000;
-      flex: none;
-      order: 1;
-      flex-grow: 0;
-    }
-    
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 1280px) {
-      .floating-contact {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-    }
-    
-    @media (max-width: 500px) {
-      .floating-contact {
-        width: 90%;
-        left: 5%;
-        transform: none;
-      }
-      
-      .header-frame {
-        width: 100%;
-        gap: 20px;
-      }
-      
-      .contact-name {
-        font-size: 32px;
-      }
-      
-      .avatar-container {
-        width: 80px;
-        height: 80px;
-      }
-      
-      .avatar-circle {
-        width: 80px;
-        height: 80px;
-      }
-      
-      .avatar-initials {
-        font-size: 32px;
-      }
-    }
+
+/* --- Animation for fly-in --- */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.floating-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 21px;
+  position: absolute;
+  width: 461px;
+  height: 364px;
+  left: 750px;
+  top: 311px;
+  font-family: 'Inter', sans-serif;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 54px;
+  width: 461px;
+  height: 120px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  border: 3px solid #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 70px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  background: #ff7a00;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar-initials {
+  width: 80px;
+  height: 28.57px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 47px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.name-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 8px;
+  width: 287px;
+  height: 88px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 5px;
+  width: 287px;
+  height: 56px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.contact-name {
+  width: 300px;
+  height: 56px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 47px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.actions-container {
+  width: 159px;
+  height: 24px;
+  position: relative;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.edit-contact,
+.delete-contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.edit-contact:hover,
+.delete-contact:hover {
+  opacity: 0.7;
+}
+
+.edit-contact {
+  width: 62px;
+}
+
+.delete-contact {
+  width: 81px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.edit-contact span,
+.delete-contact span {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #2a3647;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.contact-info-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 59px;
+  width: 207px;
+  height: 74px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.section-title {
+  width: 207px;
+  height: 74px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  margin: 0;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 22px;
+  width: 140px;
+  height: 128px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 15px;
+  width: 140px;
+  height: 53px;
+  flex: none;
+}
+
+.detail-label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.email-link {
+  width: 140px;
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #007cee;
+  text-decoration: none;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  transition: text-decoration 0.2s;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
+.phone-number {
+  width: 124px;
+  height: 19px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+/* --- Responsive behavior: hide contact + header + sidebar --- */
+@media (max-width: 1300px) {
+  .floating-contact {
+    display: none !important;
+  }
+
+
+
+  header,
+  .header-frame,
+  .sidebar {
+    display: none !important;
+  }
+
+  .contact-list {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* --- Mobile fine-tuning (for when contact is visible on wider screens) --- */
+@media (max-width: 500px) {
+  .floating-contact {
+    width: 90%;
+    left: 5%;
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .header-frame {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .contact-name {
+    font-size: 32px;
+  }
+
+  .avatar-container,
+  .avatar-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .avatar-initials {
+    font-size: 32px;
+  }
+}

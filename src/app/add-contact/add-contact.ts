@@ -15,7 +15,6 @@ export class AddContactComponent {
   @Output() close = new EventEmitter<void>();     // Overlay schließen
   @Output() created = new EventEmitter<void>();   // Toast triggern (Parent)
 
-  db = inject(FbService).db;
   contact: IContact = {} as IContact;
   id = 0;
 

@@ -11,7 +11,6 @@ import { IContact } from '../interfaces/i-contact';
   styleUrl: './crud.scss'
 })
 export class CRUD {
-  db = inject(FbService).db;
   contact: IContact = {} as IContact;
   id: number = 0;
 
