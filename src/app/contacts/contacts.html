@@ -13,7 +13,7 @@
 
         @for (item of getContacts(); track item) {
           @if (item.name.charAt(0).toUpperCase() == group) {
-            <div class="contact-row">
+            <div class="contact-row" (click)="openOptions()">
               <div class="badge">
                 <div class="badge__circle" [style.background]="item.color"></div>
                 <div class="badge__initials">
@@ -41,7 +41,7 @@
   </section>
 </div>
 
-<!-- Overlay (nur wenn offen) -->
+<!-- Overlay Add Contact -->
 @if (showAddContact) {
   <app-add-contact
     (close)="onCloseOverlay()"
@@ -49,5 +49,18 @@
   </app-add-contact>
 }
 
-<!-- ✅ Toast IMMER AUßERHALB des @if -->
-<app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
+<!-- ✅ Overlay Edit Contact -->
+<app-overlay-edit-contact *ngIf="editContactOpen"></app-overlay-edit-contact>
+
+<!-- ✅ Overlay Edit Contact 2 -->
+<app-overlay-edit-contact-2 *ngIf="editContact2Open"></app-overlay-edit-contact-2>
+
+<!-- ✅ Contact Options -->
+<app-contact-options
+  *ngIf="optionsOpen"
+  (edit)="onEdit()"
+  (delete)="onDelete()">
+</app-contact-options>
+
+<!-- ✅ Toast -->
+<app-contact-success-toast *ngIf="toastOpen"></app-contact-success-toast>

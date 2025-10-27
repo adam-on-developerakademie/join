@@ -5,18 +5,29 @@ import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from '../add-contact/add-contact';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
+import { ContactOptionsComponent } from './contact-options/contact-options';
+import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
+import { OverlayEditContact2Component } from './overlay-edit-contact-2/overlay-edit-contact-2';
+import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast],
+  imports: [
+    CommonModule,
+    FormsModule,
+    AddContactComponent,
+    ContactCreatedToast,
+    ContactOptionsComponent,
+    OverlayEditContactComponent,
+    OverlayEditContact2Component,
+    ContactSuccessToastComponent,
+  ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
 export class Contacts {
-
   db = inject(FbService).db;
-
   topbarTitle = 'Kanban Project Management Tool';
 
   contact: IContact = {} as IContact;
@@ -28,6 +39,7 @@ export class Contacts {
 
   constructor(public fbService: FbService) {}
 
+  // === Bestehende Logik ===
   onAddContactClick() {
     alert('Add new contact (Dialog/Firebase kommt später).');
   }
@@ -42,8 +54,6 @@ export class Contacts {
 
   addContact() {
     this.fbService.addContact(this.contact);
-    console.log(this.contact);
-
     this.clearInput();
 
     if (this.toastTimer) clearTimeout(this.toastTimer);
@@ -83,13 +93,48 @@ export class Contacts {
   }
 
   onContactCreated() {
-  // Overlay schließen (optional – wenn du offen lassen willst, Zeile entfernen)
-  this.showAddContact = false;
+    // Overlay schließen
+    this.showAddContact = false;
 
-  // Toast zeigen
-  if (this.toastTimer) clearTimeout(this.toastTimer);
-  this.toastOpen = true;
-  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
-}
+    // Toast zeigen
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.toastOpen = true;
+    this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
+  }
 
+  // === NEU für Optionen + Edit Overlays ===
+  optionsOpen = false;
+  editContactOpen = false;
+  editContact2Open = false;
+
+  openOptions() {
+    this.optionsOpen = true;
+  }
+
+  closeOptions() {
+    this.optionsOpen = false;
+  }
+
+  onEdit() {
+    this.optionsOpen = false;
+    this.editContactOpen = true;
+  }
+
+  onEditAnton() {
+    this.optionsOpen = false;
+    this.editContact2Open = true;
+  }
+
+  onDelete() {
+    this.optionsOpen = false;
+    alert('Contact deleted (Demo)');
+  }
+
+  closeAllOverlays() {
+    this.showAddContact = false;
+    this.editContactOpen = false;
+    this.editContact2Open = false;
+    this.toastOpen = false;
+    this.optionsOpen = false;
+  }
 }
