@@ -12,14 +12,14 @@ import { FbService } from '../services/fb-service';
   styleUrl: './contact-card.scss'
 })
 export class ContactCard {
-onEdit(): void {
+  onEdit(): void {
     console.log('Edit contact clicked');
     // Implement edit functionality
   }
 
-  constructor(private fbService: FbService) {  }
-  
-  
+  constructor(private fbService: FbService) { }
+
+
   onDelete(): void {
     console.log('Delete contact clicked');
     // Implement delete functionality
@@ -27,6 +27,12 @@ onEdit(): void {
 
   get currentContact(): IContact {
     return this.fbService.currentContact;
+  }
+
+  delContact() {
+    console.log(this.fbService.contactsGroups.length, this.fbService.id, this.fbService.addContact.length);
+    this.fbService.contactsArray.length > 0 && this.fbService.contactsGroups.length > 0 &&
+      this.fbService.contactsArray.length > this.fbService.id ? this.fbService.delContact(this.fbService.id) : null;
   }
 
 }

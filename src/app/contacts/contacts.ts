@@ -88,6 +88,7 @@ export class Contacts {
 }
 
 showContact(id: number) {
+  this.fbService.id=id;
   this.fbService.setCurrentContact(id); 
 }
 

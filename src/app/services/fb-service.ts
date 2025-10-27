@@ -20,8 +20,10 @@ export class FbService {
   myContacts;
   contactsArray: IContact[] = [];
   contactsGroups: string[] = [];
+  id: number = 0;
   myData;
   data: any[] = [];
+
 
 
   constructor() {
