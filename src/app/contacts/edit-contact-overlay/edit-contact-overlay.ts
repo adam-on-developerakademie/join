@@ -42,6 +42,7 @@ export class EditContactOverlayComponent {
     delContact() {
         this.fbService.contactsArray.length > 0 && this.fbService.contactsGroups.length > 0 &&
             this.fbService.contactsArray.length > this.fbService.id ? this.fbService.delContact(this.fbService.id) : null;
+        this.fbService.showEditContact = false;
     }
 
     getShowEditContact() {
@@ -49,8 +50,13 @@ export class EditContactOverlayComponent {
     }
 
     upContact() {
-        this.fbService.updateContact(this.fbService.id, this.editedContact);
-        this.fbService.showEditContact = false;
+        if (!this.editedContact.name || !this.editedContact.surname || !this.editedContact.email) {
+            alert('Please fill in all required fields: Name, Surname, and Email.');
+            return;
+        } else {
+            this.fbService.updateContact(this.fbService.id, this.editedContact);
+            this.fbService.showEditContact = false;
+        }
     }
 
     getCurrentContact() {
