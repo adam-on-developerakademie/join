@@ -12,19 +12,11 @@ import { FbService } from '../../services/fb-service';
   styleUrl: './contact-card.scss'
 })
 export class ContactCard {
-  onEdit(): void {
-    console.log('Edit contact clicked');
-    // Implement edit functionality
-  }
 
+  adamTestOn = false;
+  currentContactId = -1;
   constructor(private fbService: FbService) { }
 
-  currentContactIndex = this
-
-  onDelete(): void {
-    console.log('Delete contact clicked');
-    // Implement delete functionality
-  }
 
   get currentContact(): IContact {
     return this.fbService.currentContact;
@@ -41,4 +33,16 @@ export class ContactCard {
     this.fbService.showEditContact = true;
   }
 
+  setSlide() {
+
+    if (this.fbService.id != this.currentContactId) {
+      this.adamTestOn = true
+      setTimeout(() => {
+        this.currentContactId = this.fbService.id;
+        this.adamTestOn = false
+      }, 100);
+    }
+    return this.adamTestOn;
+
+  }
 }
