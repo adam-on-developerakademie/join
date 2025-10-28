@@ -35,4 +35,9 @@ export class ContactCard {
       this.fbService.contactsArray.length > this.fbService.id ? this.fbService.delContact(this.fbService.id) : null;
   }
 
+
+  setEditContact() {
+    this.fbService.showEditContact = true;
+  }
+
 }

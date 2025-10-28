@@ -54,6 +54,11 @@
 <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
+@if (showEditContact()) {
+<!-- Overlay Edit Contact -->
+<app-edit-contact-overlay></app-edit-contact-overlay>
+}
+
 <!-- Toast (außerhalb des @if) -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
 

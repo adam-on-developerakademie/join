@@ -30,14 +30,13 @@ export class Contacts {
 
   contact: IContact = {} as IContact;
   id = 0;
-  
+
 
   showAddContact = false;
-  showEditContact = true;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  constructor(private fbService: FbService) {}
+  constructor(private fbService: FbService) { }
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -91,16 +90,16 @@ export class Contacts {
     // Overlay schließen
     this.showAddContact = false;
 
-  // Toast zeigen
-  if (this.toastTimer) clearTimeout(this.toastTimer);
-  this.toastOpen = true;
-  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
-}
+    // Toast zeigen
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.toastOpen = true;
+    this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
+  }
 
-showContact(id: number) {
-  this.fbService.id=id;
-  this.fbService.setCurrentContact(id); 
-}
+  showContact(id: number) {
+    this.fbService.id = id;
+    this.fbService.setCurrentContact(id);
+  }
 
   // === NEU für Optionen + Edit Overlays ===
   optionsOpen = false;
@@ -137,4 +136,9 @@ showContact(id: number) {
     this.toastOpen = false;
     this.optionsOpen = false;
   }
+
+  showEditContact() {
+    return this.fbService.showEditContact;
+  }
+
 }

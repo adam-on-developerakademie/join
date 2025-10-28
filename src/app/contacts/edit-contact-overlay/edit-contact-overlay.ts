@@ -1,56 +1,71 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FbService } from '../../services/fb-service';
 
 export interface Contact {
-id?: string;
-name: string;
-email: string;
-phone: string;
+    id?: string;
+    name: string;
+    email: string;
+    phone: string;
 }
 
 @Component({
-selector: 'app-edit-contact-overlay',
-standalone: true,
-imports: [CommonModule, FormsModule],
-templateUrl: './edit-contact-overlay.html',
-styleUrls: ['./edit-contact-overlay.scss']
+    selector: 'app-edit-contact-overlay',
+    standalone: true,
+    imports: [CommonModule, FormsModule],
+    templateUrl: './edit-contact-overlay.html',
+    styleUrls: ['./edit-contact-overlay.scss']
 })
+
+
 export class EditContactOverlayComponent {
-@Input() isOpen = false;
-@Input() contact: Contact = {
-name: '',
-email: '',
-phone: ''
-};
+    showEditContact: boolean = false;
 
-@Output() close = new EventEmitter<void>();
-@Output() save = new EventEmitter<Contact>();
-@Output() delete = new EventEmitter<void>();
+    constructor(private fbService: FbService) { }
 
-editedContact: Contact = { ...this.contact };
 
-ngOnChanges() {
-this.editedContact = { ...this.contact };
-}
+    @Input() contact: Contact = {
+        name: '',
+        email: '',
+        phone: ''
+    };
 
-getInitials(): string {
-const names = this.editedContact.name.trim().split('');
-if (names.length >= 2) {
-return (names[0][0] + names[names.length - 1][0]).toUpperCase();
-}
-return this.editedContact.name.substring(0, 2).toUpperCase();
-}
+    @Output() close = new EventEmitter<void>();
+    @Output() save = new EventEmitter<Contact>();
+    @Output() delete = new EventEmitter<void>();
 
-onClose() {
-this.close.emit();
-}
+    editedContact: Contact = { ...this.contact };
 
-onSave() {
-this.save.emit(this.editedContact);
-}
+    ngOnChanges() {
+        this.editedContact = { ...this.contact };
+        this.showEditContact = this.fbService.showEditContact;
+    }
 
-onDelete() {
-this.delete.emit();
-}
+    getInitials(): string {
+        const names = this.editedContact.name.trim().split('');
+        if (names.length >= 2) {
+            return (names[0][0] + names[names.length - 1][0]).toUpperCase();
+        }
+        return this.editedContact.name.substring(0, 2).toUpperCase();
+    }
+
+    onClose() {
+        this.close.emit();
+    }
+
+    onSave() {
+        this.save.emit(this.editedContact);
+    }
+
+    onDelete() {
+        this.delete.emit();
+    }
+
+    getShowEditContact() {
+        return this.fbService.showEditContact;
+    }
+
+
+
 }
