@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FbService } from '../services/fb-service';
 import { FormsModule } from '@angular/forms';
 import { IContact } from '../interfaces/i-contact';

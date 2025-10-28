@@ -19,6 +19,7 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
     FormsModule,
     AddContactComponent,
     EditContactOverlayComponent,
+    OverlayEditContactComponent,
     ContactCreatedToast,
   ],
   templateUrl: './contacts.html',
