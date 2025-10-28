@@ -2,8 +2,7 @@
   <!-- Linkes Panel (Kontaktliste) -->
   <section class="list-panel">
     <div class="list-panel__inner">
-      <!-- Desktop-Button -->
-      <button class="primary-contact desktop-only" (click)="showContactOverlay()">
+      <button class="primary-contact" (click)="showContactOverlay()">
         <span>Add new contact</span>
         <img src="assets/components/contacts/add_contact.svg" alt="" />
       </button>
@@ -14,7 +13,6 @@
 
         @for (item of getContacts(); track item) {
           @if (item.name.charAt(0).toUpperCase() == group) {
-            <!-- Row öffnet Overlay -->
             <div class="contact-row" (click)="showContact($index)">
               <div class="badge">
                 <div class="badge__circle" [style.background]="item.color"></div>
@@ -27,6 +25,7 @@
                 <div class="name">{{ item.name + ' ' + item.surname }}</div>
                 <div class="mail">{{ item.email }}</div>
               </div>
+              <!-- KEINE drei Punkte in der Liste (Figma) -->
             </div>
           }
         }
@@ -43,30 +42,32 @@
     </div>
   </section>
 
-  <!-- FAB -->
+  <!-- FAB für "Add contact" (mobil) -->
   <button class="fab" type="button" (click)="showContactOverlay()" aria-label="Add contact">
     <img src="assets/components/contacts/add_contact.svg" alt="" />
   </button>
 </div>
 
-<!-- Overlay Add Contact -->
+<!-- Add-Contact-Overlay -->
 @if (showAddContact) {
   <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
-@if (showEditContact()) {
-  <app-edit-contact-overlay></app-edit-contact-overlay>
-  <app-overlay-edit-contact></app-overlay-edit-contact>
-}
+<!-- Desktop / Mobile Edit Overlays -->
+@if (editContactOpen)  { <app-edit-contact-overlay></app-edit-contact-overlay> }
+@if (editContact2Open) { <app-overlay-edit-contact></app-overlay-edit-contact> }
 
-<!-- Overlay ContactView -->
-@if (selectedContactIndex !== null) {
+<!-- Kontakt-Detail-Overlay (hier sind die ⋮ in der Karte) -->
+@if (isMobile && selectedContactIndex !== null) {
   <div class="contact-overlay-bg" (click)="closeContactOverlay()">
     <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-      <app-contact-view (close)="closeContactOverlay()"></app-contact-view>
+      <app-contact-view
+        (close)="closeContactOverlay()"
+        (edit)="onEditFromView()"
+        (delete)="onDeleteFromView()">
+      </app-contact-view>
     </div>
   </div>
 }
-
 <!-- Toast -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>

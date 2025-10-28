@@ -53,3 +53,7 @@
       </div>
     </div>
 </section>
+
+<!-- Overlays global am Card-Container montieren -->
+<app-edit-contact-overlay *ngIf="fbService.showEditContact && !isMobile"></app-edit-contact-overlay>
+<app-overlay-edit-contact *ngIf="fbService.showEditContact && isMobile"></app-overlay-edit-contact>

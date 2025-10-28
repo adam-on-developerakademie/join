@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
@@ -8,8 +8,7 @@ import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
-import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
-import { ContactViewComponent } from './contact-view/contact-view'; // vorhandener Ordner
+import { ContactViewComponent } from './contact-view/contact-view';
 
 @Component({
   selector: 'app-contacts',
@@ -18,16 +17,16 @@ import { ContactViewComponent } from './contact-view/contact-view'; // vorhanden
     CommonModule,
     FormsModule,
     AddContactComponent,
-    EditContactOverlayComponent,
-    OverlayEditContactComponent,
+    EditContactOverlayComponent,   // Desktop-Edit
+    OverlayEditContactComponent,   // Mobile-Edit
     ContactCreatedToast,
-    ContactViewComponent
+    ContactViewComponent,          // Mobile-Contact-View (Overlay)
+    ContactOptionsComponent
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
 export class Contacts {
-
   topbarTitle = 'Kanban Project Management Tool';
 
   contact: IContact = {} as IContact;
@@ -37,23 +36,39 @@ export class Contacts {
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  // NEU
+  /** Index des ausgewählten Kontakts für die mobile Karte */
   selectedContactIndex: number | null = null;
+
+  /** Desktop-Edit / Mobile-Edit Overlays */
+  editContactOpen = false;
+  editContact2Open = false;
+
+  /** Responsive-Schalter: true = Mobile */
+  isMobile = window.innerWidth <= 900;
 
   constructor(private fbService: FbService) {}
 
-  getContactsGroups() {
-    return this.fbService.contactsGroups;
+  // ========= Responsive =========
+  @HostListener('window:resize')
+  onResize() {
+    const wasMobile = this.isMobile;
+    this.isMobile = window.innerWidth <= 900;
+    // Wenn von Mobile -> Desktop gewechselt: mobile Overlays schließen
+    if (wasMobile && !this.isMobile) {
+      this.selectedContactIndex = null;
+      this.editContact2Open = false;
+    }
   }
 
-  getContacts() {
-    return this.fbService.contactsArray;
-  }
+  // ========= Daten =========
+  getContactsGroups() { return this.fbService.contactsGroups; }
+  getContacts()       { return this.fbService.contactsArray; }
+  getData()           { return this.fbService.data; }
 
+  // ========= Add =========
   addContact() {
     this.fbService.addContact(this.contact);
     this.clearInput();
-
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastOpen = true;
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 800);
@@ -61,7 +76,6 @@ export class Contacts {
 
   upContact() {
     this.fbService.updateContact(this.id, this.contact);
-    console.log('Updated contact with ID:', this.id);
     this.clearInput();
   }
 
@@ -71,10 +85,6 @@ export class Contacts {
     }
   }
 
-  getData() {
-    return this.fbService.data;
-  }
-
   clearInput() {
     this.contact.name = '';
     this.contact.surname = '';
@@ -82,14 +92,9 @@ export class Contacts {
     this.contact.phone = '';
   }
 
-  showContactOverlay() {
-    this.showAddContact = !this.showAddContact;
-  }
-
-  onCloseOverlay() {
-    this.showAddContact = false;
-  }
-
+  // ========= Add-Overlay =========
+  showContactOverlay() { this.showAddContact = !this.showAddContact; }
+  onCloseOverlay()     { this.showAddContact = false; }
   onContactCreated() {
     this.showAddContact = false;
     if (this.toastTimer) clearTimeout(this.toastTimer);
@@ -97,51 +102,52 @@ export class Contacts {
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
 
-  // Kontakt anzeigen (als Overlay)
-  showContact(id: number) {
-    this.fbService.id = id;
-    this.fbService.setCurrentContact(id);
-    this.selectedContactIndex = id; // Overlay aktivieren
+  // ========= Kontakt-Auswahl =========
+  /**
+   * Klick auf eine Zeile.
+   * Mobile: zeige die mobile Kontaktkarte (Overlay).
+   * Desktop: keine mobile Karte — rechte Detailansicht bleibt (Figma).
+   */
+  showContact(index: number) {
+    this.fbService.id = index;
+    this.fbService.setCurrentContact(index);
+
+    if (this.isMobile) {
+      this.selectedContactIndex = index;   // Mobile-Karte öffnen
+    } else {
+      this.selectedContactIndex = null;    // sicherstellen, dass keine mobile Karte offen ist
+    }
   }
 
-  closeContactOverlay() {
-    this.selectedContactIndex = null;
+  closeContactOverlay() { this.selectedContactIndex = null; }
+
+  // ========= Events AUS der mobilen Kontaktkarte (⋮ → Edit/Delete) =========
+  onEditFromView() {
+    // aktueller Index ist im Service gesetzt (durch showContact)
+    if (this.isMobile) {
+      this.editContact2Open = true;  // mobiler Edit
+    } else {
+      this.editContactOpen = true;   // Desktop-Edit (falls je nach Logik benötigt)
+    }
   }
 
-  // === Optionen + Edit Overlays ===
-  optionsOpen = false;
-  editContactOpen = false;
-  editContact2Open = false;
-
-  openOptions() { this.optionsOpen = true; }
-  closeOptions() { this.optionsOpen = false; }
-
-  onEdit() {
-    this.optionsOpen = false;
-    this.editContactOpen = true;
+  onDeleteFromView() {
+    const idx = (this.fbService as any).id;
+    if (typeof idx === 'number') {
+      this.fbService.delContact(idx);
+    }
+    this.selectedContactIndex = null; // mobile Karte schließen
   }
 
-  onEditAnton() {
-    this.optionsOpen = false;
-    this.editContact2Open = true;
-  }
+  // Desktop-Edit bleibt über deine bestehende Mechanik steuerbar
+  showEditContact() { return this.fbService.showEditContact; }
 
-  onDelete() {
-    this.optionsOpen = false;
-    alert('Contact deleted (Demo)');
-  }
-
+  // ========= Globales Schließen =========
   closeAllOverlays() {
     this.showAddContact = false;
     this.editContactOpen = false;
     this.editContact2Open = false;
     this.toastOpen = false;
-    this.optionsOpen = false;
     this.selectedContactIndex = null;
   }
-
-  showEditContact() {
-    return this.fbService.showEditContact;
-  }
-
 }
