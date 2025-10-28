@@ -17,7 +17,6 @@
   background: white;
   border-radius: 8px;
   padding: 20px;
-  // box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   animation: slideIn 0.15s ease !important;
 }
 
@@ -284,15 +283,13 @@
   flex-grow: 0;
 }
 
-/* --- Responsive behavior: hide contact + header + sidebar --- */
 @media (max-width: 1300px) {
   .floating-contact {
     display: none !important;
   }
 
   header,
-  .header-frame,
-  .sidebar {
+  .header-frame {
     display: none !important;
   }
 
@@ -305,7 +302,6 @@
   }
 }
 
-/* --- Mobile fine-tuning (for when contact is visible on wider screens) --- */
 @media (max-width: 500px) {
   .floating-contact {
     width: 90%;
