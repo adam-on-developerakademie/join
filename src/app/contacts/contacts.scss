@@ -1,10 +1,11 @@
-/* ===== Base / Tokens ===== */
 :host {
   display: block;
 }
+
 * {
   box-sizing: border-box;
 }
+
 :root {
   --bg: #f6f7f8;
   --topbar-bg: #ffffff;
@@ -22,118 +23,13 @@
 
 .contacts-page {
   position: relative;
-  width: 1440px; /* Figma Desktop */
-  height: 1024px; /* Figma Desktop */
+  width: 1440px;
+  height: 1024px;
   background: var(--bg);
   font-family: 'Inter', system-ui, Arial, sans-serif;
   margin: 0 auto;
 }
 
-/* ===== Sidebar (232 × 1024) ===== */
-.sidebar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 232px;
-  height: 1024px;
-  background: var(--sidebar-bg);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 64px;
-}
-
-.sidebar__logo {
-  position: relative;
-  height: 122px;
-}
-.jmark {
-  position: absolute;
-  left: 28.44%;
-  right: 28.44%;
-  top: 6.25%;
-  height: 122px;
-}
-.jmark__square {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #fff;
-}
-.jmark__bar {
-  position: absolute;
-  width: 36px;
-  height: 8px;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-}
-.jmark__text {
-  position: absolute;
-  left: 50%;
-  top: 72px;
-  transform: translateX(-50%);
-  color: #fff;
-  font-weight: 700;
-}
-
-.sidebar__menu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding-top: 48px;
-}
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 232px;
-  height: 46px;
-  padding: 8px 56px;
-  border-radius: 8px;
-  color: #cdcdcd;
-  text-decoration: none;
-}
-.menu-item__icon {
-  width: 30px;
-  height: 30px;
-  background: #cdcdcd;
-  border-radius: 4px;
-}
-.menu-item__text {
-  font-size: 16px;
-  line-height: 120%;
-}
-.menu-item--active {
-  background: #091931;
-  color: #fff;
-  .menu-item__icon {
-    background: #fff;
-  }
-}
-
-.sidebar__footer {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 0 0 24px 52px;
-}
-.text-btn {
-  background: transparent;
-  border: 0;
-  padding: 8px;
-  color: #a8a8a8;
-  font-size: 16px;
-  text-align: left;
-  cursor: pointer;
-}
-
-/* ===== Heading (rechts) ===== */
 .heading {
   position: absolute;
   left: 743px;
@@ -145,6 +41,7 @@
   justify-content: flex-end;
   gap: 30px;
 }
+
 .heading h1 {
   text-align: right;
   margin: 0;
@@ -154,11 +51,13 @@
   line-height: 120%;
   color: #000;
 }
+
 .heading__divider {
   width: 0;
   height: 59px;
   border: 3px solid var(--blue);
 }
+
 .heading p {
   margin: 0;
   width: 235px;
@@ -167,7 +66,6 @@
   color: #2a3647;
 }
 
-/* ===== Linkes Panel (456 × 928) ===== */
 .list-panel {
   position: absolute;
   left: 232px;
@@ -178,6 +76,7 @@
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
   overflow-y: scroll;
 }
+
 .list-panel__inner {
   position: absolute;
   left: 50%;
@@ -189,39 +88,47 @@
   overflow-y: auto;
   scrollbar-width: none;
 }
+
 .list-panel__inner::-webkit-scrollbar {
   display: none;
 }
 
-/* Button oben */
-.primary-contact {
-  width: 352px;
-  height: 56px;
-  margin: 0 auto 17px;
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  background: #2a3647;
-  color: #fff;
-  border: 1px solid #2a3647;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 21px;
-  cursor: pointer;
+.list-panel__inner {
+  .primary-contact {
+    width: 352px;
+    height: 56px;
+    margin: 0 auto 17px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #2a3647;
+    color: #fff;
+    border: 1px solid #2a3647;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 21px;
+    cursor: pointer;
+  }
+  .primary-contact:hover {
+    background-color: #29abe2;
+    border-style: none;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+  }
 }
+
 .primary-contact .plus {
   font-size: 24px;
   line-height: 1;
 }
 
-/* Buchstabe + Linie */
 .letter {
   padding: 17px 36px 0;
   font-size: 20px;
   color: #000;
 }
+
 .divider {
   height: 0;
   border: 1px solid #d1d1d1;
@@ -229,7 +136,6 @@
   margin: 8px 0;
 }
 
-/* Kontakt-Zeile */
 .contact-row {
   display: flex;
   align-items: flex-start;
@@ -240,22 +146,20 @@
   background: #fff;
   border-radius: 10px;
 }
-.contact-row :hover {
-  background-color: #2a3647;
-  color: white;
-  cursor: pointer;
-}
+
 .badge {
   position: relative;
   width: 42px;
   height: 42px;
 }
+
 .badge__circle {
   position: absolute;
   inset: 0;
   border: 2px solid #fff;
   border-radius: 45px;
 }
+
 .badge__initials {
   position: absolute;
   left: 7px;
@@ -269,24 +173,30 @@
   color: #fff;
   background: transparent !important;
 }
+
 .contact-row__text {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
+
 .name {
   font-size: 20px;
   color: #000;
 }
+
 .mail {
   font-size: 16px;
   color: var(--link);
 }
 
-div.contact-row:hover {
+div.contact-row:hover{
+  background-color: #F6F7F8;
+}
+
+div.contact-row:active {
   background-color: #2a3647;
   color: white;
-  cursor: pointer;
   .contact-row__text {
     .name {
       color: white;
@@ -297,42 +207,8 @@ div.contact-row:hover {
   }
 }
 
-/* Fake-Scrollbar (Figma) */
-.fakebar {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 24px;
-  height: 928px;
-}
-.fakebar__thumb {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 77px;
-  width: 0;
-  height: 53px;
-  border: 8px solid #a8a8a8;
-  border-radius: 3px;
-}
-.fakebar__cap {
-  position: absolute;
-  width: 10px;
-  height: 4px;
-  left: 8px;
-  background: #a8a8a8;
-}
-.fakebar__cap--top {
-  top: 20px;
-}
-.fakebar__cap--bottom {
-  bottom: 20px;
-  transform: rotate(180deg);
-}
 
-/* ====== MOBILE FIXES (<=768px) ====== */
 @media (max-width: 768px) {
-  /* Grundfläche */
   .contacts-page {
     position: relative;
     width: 100%;
@@ -340,10 +216,8 @@ div.contact-row:hover {
     height: auto;
     margin: 0;
     background: var(--bg);
-    /* Falls unter einem fixen Header liegend: Abstand oben kommt aus app-shell */
   }
 
-  /* Linkes Panel soll Vollbreite bekommen, kein absolutes Layout */
   .list-panel {
     position: static;
     left: auto;
@@ -355,25 +229,26 @@ div.contact-row:hover {
     overflow: visible;
   }
 
-  /* Innerer Container auf 400px zentriert, aber flexibel */
   .list-panel__inner {
     position: static;
     left: auto;
     transform: none;
     width: 400px;
     max-width: 100%;
-    height: auto; /* war 1188px fix */
+    height: auto;
     padding: 24px;
     margin: 0 auto;
-    background: #fff; /* wie Figma Mobile-Karte */
+    background: #fff;
     overflow: visible;
     scrollbar-width: auto;
+    .primary-contact {
+      display: none !important;
+    }
   }
   .list-panel__inner::-webkit-scrollbar {
     display: initial;
   }
 
-  /* Standardbreiten der Elemente: 352px, aber flexibel */
   .primary-contact,
   .letter,
   .divider,
@@ -391,7 +266,7 @@ div.contact-row:hover {
   }
 
   .letter {
-    padding: 16px 0 0; /* kein seitliches Figma-Padding nötig */
+    padding: 16px 0 0;
     font-size: 20px;
   }
 
@@ -412,7 +287,6 @@ div.contact-row:hover {
     border-radius: 10px;
   }
 
-  /* Heading rechts -> unter die Liste, normaler Flow */
   .heading {
     position: static;
     width: 400px;
@@ -444,13 +318,6 @@ div.contact-row:hover {
     margin: 0;
   }
 
-  /* Fake-Scrollbar ausblenden */
-  .fakebar {
-    display: none;
-  }
-
-  /* Legacy-Layouts, die auf Mobile stören könnten, neutralisieren */
-  .sidebar,
   .topbar {
     display: none !important;
   }
@@ -518,6 +385,9 @@ div.contact-row:hover {
     width: 400px;
     margin: 0 auto;
     padding: 24px 0;
+    .primary-contact {
+      display: none !important;
+    }
   }
 
   /* Zeilen/Divider/Letters 352px Breite */
@@ -550,6 +420,7 @@ div.contact-row:hover {
   .letter {
     font: 20px/1.2 Inter, system-ui, Arial, sans-serif;
     color: #2a3647;
+    top: 352px;
   }
   a.email {
     color: #007cee;
@@ -577,7 +448,7 @@ div.contact-row:hover {
 .contact-overlay-bg {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -591,13 +462,14 @@ div.contact-row:hover {
   width: 396px;
   max-width: 90%;
   padding: 24px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; } 
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-
-
