@@ -74,5 +74,9 @@
   width:32px;height:32px;border-radius:50%;border:0;
   background:#2A3647;opacity:0;
 }
-
+@media (min-width: 1440px) {
+  .overlay-edit-contact {
+    display: none;
+  }
+}
 @media(max-width:428px){.overlay-edit-contact{width:100vw;}}

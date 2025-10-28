@@ -22,10 +22,10 @@
 }
 
 .left-side {
-  background-color: #2A3647; 
-  width: 453px; 
-  height: 594px; 
-  padding: 0; 
+  background-color: #2a3647;
+  width: 453px;
+  height: 594px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -36,8 +36,8 @@
     width: 53.93px;
     height: 66.48px;
     position: absolute;
-    top: 154px; 
-    left: 45.4px; 
+    top: 154px;
+    left: 45.4px;
 
     svg {
       width: 100%;
@@ -50,28 +50,28 @@
     flex-direction: column;
     gap: 12px;
     position: absolute;
-    top: 252.5px; 
-    left: 45.4px; 
+    top: 252.5px;
+    left: 45.4px;
   }
 
   .title {
     width: 361px;
     height: 73px;
     font-family: 'Inter', sans-serif;
-    font-weight: 700; 
-    font-size: 61px; 
-    line-height: 120%; 
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
     letter-spacing: 0%;
-    color: #FFFFFF; 
+    color: #ffffff;
     margin: 0;
   }
 
   .title-underline {
     width: 90px;
-    height: 3px; 
-    background-color: #29ABE2; 
-    transform: rotate(0deg); 
-    align-self: flex-start; 
+    height: 3px;
+    background-color: #29abe2;
+    transform: rotate(0deg);
+    align-self: flex-start;
   }
 }
 
@@ -83,7 +83,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #F6F7F8;
+  background: #f6f7f8;
 
   .close-btn {
     position: absolute;
@@ -104,7 +104,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: linear-gradient(180deg, #FF8A00 0%, #FF5C00 100%);
+    background: linear-gradient(180deg, #ff8a00 0%, #ff5c00 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,7 +131,7 @@
       input {
         width: 100%;
         padding: 15px 50px 15px 20px;
-        border: 1px solid #D1D1D1;
+        border: 1px solid #d1d1d1;
         border-radius: 10px;
         font-size: 16px;
         font-family: 'Inter', sans-serif;
@@ -139,11 +139,11 @@
         transition: border-color 0.3s;
 
         &:focus {
-          border-color: #29ABE2;
+          border-color: #29abe2;
         }
 
         &::placeholder {
-          color: #D1D1D1;
+          color: #d1d1d1;
         }
       }
 
@@ -178,17 +178,17 @@
 
       .btn-delete {
         background: transparent;
-        color: #2A3647;
-        border: 1px solid #2A3647;
+        color: #2a3647;
+        border: 1px solid #2a3647;
 
         &:hover {
-          background: #2A3647;
+          background: #2a3647;
           color: white;
         }
       }
 
       .btn-save {
-        background: #2A3647;
+        background: #2a3647;
         color: white;
 
         &:hover {
@@ -197,6 +197,18 @@
         }
       }
     }
+  }
+}
+
+// @media (max-width: 1440px) {
+//   .overlay-edit-contact {
+//     display: none;
+//   }
+// }
+
+@media (max-width: 1439px) {
+  .modal-container {
+    display: none;
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
@@ -9,6 +9,7 @@ import { ContactCreatedToast } from './contact-created-toast/contact-created-toa
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
 import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
+import { ContactViewComponent } from './contact-view/contact-view'; // vorhandener Ordner
 import { ContactListComponent } from './contact-list/contact-list';
 
 @Component({
@@ -21,8 +22,7 @@ import { ContactListComponent } from './contact-list/contact-list';
     EditContactOverlayComponent,
     OverlayEditContactComponent,
     ContactCreatedToast,
-    //ContactListComponent,
-    ContactOptionsComponent
+    ContactViewComponent
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
@@ -34,12 +34,14 @@ export class Contacts {
   contact: IContact = {} as IContact;
   id = 0;
 
-
   showAddContact = false;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  constructor(private fbService: FbService) { }
+  // NEU
+  selectedContactIndex: number | null = null;
+
+  constructor(private fbService: FbService) {}
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -90,32 +92,30 @@ export class Contacts {
   }
 
   onContactCreated() {
-    // Overlay schließen
     this.showAddContact = false;
-
-    // Toast zeigen
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastOpen = true;
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
 
+  // Kontakt anzeigen (als Overlay)
   showContact(id: number) {
     this.fbService.id = id;
     this.fbService.setCurrentContact(id);
+    this.selectedContactIndex = id; // Overlay aktivieren
   }
 
-  // === NEU für Optionen + Edit Overlays ===
+  closeContactOverlay() {
+    this.selectedContactIndex = null;
+  }
+
+  // === Optionen + Edit Overlays ===
   optionsOpen = false;
   editContactOpen = false;
   editContact2Open = false;
 
-  openOptions() {
-    this.optionsOpen = true;
-  }
-
-  closeOptions() {
-    this.optionsOpen = false;
-  }
+  openOptions() { this.optionsOpen = true; }
+  closeOptions() { this.optionsOpen = false; }
 
   onEdit() {
     this.optionsOpen = false;
@@ -138,6 +138,7 @@ export class Contacts {
     this.editContact2Open = false;
     this.toastOpen = false;
     this.optionsOpen = false;
+    this.selectedContactIndex = null;
   }
 
   showEditContact() {
