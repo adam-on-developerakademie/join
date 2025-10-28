@@ -1,17 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-/* --- Animation for fly-in --- */
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 .floating-contact {
   width: 640px;
   display: flex;
@@ -28,6 +16,16 @@
   border-radius: 8px;
   padding: 20px;
   // box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.2s ease !important;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .header-frame {
