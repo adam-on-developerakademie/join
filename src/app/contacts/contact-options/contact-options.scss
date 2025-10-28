@@ -1,27 +1,36 @@
-:host { display: block; }
+:host { display: block; font-family: Inter, system-ui, Arial, sans-serif; }
 
+/* Vollbild-Overlay (nur wenn !inline) */
 .overlay{
-  position: fixed; inset: 0;
-  background: transparent; /* Klick außen schließt, kein Dim */
+  position: fixed;
+  inset: 0;
+  background: transparent;
   z-index: 4500;
 }
 
+/* Panel – kann im Overlay oder inline benutzt werden */
 .panel{
-  position: absolute;
-  right: 0; bottom: 0; /* wird vom Parent (app-contact-options) gesetzt */
-  width: 116px; height: 100px;
+  width: 116px;                 /* Figma */
   background: #FFFFFF;
   border-radius: 20px;
-  box-shadow: 0 4px 4px rgba(0,0,0,.25); /* Figma "stronger" */
+  box-shadow: 0 4px 4px rgba(0,0,0,.25); /* "stronger" */
   padding: 10px;
-  display: grid; gap: 8px;
+  display: grid;
+  gap: 8px;
+
+  /* Wenn im Overlay gerendert, unten rechts am Bildschirm andocken */
+  .overlay & {
+    position: absolute;
+    right: 16px;
+    bottom: calc(96px + 56px + 12px); /* gleiche Position wie Inline-Anker */
+    z-index: 4550;
+  }
 }
 
 .row{
   height: 40px; width: 96px;
   display: flex; align-items: center; gap: 8px;
   background: transparent; border: none; cursor: pointer;
-  color: #2A3647; font: 16px Inter, system-ui, Arial, sans-serif;
-  border-radius: 10px;
+  color: #2A3647; font-size: 16px; border-radius: 10px;
 }
 .row:hover{ background: #F6F7F8; }
