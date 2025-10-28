@@ -46,14 +46,14 @@ export class Contacts {
   /** Responsive-Schalter: true = Mobile */
   isMobile = window.innerWidth <= 900;
 
-  constructor(private fbService: FbService) {}
+  constructor(public fbService: FbService) {}
 
   // ========= Responsive =========
   @HostListener('window:resize')
   onResize() {
     const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth <= 900;
-    // Wenn von Mobile -> Desktop gewechselt: mobile Overlays schließen
+    // Wenn von Mobile → Desktop gewechselt: mobile Overlays schließen
     if (wasMobile && !this.isMobile) {
       this.selectedContactIndex = null;
       this.editContact2Open = false;
@@ -103,11 +103,6 @@ export class Contacts {
   }
 
   // ========= Kontakt-Auswahl =========
-  /**
-   * Klick auf eine Zeile.
-   * Mobile: zeige die mobile Kontaktkarte (Overlay).
-   * Desktop: keine mobile Karte — rechte Detailansicht bleibt (Figma).
-   */
   showContact(index: number) {
     this.fbService.id = index;
     this.fbService.setCurrentContact(index);
@@ -123,23 +118,28 @@ export class Contacts {
 
   // ========= Events AUS der mobilen Kontaktkarte (⋮ → Edit/Delete) =========
   onEditFromView() {
-    // aktueller Index ist im Service gesetzt (durch showContact)
-    if (this.isMobile) {
-      this.editContact2Open = true;  // mobiler Edit
-    } else {
-      this.editContactOpen = true;   // Desktop-Edit (falls je nach Logik benötigt)
+    const idx = this.fbService.id ?? -1;
+    if (idx < 0) return;
+
+    // Desktop
+    if (!this.isMobile) {
+      this.editContactOpen = true;
+      return;
     }
+
+    // Mobile → Overlay öffnen
+    this.fbService.setCurrentContact(idx);
+    this.fbService.showEditContact = true;
   }
 
   onDeleteFromView() {
-    const idx = (this.fbService as any).id;
-    if (typeof idx === 'number') {
+    const idx = this.fbService.id ?? -1;
+    if (idx >= 0) {
       this.fbService.delContact(idx);
     }
-    this.selectedContactIndex = null; // mobile Karte schließen
+    this.selectedContactIndex = null;
   }
 
-  // Desktop-Edit bleibt über deine bestehende Mechanik steuerbar
   showEditContact() { return this.fbService.showEditContact; }
 
   // ========= Globales Schließen =========
