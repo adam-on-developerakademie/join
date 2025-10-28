@@ -72,9 +72,9 @@
 .list-panel {
   position: absolute;
   left: 232px;
-  top: 96px;
   width: 456px;
-  height: 928px;
+  height: calc(1024px + 96px);
+  top:96px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
   overflow-y: scroll;
