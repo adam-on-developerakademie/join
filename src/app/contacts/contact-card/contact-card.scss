@@ -14,10 +14,11 @@
   left: 750px;
   top: 311px;
   font-family: 'Inter', sans-serif;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   border-radius: 8px;
   padding: 20px;
   animation: slideIn 0.15s ease !important;
+  overflow: hidden;
 }
 
 @keyframes slideIn {
