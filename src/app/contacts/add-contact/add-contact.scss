@@ -2,8 +2,8 @@
 .overlay {
   position: fixed;
   top: 0;
-  left: 232px; /* Abstand zur Figma-Sidebar */
-  width: calc(100% - 232px);
+  left: 232px;                 /* Abstand zur Figma-Sidebar */
+  width: calc(100% - 232px);   /* nur den rechten Bereich abdunkeln */
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
@@ -19,7 +19,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 960px; /* statt 1212px */
+  max-width: 960px;            /* Desktop kleiner als 1212px */
   height: auto;
   max-height: 90vh;
   background: #ffffff;
@@ -44,18 +44,11 @@
   z-index: 10;
   transition: opacity 0.2s;
 
-  &:hover {
-    opacity: 0.7;
-  }
+  &:hover { opacity: 0.7; }
 
   svg {
-    width: 24px;
-    height: 24px;
-
-    path {
-      stroke: #2a3647;
-      stroke-width: 2;
-    }
+    width: 24px; height: 24px;
+    path { stroke: #2a3647; stroke-width: 2; }
   }
 }
 
@@ -71,19 +64,14 @@
   border-bottom-left-radius: 30px;
 }
 
-.logo {
-  margin-bottom: 12px;
-
-  svg {
-    width: 56px;
-    height: 67px;
-  }
+.logo { margin-bottom: 12px;
+  svg { width: 56px; height: 67px; }
 }
 
 h1 {
   font-size: 54px;
   font-weight: 700;
-  color: white;
+  color: #fff;
   margin: 0 0 12px 0;
   line-height: 120%;
 }
@@ -91,7 +79,7 @@ h1 {
 .subtitle {
   font-size: 24px;
   font-weight: 400;
-  color: white;
+  color: #fff;
   margin: 0 0 16px 0;
 }
 
@@ -123,19 +111,13 @@ h1 {
   height: 120px;
   background: #eff0f0;
   border-radius: 50%;
-  border: 3px solid #ffffff;
+  border: 3px solid #fff;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  svg {
-    width: 64px;
-    height: 64px;
-
-    circle,
-    path {
-      fill: #d1d1d1;
-    }
+  svg { width: 64px; height: 64px;
+    circle, path { fill: #d1d1d1; }
   }
 }
 
@@ -151,8 +133,7 @@ h1 {
 
 /* ===== Input Wrapper ===== */
 .input-wrapper {
-  position: relative;
-  width: 100%;
+  position: relative; width: 100%;
 
   input {
     width: 100%;
@@ -165,95 +146,189 @@ h1 {
     color: #000;
     transition: border-color 0.2s;
 
-    &::placeholder {
-      color: #d1d1d1;
-    }
-
-    &:focus {
-      outline: none;
-      border-color: #29abe2;
-    }
+    &::placeholder { color: #d1d1d1; }
+    &:focus { outline: none; border-color: #29abe2; }
   }
 
   .input-icon {
-    position: absolute;
-    right: 16px;
-    top: 50%;
+    position: absolute; right: 16px; top: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
+    width: 20px; height: 20px; pointer-events: none;
   }
 }
 
 /* ===== Button Group ===== */
 .button-group {
-  display: flex;
-  gap: 24px;
-  margin-top: 8px;
+  display: flex; gap: 24px; margin-top: 8px;
 
   button {
-    height: 56px;
-    padding: 16px 24px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    height: 56px; padding: 16px 24px;
+    border-radius: 10px; font-size: 20px; font-weight: 700;
+    cursor: pointer; border: none;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
     transition: all 0.2s;
 
-    svg {
-      width: 16px;
-      height: 16px;
-    }
+    svg { width: 16px; height: 16px; }
   }
 }
 
 .btn-cancel {
-  background: transparent;
-  color: #2a3647;
-  border: 1px solid #2a3647;
-  min-width: 120px;
-
-  &:hover {
-    background: #2a3647;
-    color: white;
-
-    svg path {
-      stroke: white;
-    }
-  }
-
-  svg path {
-    stroke: #2a3647;
-  }
+  background: transparent; color: #2a3647; border: 1px solid #2a3647; min-width: 120px;
+  &:hover { background: #2a3647; color: #fff; svg path { stroke: #fff; } }
+  svg path { stroke: #2a3647; }
 }
 
 .btn-create {
-  background: #2a3647;
-  color: white;
-  flex: 1;
-
-  &:hover {
-    background: #1a2332;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-
-  svg path {
-    stroke: white;
-  }
+  background: #2a3647; color: #fff; flex: 1;
+  &:hover { background: #1a2332; box-shadow: 0 4px 8px rgba(0,0,0,.2); }
+  svg path { stroke: #fff; }
 }
 
 /* ===== Animation ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===================================================================== */
+/* =========================== Responsive =============================== */
+/* ===================================================================== */
+
+/* 1) Großer Desktop → etwas kleiner skalieren */
+@media (max-width: 1440px) {
+  .add-contact-container { max-width: 920px; }
+  h1 { font-size: 51px; }
+}
+
+/* 2) ≤1280px: Container schmaler halten (dein alter Breakpoint) */
+@media (max-width: 1280px) {
+  .add-contact-container {
+    width: 92%;
+    max-width: 880px;
   }
-  to {
-    opacity: 1;
+  .left-section { width: 340px; padding: 40px 32px; }
+  .right-section { padding: 56px 56px 56px 72px; }
+  .avatar-circle { left: -54px; }
+  h1 { font-size: 47px; }
+  .subtitle { font-size: 22px; }
+}
+
+/* 3) ≤1024px: Sidebar oft eingeklappt → Overlay über die ganze Breite */
+@media (max-width: 1024px) {
+  .overlay {
+    left: 0;                     /* Sidebar ignorieren */
+    width: 100%;
   }
+  .add-contact-container {
+    width: 92%;
+    max-width: 760px;
+    max-height: 90vh;
+  }
+  .left-section { width: 320px; }
+  .right-section { padding: 48px 48px 48px 64px; }
+  .avatar-circle { left: -48px; }
+  .contact-form { margin-left: 72px; }
+}
+
+/* 4) ≤768px: Mobile/Tablet Spalten-Layout (dein vorheriger Block) */
+@media (max-width: 768px) {
+  /* Vollflächiger Dimmer – OHNE Sidebar-Offset */
+  .overlay {
+    position: fixed;
+    inset: 0;                  /* top/right/bottom/left = 0 */
+    left: 0 !important;        /* überschreibt evtl. frühere Regeln */
+    width: 100% !important;    /* überschreibt calc(100% - 232px) */
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-start;   /* oben beginnen, falls Inhalt lang ist */
+    justify-content: center;   /* HORIZONTAL zentrieren */
+    padding: 16px 0;           /* etwas Luft oben/unten fürs Scrollen */
+    overflow-y: auto;
+    z-index: 3000;
+  }
+
+  /* Dialog exakt wie Figma: 396 × 760, Radius 30; mit 16px Seitenabstand */
+  .add-contact-container {
+    flex-direction: column;
+    width: 396px;
+    max-width: calc(100% - 32px); /* 16px links + 16px rechts */
+    height: 760px;
+    max-height: none;
+    border-radius: 30px;
+    overflow: hidden;
+    margin: 0 auto;            /* zentriert */
+    background: #fff;
+  }
+
+  /* Top-Panel (Dark) – volle Breite, ca. 352px Höhe laut Figma */
+  .left-section {
+    width: 100%;
+    height: 352px;
+    padding: 32px 24px;
+    background: #2A3647;
+    border-radius: 30px 30px 0 0; /* nur oben rund wie im Figma */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Unterer Bereich (Form) */
+  .right-section {
+    width: 100%;
+    flex: 1;
+    padding: 32px 24px 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+
+  /* Avatar mittig über der Trennkante */
+  .avatar-circle {
+    position: absolute;
+    left: 50%;
+    top: 352px;                /* genau am unteren Rand des Dark Panels */
+    transform: translate(-50%, -50%); /* halb überlappend */
+    width: 120px;
+    height: 120px;
+    background: #EFF0F0;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg { width: 64px; height: 64px; }
+  }
+
+  /* Formularbreite wie Figma: 364px Inputs, 422 brauchst du hier nicht */
+  .contact-form {
+    width: 100%;
+    max-width: 364px;          /* Figma: 364px */
+    margin-left: 0;
+    margin-top: 48px;          /* Platz unter dem Avatar */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .input-wrapper input {
+    height: 41px;              /* Figma-Mobile Höhe */
+    font-size: 16px;
+    padding: 10px 16px;
+    padding-right: 44px;
+    border-radius: 10px;
+  }
+
+  .button-group {
+    margin-top: 24px;
+    gap: 12px;
+
+    /* Figma hat nur den Primary-Button unten mittig – wenn du beide willst,
+       dann beide gleich breit; sonst lass nur .btn-create stehen */
+    button { flex: 1; }
+  }
+
+  /* Optional: Typo etwas kleiner damit es wie im Screenshot wirkt */
+  h1 { font-size: 47px; line-height: 1.1; }
+  .subtitle { font-size: 20px; }
 }
