@@ -9,6 +9,7 @@ import { ContactCreatedToast } from './contact-created-toast/contact-created-toa
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
 import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
+import { ContactListComponent } from './contact-list/contact-list';
 
 @Component({
   selector: 'app-contacts',
@@ -19,8 +20,10 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
     AddContactComponent,
     EditContactOverlayComponent,
     OverlayEditContactComponent,
-    ContactCreatedToast
-],
+    ContactCreatedToast,
+    //ContactListComponent,
+    ContactOptionsComponent
+  ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
