@@ -19,6 +19,7 @@ export class ContactCard {
 
   constructor(private fbService: FbService) { }
 
+  currentContactIndex = this
 
   onDelete(): void {
     console.log('Delete contact clicked');
