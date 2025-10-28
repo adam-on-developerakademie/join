@@ -1,3 +1,5 @@
+//TODO: .list-panel / list-panel__inner Doppelung entfernen
+//TODO: .contact-row / .contact-row__text Doppelung entfernen
 :host {
   display: block;
 }
@@ -145,6 +147,7 @@
   height: 78px;
   background: #fff;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .badge {
@@ -190,8 +193,8 @@
   color: var(--link);
 }
 
-div.contact-row:hover{
-  background-color: #F6F7F8;
+div.contact-row:hover {
+  background-color: #f6f7f8;
 }
 
 div.contact-row:active {
@@ -206,7 +209,6 @@ div.contact-row:active {
     }
   }
 }
-
 
 @media (max-width: 768px) {
   .contacts-page {
@@ -347,12 +349,6 @@ div.contact-row:active {
     max-width: 428px; /* Außenrahmen */
     margin: 0 auto;
     background: transparent;
-  }
-
-  .list-panel__inner {
-    width: 400px;
-    margin: 0 auto;
-    padding: 24px 0;
   }
 
   /* Divider, Zeilen, Avatar usw. sind schon bei dir gestylt;
