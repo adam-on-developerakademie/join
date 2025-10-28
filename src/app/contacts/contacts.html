@@ -2,7 +2,7 @@
   <!-- Linkes Panel (Kontaktliste) -->
   <section class="list-panel">
     <div class="list-panel__inner">
-      <!-- Desktop-Button (wird mobil per CSS ausgeblendet) -->
+      <!-- Desktop-Button -->
       <button class="primary-contact desktop-only" (click)="showContactOverlay()">
         <span>Add new contact</span>
         <img src="assets/components/contacts/add_contact.svg" alt="" />
@@ -14,11 +14,8 @@
 
         @for (item of getContacts(); track item) {
           @if (item.name.charAt(0).toUpperCase() == group) {
-            <!-- Row: speichert Auswahl + navigiert zu /contacts/:id -->
-<div
-  class="contact-row"
-  (click)="showContact($index)"
->
+            <!-- Row öffnet Overlay -->
+            <div class="contact-row" (click)="showContact($index)">
               <div class="badge">
                 <div class="badge__circle" [style.background]="item.color"></div>
                 <div class="badge__initials">
@@ -37,7 +34,7 @@
     </div>
   </section>
 
-  <!-- Rechtes Panel (Heading) - auf Mobile ausblenden -->
+  <!-- Rechtes Panel -->
   <section class="detail-panel">
     <div class="heading">
       <h1>Contacts</h1>
@@ -46,7 +43,7 @@
     </div>
   </section>
 
-  <!-- FAB: auf Mobile sichtbar (öffnet Add-Contact) -->
+  <!-- FAB -->
   <button class="fab" type="button" (click)="showContactOverlay()" aria-label="Add contact">
     <img src="assets/components/contacts/add_contact.svg" alt="" />
   </button>
@@ -58,10 +55,18 @@
 }
 
 @if (showEditContact()) {
-  <!-- Overlay Edit Contact -->
   <app-edit-contact-overlay></app-edit-contact-overlay>
   <app-overlay-edit-contact></app-overlay-edit-contact>
 }
 
-<!-- Toast (außerhalb des @if) -->
+<!-- Overlay ContactView -->
+@if (selectedContactIndex !== null) {
+  <div class="contact-overlay-bg" (click)="closeContactOverlay()">
+    <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
+      <app-contact-view (close)="closeContactOverlay()"></app-contact-view>
+    </div>
+  </div>
+}
+
+<!-- Toast -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
