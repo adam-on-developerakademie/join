@@ -53,9 +53,10 @@
 <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
+
 @if (showEditContact()) {
 <!-- Overlay Edit Contact -->
-<!-- <app-edit-contact-overlay></app-edit-contact-overlay> -->
+<app-edit-contact-overlay></app-edit-contact-overlay>
 <app-overlay-edit-contact></app-overlay-edit-contact>
 }
 

@@ -8,7 +8,6 @@ import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
-import { OverlayEditContact2Component } from './overlay-edit-contact-2/overlay-edit-contact-2';
 import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
 
 @Component({
@@ -20,8 +19,8 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
     AddContactComponent,
     EditContactOverlayComponent,
     OverlayEditContactComponent,
-    ContactCreatedToast,
-  ],
+    ContactCreatedToast
+],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
