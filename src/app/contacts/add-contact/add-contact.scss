@@ -46,10 +46,8 @@
 
   &:hover { opacity: 0.7; }
 
-  svg {
-    width: 24px; height: 24px;
-    path { stroke: #2a3647; stroke-width: 2; }
-  }
+  svg { width: 24px; height: 24px; }
+  svg path { stroke: #2a3647; stroke-width: 2; }
 }
 
 /* ===== Left Section (Dark Blue) ===== */
@@ -64,10 +62,6 @@
   border-bottom-left-radius: 30px;
 }
 
-.logo { margin-bottom: 12px;
-  svg { width: 56px; height: 67px; }
-}
-
 h1 {
   font-size: 54px;
   font-weight: 700;
@@ -75,14 +69,12 @@ h1 {
   margin: 0 0 12px 0;
   line-height: 120%;
 }
-
 .subtitle {
   font-size: 24px;
   font-weight: 400;
   color: #fff;
   margin: 0 0 16px 0;
 }
-
 .blue-line {
   width: 90px;
   height: 3px;
@@ -101,10 +93,10 @@ h1 {
   position: relative;
 }
 
-/* ===== Avatar Circle ===== */
+/* ===== Avatar Circle (Desktop) ===== */
 .avatar-circle {
   position: absolute;
-  left: -60px;
+  left: 370px;                 /* Desktop-Wert: ein Stück weiter rechts als vorher */
   top: 50%;
   transform: translateY(-50%);
   width: 120px;
@@ -116,9 +108,8 @@ h1 {
   align-items: center;
   justify-content: center;
 
-  svg { width: 64px; height: 64px;
-    circle, path { fill: #d1d1d1; }
-  }
+  svg { width: 64px; height: 64px; }
+  svg circle, svg path { fill: #d1d1d1; }
 }
 
 /* ===== Contact Form ===== */
@@ -171,13 +162,12 @@ h1 {
     svg { width: 16px; height: 16px; }
   }
 }
-
 .btn-cancel {
   background: transparent; color: #2a3647; border: 1px solid #2a3647; min-width: 120px;
-  &:hover { background: #2a3647; color: #fff; svg path { stroke: #fff; } }
+  &:hover { background: #2a3647; color: #fff; }
+  &:hover svg path { stroke: #fff; }
   svg path { stroke: #2a3647; }
 }
-
 .btn-create {
   background: #2a3647; color: #fff; flex: 1;
   &:hover { background: #1a2332; box-shadow: 0 4px 8px rgba(0,0,0,.2); }
@@ -197,55 +187,44 @@ h1 {
   h1 { font-size: 51px; }
 }
 
-/* 2) ≤1280px: Container schmaler halten (dein alter Breakpoint) */
+/* 2) ≤1280px: Container schmaler halten */
 @media (max-width: 1280px) {
-  .add-contact-container {
-    width: 92%;
-    max-width: 880px;
-  }
+  .add-contact-container { width: 92%; max-width: 880px; }
   .left-section { width: 340px; padding: 40px 32px; }
   .right-section { padding: 56px 56px 56px 72px; }
-  .avatar-circle { left: -54px; }
+  .avatar-circle { left: -36px; }       /* leicht angepasst für diese Breite */
   h1 { font-size: 47px; }
   .subtitle { font-size: 22px; }
 }
 
 /* 3) ≤1024px: Sidebar oft eingeklappt → Overlay über die ganze Breite */
 @media (max-width: 1024px) {
-  .overlay {
-    left: 0;                     /* Sidebar ignorieren */
-    width: 100%;
-  }
-  .add-contact-container {
-    width: 92%;
-    max-width: 760px;
-    max-height: 90vh;
-  }
+  .overlay { left: 0; width: 100%; }
+  .add-contact-container { width: 92%; max-width: 760px; max-height: 90vh; }
   .left-section { width: 320px; }
   .right-section { padding: 48px 48px 48px 64px; }
-  .avatar-circle { left: -48px; }
+  .avatar-circle { left: -28px; }
   .contact-form { margin-left: 72px; }
 }
 
-/* 4) ≤768px: Mobile/Tablet Spalten-Layout (dein vorheriger Block) */
+/* 4) ≤768px: Mobile/Tablet – Figma 396×760 */
 @media (max-width: 768px) {
   /* Vollflächiger Dimmer – OHNE Sidebar-Offset */
   .overlay {
     position: fixed;
-    inset: 0;                  /* top/right/bottom/left = 0 */
-    left: 0 !important;        /* überschreibt evtl. frühere Regeln */
-    width: 100% !important;    /* überschreibt calc(100% - 232px) */
+    inset: 0;
+    width: 100% !important;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: flex-start;   /* oben beginnen, falls Inhalt lang ist */
-    justify-content: center;   /* HORIZONTAL zentrieren */
-    padding: 16px 0;           /* etwas Luft oben/unten fürs Scrollen */
+    align-items: flex-start;
+    justify-content: center;
+    padding: 16px 0;
     overflow-y: auto;
     z-index: 3000;
+    background-color: rgba(0,0,0,0.2);
   }
 
-  /* Dialog exakt wie Figma: 396 × 760, Radius 30; mit 16px Seitenabstand */
+  /* Dialog genau wie Figma */
   .add-contact-container {
     flex-direction: column;
     width: 396px;
@@ -254,23 +233,40 @@ h1 {
     max-height: none;
     border-radius: 30px;
     overflow: hidden;
-    margin: 0 auto;            /* zentriert */
+    margin: 0 auto;
     background: #fff;
   }
 
-  /* Top-Panel (Dark) – volle Breite, ca. 352px Höhe laut Figma */
+  /* Top-Panel */
   .left-section {
     width: 100%;
     height: 352px;
     padding: 32px 24px;
     background: #2A3647;
-    border-radius: 30px 30px 0 0; /* nur oben rund wie im Figma */
+    border-radius: 30px 30px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  /* Unterer Bereich (Form) */
+  /* Avatar mittig und EIN TICK höher */
+  .avatar-circle {
+    position: absolute;
+    left: 50%;
+    top: 308px;                         /* höher als vorher */
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: #EFF0F0;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  /* Formular */
   .right-section {
     width: 100%;
     flex: 1;
@@ -281,54 +277,86 @@ h1 {
     justify-content: flex-start;
     position: relative;
   }
-
-  /* Avatar mittig über der Trennkante */
-  .avatar-circle {
-    position: absolute;
-    left: 50%;
-    top: 352px;                /* genau am unteren Rand des Dark Panels */
-    transform: translate(-50%, -50%); /* halb überlappend */
-    width: 120px;
-    height: 120px;
-    background: #EFF0F0;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    svg { width: 64px; height: 64px; }
-  }
-
-  /* Formularbreite wie Figma: 364px Inputs, 422 brauchst du hier nicht */
   .contact-form {
     width: 100%;
-    max-width: 364px;          /* Figma: 364px */
+    max-width: 364px;
     margin-left: 0;
-    margin-top: 48px;          /* Platz unter dem Avatar */
+    margin-top: 48px;                  /* Platz unter dem Avatar */
     display: flex;
     flex-direction: column;
     gap: 16px;
   }
-
   .input-wrapper input {
-    height: 41px;              /* Figma-Mobile Höhe */
+    height: 41px;
     font-size: 16px;
     padding: 10px 16px;
     padding-right: 44px;
     border-radius: 10px;
   }
 
-  .button-group {
-    margin-top: 24px;
-    gap: 12px;
+  /* Single Center Button (Figma) */
+  .button-group.single-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+  .button-group.single-btn .btn-create {
+    width: 202px;
+    height: 51px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    background: #2A3647;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
 
-    /* Figma hat nur den Primary-Button unten mittig – wenn du beide willst,
-       dann beide gleich breit; sonst lass nur .btn-create stehen */
-    button { flex: 1; }
+    &:hover { background: #1a2332; }
+    svg path { stroke: #fff; }
+  }
+}
+
+/* ===== Desktop-Feinjustierung (zusätzlicher Rechts-Shift) ===== */
+@media (min-width: 1281px) {
+  .add-contact-container { margin-left: 32px; }  /* „ein Stück“ nach rechts */
+}
+
+/* ===== Mobile: Nur "Create contact" sichtbar ===== */
+@media (max-width: 768px) {
+  /* "Cancel" ausblenden */
+  .btn-cancel {
+    display: none !important;
   }
 
-  /* Optional: Typo etwas kleiner damit es wie im Screenshot wirkt */
-  h1 { font-size: 47px; line-height: 1.1; }
-  .subtitle { font-size: 20px; }
+  /* Primary Button mittig (Figma-Style) */
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+  }
+
+  .btn-create {
+    width: 202px;
+    height: 51px;
+    border-radius: 10px;
+    font-size: 21px;
+    font-weight: 700;
+    background: #2A3647;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+
+    &:hover { background: #1a2332; }
+    svg path { stroke: #fff; }
+  }
 }
