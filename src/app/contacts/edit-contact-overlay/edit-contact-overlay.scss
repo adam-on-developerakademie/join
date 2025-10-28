@@ -24,7 +24,7 @@
 .left-side {
   background-color: #2a3647;
   width: 453px;
-  height: 594px;
+  height: 657.5px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -200,11 +200,11 @@
   }
 }
 
-// @media (max-width: 1440px) {
-//   .overlay-edit-contact {
-//     display: none;
-//   }
-// }
+@media (max-width: 1440px) {
+  .overlay-edit-contact {
+    display: none;
+  }
+}
 
 @media (max-width: 1439px) {
   .modal-container {
