@@ -25,7 +25,6 @@
                 <div class="name">{{ item.name + ' ' + item.surname }}</div>
                 <div class="mail">{{ item.email }}</div>
               </div>
-              <!-- KEINE drei Punkte in der Liste (Figma) -->
             </div>
           }
         }
@@ -42,22 +41,26 @@
     </div>
   </section>
 
-  <!-- FAB für "Add contact" (mobil) -->
+  <!-- FAB (mobil) -->
   <button class="fab" type="button" (click)="showContactOverlay()" aria-label="Add contact">
     <img src="assets/components/contacts/add_contact.svg" alt="" />
   </button>
 </div>
 
-<!-- Add-Contact-Overlay -->
+<!-- Add-Contact -->
 @if (showAddContact) {
   <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
-<!-- Desktop / Mobile Edit Overlays -->
-@if (editContactOpen)  { <app-edit-contact-overlay></app-edit-contact-overlay> }
-@if (editContact2Open) { <app-overlay-edit-contact></app-overlay-edit-contact> }
+<!-- Desktop-Edit -->
+@if (editContactOpen) {
+  <app-edit-contact-overlay></app-edit-contact-overlay>
+}
 
-<!-- Kontakt-Detail-Overlay (hier sind die ⋮ in der Karte) -->
+<!-- MOBIL-Edit -->
+<app-overlay-edit-contact *ngIf="fbService.showEditContact"></app-overlay-edit-contact>
+
+<!-- Mobile-Kontakt-View -->
 @if (isMobile && selectedContactIndex !== null) {
   <div class="contact-overlay-bg" (click)="closeContactOverlay()">
     <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
@@ -69,5 +72,6 @@
     </div>
   </div>
 }
+
 <!-- Toast -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
