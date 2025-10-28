@@ -133,64 +133,6 @@
   cursor: pointer;
 }
 
-/* ===== Topbar (1440 × 96) ===== */
-.topbar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1440px;
-  height: 96px;
-  background: var(--topbar-bg);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 40px 20px 348px;
-  gap: 34px;
-}
-.topbar__title {
-  font-size: 20px;
-  line-height: 120%;
-  color: var(--ink);
-}
-.topbar__right {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-.help-btn {
-  width: 32px;
-  height: 32px;
-  border: 0;
-  border-radius: 8px;
-  background: #d9d9d9;
-  color: #a8a8a8;
-  font-weight: 700;
-  cursor: pointer;
-}
-.avatar {
-  position: relative;
-  width: 56px;
-  height: 56px;
-}
-.avatar__ring {
-  position: absolute;
-  inset: 0;
-  border: 3px solid #2a3647;
-  border-radius: 50%;
-}
-.avatar__badge {
-  position: absolute;
-  inset: 4px;
-  background: #fff;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--blue);
-}
-
 /* ===== Heading (rechts) ===== */
 .heading {
   position: absolute;
