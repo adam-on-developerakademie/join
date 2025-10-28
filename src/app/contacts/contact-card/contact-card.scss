@@ -8,11 +8,11 @@
   padding: 0px;
   gap: 21px;
   position: absolute;
-  height: 100dvh;
+  height: calc(1024px - 96px);
   left: 750px;
   top: 311px;
   font-family: 'Inter', sans-serif;
-  background: white;
+  background-color: #F6F7F8;
   border-radius: 8px;
   padding: 20px;
   animation: slideIn 0.15s ease !important;
