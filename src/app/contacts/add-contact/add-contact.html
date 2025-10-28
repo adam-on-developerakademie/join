@@ -1,6 +1,13 @@
 <div class="overlay" (click)="onOverlayClick($event)">
+  <!-- Close Button (oben rechts, nur mobile sichtbar) -->
+  <button class="close-btn-mobile" (click)="closeOverlay()" aria-label="Close">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M6 6L18 18M6 18L18 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
   <div class="add-contact-container">
-    <!-- Close Button -->
+    <!-- Desktop Close Button -->
     <button class="close-btn" (click)="closeOverlay()" type="button" aria-label="Close">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -55,23 +62,22 @@
           </svg>
         </div>
 
-        <!-- Single Center Button -->
-<!-- Buttons -->
-<div class="button-group">
-  <button type="button" class="btn-cancel" (click)="closeOverlay()">
-    Cancel
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-  </button>
+        <!-- Buttons -->
+        <div class="button-group">
+          <button type="button" class="btn-cancel" (click)="closeOverlay()">
+            Cancel
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
 
-  <button type="submit" class="btn-create" [disabled]="f.invalid">
-    Create contact
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-</div>
+          <button type="submit" class="btn-create" [disabled]="f.invalid">
+            Create contact
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8L7 12L13 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
       </form>
     </div>
   </div>
