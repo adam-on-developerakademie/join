@@ -9,26 +9,30 @@
       </button>
 
       @for (group of getContactsGroups(); track group) {
-      <p class="letter">{{ group }}</p>
-      <div class="divider"></div>
+        <p class="letter">{{ group }}</p>
+        <div class="divider"></div>
 
-      @for (item of getContacts(); track item) {
-      @if (item.name.charAt(0).toUpperCase() == group) {
-      <div class="contact-row" (click)="showContact($index)">
-        <div class="badge">
-          <div class="badge__circle" [style.background]="item.color"></div>
-          <div class="badge__initials">
-            {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
-          </div>
-        </div>
+        @for (item of getContacts(); track item) {
+          @if (item.name.charAt(0).toUpperCase() == group) {
+            <!-- Row: speichert Auswahl + navigiert zu /contacts/:id -->
+<div
+  class="contact-row"
+  (click)="showContact($index)"
+>
+              <div class="badge">
+                <div class="badge__circle" [style.background]="item.color"></div>
+                <div class="badge__initials">
+                  {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+                </div>
+              </div>
 
-        <div class="contact-row__text">
-          <div class="name">{{ item.name + ' ' + item.surname }}</div>
-          <div class="mail">{{ item.email }}</div>
-        </div>
-      </div>
-      }
-      }
+              <div class="contact-row__text">
+                <div class="name">{{ item.name + ' ' + item.surname }}</div>
+                <div class="mail">{{ item.email }}</div>
+              </div>
+            </div>
+          }
+        }
       }
     </div>
   </section>
@@ -50,14 +54,13 @@
 
 <!-- Overlay Add Contact -->
 @if (showAddContact) {
-<app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
+  <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
-
 @if (showEditContact()) {
-<!-- Overlay Edit Contact -->
-<app-edit-contact-overlay></app-edit-contact-overlay>
-<app-overlay-edit-contact></app-overlay-edit-contact>
+  <!-- Overlay Edit Contact -->
+  <app-edit-contact-overlay></app-edit-contact-overlay>
+  <app-overlay-edit-contact></app-overlay-edit-contact>
 }
 
 <!-- Toast (außerhalb des @if) -->

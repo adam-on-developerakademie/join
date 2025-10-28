@@ -5,6 +5,7 @@ import { OverlayEditContactComponent } from './contacts/overlay-edit-contact/ove
 import { OverlayEditContact2Component } from './contacts/overlay-edit-contact-2/overlay-edit-contact-2';
 import { ContactOptionsComponent } from './contacts/contact-options/contact-options';
 import { ContactSuccessToastComponent } from './contacts/contact-success-toast/contact-success-toast';
+import { ContactViewComponent } from './contacts/contact-view/contact-view';
 
 export const routes: Routes = [
   //  { path: '', component: CRUD },
@@ -15,5 +16,6 @@ export const routes: Routes = [
   { path: 'contacts/edit-2', component: OverlayEditContact2Component },
   { path: 'contacts/options', component: ContactOptionsComponent },
   { path: 'contacts/success', component: ContactSuccessToastComponent },
+  { path: 'contacts/:id', component: ContactViewComponent }, // ← NEU
 
 ];

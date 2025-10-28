@@ -1,6 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';                 // ← NEU: für routerLink
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
@@ -16,11 +19,12 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,                           // ← NEU
     AddContactComponent,
     EditContactOverlayComponent,
     OverlayEditContactComponent,
     ContactCreatedToast
-],
+  ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
@@ -31,12 +35,11 @@ export class Contacts {
   contact: IContact = {} as IContact;
   id = 0;
 
-
   showAddContact = false;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  constructor(private fbService: FbService) { }
+constructor(private fbService: FbService, private router: Router) {}
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -87,32 +90,25 @@ export class Contacts {
   }
 
   onContactCreated() {
-    // Overlay schließen
     this.showAddContact = false;
 
-    // Toast zeigen
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastOpen = true;
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
 
-  showContact(id: number) {
-    this.fbService.id = id;
-    this.fbService.setCurrentContact(id);
-  }
-
-  // === NEU für Optionen + Edit Overlays ===
+showContact(id: number) {
+  this.fbService.id = id;
+  this.fbService.setCurrentContact(id);     // merkt Auswahl
+  this.router.navigate(['/contacts', id]);  // ← PROGRAMMATISCHE NAVIGATION
+}
+  // === Optionen + Edit Overlays (deine bestehenden States) ===
   optionsOpen = false;
   editContactOpen = false;
   editContact2Open = false;
 
-  openOptions() {
-    this.optionsOpen = true;
-  }
-
-  closeOptions() {
-    this.optionsOpen = false;
-  }
+  openOptions() { this.optionsOpen = true; }
+  closeOptions() { this.optionsOpen = false; }
 
   onEdit() {
     this.optionsOpen = false;
