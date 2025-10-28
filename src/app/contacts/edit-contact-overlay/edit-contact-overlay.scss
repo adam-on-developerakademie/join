@@ -13,35 +13,39 @@
 
 .modal-container {
   display: flex;
-  width: auto;
-  height: auto;
-  background: white;
+  width: 1212px;  
+  height: 592px;   
+  align-items: stretch;
+  background: #F6F7F8;
   border-radius: 30px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .left-side {
-  background-color: #2a3647;
-  width: 453px;
-  height: 594.5px;
-  padding: 0;
+  background-color: #2A3647; 
+  width: 453px;    
+  height: 594px;   
+  padding: 0 45.4px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: flex-start;
   position: relative;
   color: white;
+  border-radius: 30px 0 0 30px;
+  flex-shrink: 0;  
 
   .logo {
     width: 53.93px;
     height: 66.48px;
-    position: absolute;
-    top: 154px;
-    left: 45.4px;
+    margin-bottom: 32px;
 
-    svg {
+    img {
       width: 100%;
       height: 100%;
+      display: block;
     }
   }
 
@@ -49,41 +53,63 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    position: absolute;
-    top: 252.5px;
-    left: 45.4px;
   }
 
   .title {
     width: 361px;
     height: 73px;
     font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 61px;
-    line-height: 120%;
-    letter-spacing: 0%;
-    color: #ffffff;
+    font-weight: 700; 
+    font-size: 61px; 
+    line-height: 120%; 
+    color: #FFFFFF; 
     margin: 0;
   }
 
   .title-underline {
     width: 90px;
-    height: 3px;
-    background-color: #29abe2;
-    transform: rotate(0deg);
-    align-self: flex-start;
+    height: 3px; 
+    background-color: #29ABE2;
+  }
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #FF8A00 0%, #FF5C00 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  left: 513px;  
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  .initials {
+    font-family: 'Inter', sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: white;
   }
 }
 
 .right-side {
-  width: auto;
-  min-width: 500px;
+  width: 759px;   
+  height: 594px;  
   padding: 50px 60px;
+  padding-left: 120px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f6f7f8;
+  justify-content: center;  
+  background: #F6F7F8;
+  border-radius: 0 30px 30px 0;
+  flex-shrink: 0;  
 
   .close-btn {
     position: absolute;
@@ -94,29 +120,20 @@
     cursor: pointer;
     padding: 5px;
     transition: transform 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       transform: scale(1.1);
     }
-  }
 
-  .avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: linear-gradient(180deg, #ff8a00 0%, #ff5c00 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-    border: 3px solid white;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-    .initials {
-      font-family: 'Inter', sans-serif;
-      font-size: 48px;
-      font-weight: 500;
-      color: white;
+    img {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
   }
 
@@ -131,7 +148,7 @@
       input {
         width: 100%;
         padding: 15px 50px 15px 20px;
-        border: 1px solid #d1d1d1;
+        border: 1px solid #D1D1D1;
         border-radius: 10px;
         font-size: 16px;
         font-family: 'Inter', sans-serif;
@@ -139,11 +156,11 @@
         transition: border-color 0.3s;
 
         &:focus {
-          border-color: #29abe2;
+          border-color: #29ABE2;
         }
 
         &::placeholder {
-          color: #d1d1d1;
+          color: #D1D1D1;
         }
       }
 
@@ -153,6 +170,9 @@
         top: 50%;
         transform: translateY(-50%);
         pointer-events: none;
+        width: 20px;
+        height: 20px;
+        display: block;
       }
     }
 
@@ -174,21 +194,31 @@
         display: flex;
         align-items: center;
         gap: 8px;
+
+        img {
+          width: 16px;
+          height: 16px;
+          display: block;
+        }
       }
 
       .btn-delete {
         background: transparent;
-        color: #2a3647;
-        border: 1px solid #2a3647;
+        color: #2A3647;
+        border: 1px solid #2A3647;
 
         &:hover {
-          background: #2a3647;
+          background: #2A3647;
           color: white;
+
+          img {
+            filter: brightness(0) invert(1);
+          }
         }
       }
 
       .btn-save {
-        background: #2a3647;
+        background: #2A3647;
         color: white;
 
         &:hover {
@@ -200,19 +230,14 @@
   }
 }
 
-@media (max-width: 1440px) {
-  .overlay-edit-contact {
-    display: none;
-  }
-}
-
-@media (max-width: 1439px) {
-  .modal-container {
-    display: none;
-  }
-}
-
 // Responsive Design
+@media (max-width: 1280px) {
+  .modal-container {
+    width: 95%;
+    height: auto;
+  }
+}
+
 @media (max-width: 968px) {
   .modal-container {
     flex-direction: column;
@@ -222,10 +247,20 @@
     overflow-y: auto;
   }
 
+  .avatar {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin-top: -60px;
+    margin-bottom: 30px;
+  }
+
   .left-side {
     width: 100%;
     height: auto;
     padding: 30px;
+    border-radius: 30px 30px 0 0;
 
     .logo {
       width: 40px;
@@ -242,18 +277,10 @@
 
   .right-side {
     width: 100%;
-    min-width: unset;
+    height: auto;
     padding: 30px;
-
-    .avatar {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 30px;
-
-      .initials {
-        font-size: 36px;
-      }
-    }
+    padding-top: 70px;
+    border-radius: 0 0 30px 30px;
   }
 }
 
@@ -278,6 +305,7 @@
 
   .right-side {
     padding: 20px;
+    padding-top: 70px;
 
     .close-btn {
       top: 15px;
@@ -287,6 +315,7 @@
     .avatar {
       width: 80px;
       height: 80px;
+      margin-top: -40px;
       margin-bottom: 20px;
 
       .initials {
@@ -301,6 +330,11 @@
         input {
           padding: 12px 40px 12px 15px;
           font-size: 14px;
+        }
+
+        .input-icon {
+          width: 16px;
+          height: 16px;
         }
       }
 
@@ -344,10 +378,12 @@
 
   .right-side {
     padding: 15px;
+    padding-top: 60px;
 
     .avatar {
       width: 70px;
       height: 70px;
+      margin-top: -35px;
       margin-bottom: 15px;
 
       .initials {
@@ -366,8 +402,8 @@
 
         .input-icon {
           right: 12px;
-          width: 16px;
-          height: 16px;
+          width: 14px;
+          height: 14px;
         }
       }
 
@@ -377,6 +413,11 @@
         button {
           padding: 12px 20px;
           font-size: 14px;
+
+          img {
+            width: 14px;
+            height: 14px;
+          }
         }
       }
     }
