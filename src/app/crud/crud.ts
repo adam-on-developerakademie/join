@@ -53,6 +53,7 @@ export class CRUD {
     this.contact.name = "";
     this.contact.surname = "";
     this.contact.email = "";
+    this.contact.phone = "";
   }
 
 }

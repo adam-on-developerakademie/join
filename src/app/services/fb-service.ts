@@ -115,9 +115,6 @@ export class FbService {
     return this.currentContact;
   }
 
-  setShowEditContact(show: boolean=false) {
-    this.showEditContact = show;
-    console.log('Show Edit Contact:', this.showEditContact);
-  }
+
 
 }

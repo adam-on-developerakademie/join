@@ -1,14 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IContact } from '../../interfaces/i-contact';
 import { FbService } from '../../services/fb-service';
 
-export interface Contact {
-    id?: string;
-    name: string;
-    email: string;
-    phone: string;
-}
 
 @Component({
     selector: 'app-edit-contact-overlay',
@@ -22,24 +17,14 @@ export interface Contact {
 export class EditContactOverlayComponent {
     showEditContact: boolean = false;
 
-    constructor(private fbService: FbService) { }
+    constructor(private fbService: FbService) { this.getCurrentContact() }
 
+    contact: IContact = { name: '', surname: '', email: '', phone: '' };
 
-    @Input() contact: Contact = {
-        name: '',
-        email: '',
-        phone: ''
-    };
-
-    @Output() close = new EventEmitter<void>();
-    @Output() save = new EventEmitter<Contact>();
-    @Output() delete = new EventEmitter<void>();
-
-    editedContact: Contact = { ...this.contact };
+    editedContact: IContact = { ...this.contact };
 
     ngOnChanges() {
         this.editedContact = { ...this.contact };
-        this.showEditContact = this.fbService.showEditContact;
     }
 
     getInitials(): string {
@@ -51,21 +36,24 @@ export class EditContactOverlayComponent {
     }
 
     onClose() {
-        this.close.emit();
+        this.fbService.showEditContact = false;
     }
 
-    onSave() {
-        this.save.emit(this.editedContact);
-    }
-
-    onDelete() {
-        this.delete.emit();
+    delContact() {
+        this.fbService.contactsArray.length > 0 && this.fbService.contactsGroups.length > 0 &&
+            this.fbService.contactsArray.length > this.fbService.id ? this.fbService.delContact(this.fbService.id) : null;
     }
 
     getShowEditContact() {
         return this.fbService.showEditContact;
     }
 
+    upContact() {
+        this.fbService.updateContact(this.fbService.id, this.editedContact);
+        this.fbService.showEditContact = false;
+    }
 
-
+    getCurrentContact() {
+        this.editedContact = { ...this.fbService.currentContact };
+    }
 }
