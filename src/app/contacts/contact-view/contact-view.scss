@@ -93,3 +93,12 @@
   bottom: calc(96px + 56px + 12px); /* FAB-Unterkante + FAB-Höhe + Luft */
   z-index: 4200;                    /* höher als FAB & Bottom-Nav */
 }
+
+/* Nur mobil zeigen (wie Figma) */
+@media (min-width: 901px) {
+  .fab,
+  .options-anchor {
+    display: none !important;
+  }
+}
+

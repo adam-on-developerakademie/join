@@ -1,3 +1,4 @@
+// src/app/contacts/contact-options/contact-options.ts
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,22 +7,37 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './contact-options.html',
-  styleUrl: './contact-options.scss'
+  styleUrls: ['./contact-options.scss'],
 })
 export class ContactOptionsComponent {
-  /** Inline = ohne Vollbild-Overlay, Panel wird am Parent positioniert */
+  /** ID des Kontakts, auf den sich die Optionen beziehen */
+  @Input() contactId!: string;
+
+  /** Wenn true: nur das Panel ohne Backdrop rendern (inline neben den 3 Punkten) */
   @Input() inline = false;
 
-  @Output() close  = new EventEmitter<void>();
-  @Output() edit   = new EventEmitter<void>();
-  @Output() delete = new EventEmitter<void>();
+  /** Events für Parent */
+  @Output() edit = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<string>();
+  @Output() close = new EventEmitter<void>();
 
-  onBackdropClick(e: MouseEvent){
-    if (this.inline) return;          // im Inline-Modus kein Backdrop
-    const t = e.target as HTMLElement;
-    if (t.classList.contains('overlay')) this.close.emit();
+  onEdit(): void {
+    // immer emitten, auch wenn contactId leer ist
+    this.edit.emit(this.contactId ?? '');
   }
 
-  onEdit(){ this.edit.emit(); }
-  onDelete(){ this.delete.emit(); }
+  onDelete(): void {
+    // immer emitten, auch wenn contactId leer ist
+    this.delete.emit(this.contactId ?? '');
+  }
+
+  /** Backdrop-Klick nur schließen, wenn nicht inline */
+  onBackdropClick(ev: MouseEvent): void {
+    if (this.inline) return;
+    const target = ev.target as HTMLElement;
+    // Nur schließen, wenn wirklich der Backdrop (overlay) angeklickt wurde:
+    if (target.classList.contains('overlay')) {
+      this.close.emit();
+    }
+  }
 }
