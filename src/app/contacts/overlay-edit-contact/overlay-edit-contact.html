@@ -8,35 +8,41 @@
   </section>
 
   <!-- Avatar -->
-  <div class="avatar"><span>TW</span></div>
+  <div class="avatar" [style.background]="editedContact.color"><span>{{ editedContact.name.substring(0, 1) +
+      editedContact.surname.substring(0, 1) }}</span></div>
 
   <!-- Form -->
   <form class="form-fields">
     <label class="field">
-      <input type="text" value="Tatjana Wolf" />
+      <input type="text" [(ngModel)]="editedContact.name" name="name" placeholder="Name" required />
       <span class="icon i-person"></span>
     </label>
 
     <label class="field">
-      <input type="email" value="wolf@gmail.com" />
+      <input type="text" [(ngModel)]="editedContact.surname" name="surname" placeholder="Surname" required />
+      <span class="icon i-person"></span>
+    </label>
+
+    <label class="field">
+      <input type="email" [(ngModel)]="editedContact.email" name="email" placeholder="Email" required />
       <span class="icon i-mail"></span>
     </label>
 
     <label class="field">
-      <input type="tel" value="+49 2222 22 222 2" />
+      <input type="tel" [(ngModel)]="editedContact.phone" name="phone" placeholder="Phone" required />
       <span class="icon i-call"></span>
     </label>
   </form>
 
   <!-- Action Buttons -->
   <div class="buttons">
-    <button class="btn-cancel" type="button">Cancel</button>
-    <button class="btn-save" type="button">
+    <button class="btn-cancel" type="button" (click)="onClose()">Cancel</button>
+    <button class="btn-save" type="button" (click)="upContact()">
       <span>Save</span>
       <span class="icon-check"></span>
     </button>
   </div>
 
   <!-- Close icon -->
-  <button class="btn-close" type="button" aria-label="Close"></button>
+  <button class="btn-close" type="button" aria-label="Close" (click)="onClose()"></button>
 </div>

@@ -32,7 +32,6 @@
       }
     </div>
   </section>
-  <app-edit-contact-overlay></app-edit-contact-overlay>
 
   <!-- Rechtes Panel (Heading) - auf Mobile ausblenden -->
   <section class="detail-panel">
@@ -54,11 +53,12 @@
 <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
+
 @if (showEditContact()) {
 <!-- Overlay Edit Contact -->
 <app-edit-contact-overlay></app-edit-contact-overlay>
+<app-overlay-edit-contact></app-overlay-edit-contact>
 }
 
 <!-- Toast (außerhalb des @if) -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
-
