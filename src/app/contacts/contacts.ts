@@ -1,9 +1,6 @@
-import { Router } from '@angular/router';
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';                 // ← NEU: für routerLink
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
@@ -12,6 +9,7 @@ import { ContactCreatedToast } from './contact-created-toast/contact-created-toa
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
 import { ContactSuccessToastComponent } from './contact-success-toast/contact-success-toast';
+import { ContactViewComponent } from './contact-view/contact-view'; // vorhandener Ordner
 
 @Component({
   selector: 'app-contacts',
@@ -19,11 +17,11 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,                           // ← NEU
     AddContactComponent,
     EditContactOverlayComponent,
     OverlayEditContactComponent,
-    ContactCreatedToast
+    ContactCreatedToast,
+    ContactViewComponent
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
@@ -39,7 +37,10 @@ export class Contacts {
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-constructor(private fbService: FbService, private router: Router) {}
+  // NEU
+  selectedContactIndex: number | null = null;
+
+  constructor(private fbService: FbService) {}
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -91,18 +92,23 @@ constructor(private fbService: FbService, private router: Router) {}
 
   onContactCreated() {
     this.showAddContact = false;
-
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastOpen = true;
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
 
-showContact(id: number) {
-  this.fbService.id = id;
-  this.fbService.setCurrentContact(id);     // merkt Auswahl
-  this.router.navigate(['/contacts', id]);  // ← PROGRAMMATISCHE NAVIGATION
-}
-  // === Optionen + Edit Overlays (deine bestehenden States) ===
+  // Kontakt anzeigen (als Overlay)
+  showContact(id: number) {
+    this.fbService.id = id;
+    this.fbService.setCurrentContact(id);
+    this.selectedContactIndex = id; // Overlay aktivieren
+  }
+
+  closeContactOverlay() {
+    this.selectedContactIndex = null;
+  }
+
+  // === Optionen + Edit Overlays ===
   optionsOpen = false;
   editContactOpen = false;
   editContact2Open = false;
@@ -131,6 +137,7 @@ showContact(id: number) {
     this.editContact2Open = false;
     this.toastOpen = false;
     this.optionsOpen = false;
+    this.selectedContactIndex = null;
   }
 
   showEditContact() {

@@ -16,6 +16,5 @@ export const routes: Routes = [
   { path: 'contacts/edit-2', component: OverlayEditContact2Component },
   { path: 'contacts/options', component: ContactOptionsComponent },
   { path: 'contacts/success', component: ContactSuccessToastComponent },
-  { path: 'contacts/:id', component: ContactViewComponent }, // ← NEU
 
 ];
