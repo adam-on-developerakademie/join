@@ -42,18 +42,19 @@
     </div>
   </article>
 
-  <!-- FAB mit 3 Punkten -->
-  <button class="fab" (click)="toggleOptions()" aria-label="More">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="5" cy="12" r="2" fill="#ffffff"/>
-      <circle cx="12" cy="12" r="2" fill="#ffffff"/>
-      <circle cx="19" cy="12" r="2" fill="#ffffff"/>
-    </svg>
-  </button>
+<!-- FAB -->
+<button class="fab" (click)="toggleOptions()" aria-label="More">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <circle cx="5" cy="12" r="2" fill="#ffffff"/>
+    <circle cx="12" cy="12" r="2" fill="#ffffff"/>
+    <circle cx="19" cy="12" r="2" fill="#ffffff"/>
+  </svg>
+</button>
 
-  <!-- Options Popup -->
+<!-- Options: inline an den FAB angedockt -->
+<div class="options-anchor" *ngIf="showOptions">
   <app-contact-options
-    *ngIf="showOptions"
+    [inline]="true"
     (close)="showOptions=false"
     (edit)="onEdit()"
     (delete)="onDelete()">

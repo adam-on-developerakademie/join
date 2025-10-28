@@ -72,22 +72,24 @@
 }
 
 /* FAB */
+/* FAB sitzt über der Bottom-Nav */
 .fab{
   position: fixed;
   right: 16px;
-  bottom: 96px; /* über deiner Bottom-Nav */
+  bottom: 96px;               /* Bottom-Nav = 80px → +16px Abstand */
   width: 56px; height: 56px;
   border-radius: 50%;
   background: var(--ink);
   border: none; cursor: pointer;
   box-shadow: 0 6px 12px rgba(0,0,0,.2);
   display: grid; place-items: center;
+  z-index: 4100;
 }
 
-/* Popup mountpoint – das eigentliche Panel steckt in app-contact-options */
-app-contact-options{
+/* Ankerpunkt direkt über dem FAB */
+.options-anchor{
   position: fixed;
   right: 16px;
-  bottom: 160px;
-  z-index: 4000;
+  bottom: calc(96px + 56px + 12px); /* FAB-Unterkante + FAB-Höhe + Luft */
+  z-index: 4200;                    /* höher als FAB & Bottom-Nav */
 }
