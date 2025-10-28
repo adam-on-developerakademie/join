@@ -4,7 +4,7 @@
       <div class="header-frame">
         <!-- Avatar circle -->
         <div class="avatar-container">
-          <div class="avatar-circle">
+          <div class="avatar-circle" [style.background]="currentContact.color">
             <span class="avatar-initials"> {{ currentContact.name.substring(0, 1) + currentContact.surname.substring(0, 1) }}</span>
           </div>
         </div>
@@ -18,7 +18,7 @@
           <!-- Action buttons -->
           <div class="actions-container">
             <!-- Edit button -->
-            <button class="edit-contact" (click)="onEdit()">
+            <button class="edit-contact" (click)="setEditContact()">
 <img src="assets/components/contact-card/edit.svg" alt="Edit contact button">
               <span>Edit</span>
             </button>

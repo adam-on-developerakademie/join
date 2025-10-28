@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'figma-header',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './figma-header.html',
   styleUrls: ['./figma-header.scss'],
 })

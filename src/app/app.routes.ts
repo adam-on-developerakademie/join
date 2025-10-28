@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import{CRUD} from './crud/crud';
-import { AddContactComponent } from './add-contact/add-contact';
+import { AddContactComponent } from './contacts/add-contact/add-contact';
 import { OverlayEditContactComponent } from './contacts/overlay-edit-contact/overlay-edit-contact';
 import { OverlayEditContact2Component } from './contacts/overlay-edit-contact-2/overlay-edit-contact-2';
 import { ContactOptionsComponent } from './contacts/contact-options/contact-options';

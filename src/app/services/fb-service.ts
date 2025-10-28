@@ -20,6 +20,7 @@ export class FbService {
   myContacts;
   contactsArray: IContact[] = [];
   contactsGroups: string[] = [];
+  showEditContact: boolean = false;
   id: number = 0;
   myData;
   data: any[] = [];
@@ -113,5 +114,7 @@ export class FbService {
     // console.log(id, this.contactsArray.length, this.currentContact);
     return this.currentContact;
   }
+
+
 
 }

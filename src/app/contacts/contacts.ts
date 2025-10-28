@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
-import { AddContactComponent } from '../add-contact/add-contact';
+import { AddContactComponent } from './add-contact/add-contact';
+import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact-overlay';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactOptionsComponent } from './contact-options/contact-options';
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
@@ -17,11 +18,8 @@ import { ContactSuccessToastComponent } from './contact-success-toast/contact-su
     CommonModule,
     FormsModule,
     AddContactComponent,
+    EditContactOverlayComponent,
     ContactCreatedToast,
-    ContactOptionsComponent,
-    OverlayEditContactComponent,
-    OverlayEditContact2Component,
-    ContactSuccessToastComponent,
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
@@ -32,13 +30,13 @@ export class Contacts {
 
   contact: IContact = {} as IContact;
   id = 0;
-  
+
 
   showAddContact = false;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
-  constructor(private fbService: FbService) {}
+  constructor(private fbService: FbService) { }
 
   getContactsGroups() {
     return this.fbService.contactsGroups;
@@ -75,9 +73,9 @@ export class Contacts {
 
   clearInput() {
     this.contact.name = '';
-    // @ts-ignore falls surname im Interface fehlt
     this.contact.surname = '';
     this.contact.email = '';
+    this.contact.phone = '';
   }
 
   showContactOverlay() {
@@ -85,23 +83,23 @@ export class Contacts {
   }
 
   onCloseOverlay() {
- //   this.showAddContact = false;
+    this.showAddContact = false;
   }
 
   onContactCreated() {
     // Overlay schließen
     this.showAddContact = false;
 
-  // Toast zeigen
-  if (this.toastTimer) clearTimeout(this.toastTimer);
-  this.toastOpen = true;
-  this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
-}
+    // Toast zeigen
+    if (this.toastTimer) clearTimeout(this.toastTimer);
+    this.toastOpen = true;
+    this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
+  }
 
-showContact(id: number) {
-  this.fbService.id=id;
-  this.fbService.setCurrentContact(id); 
-}
+  showContact(id: number) {
+    this.fbService.id = id;
+    this.fbService.setCurrentContact(id);
+  }
 
   // === NEU für Optionen + Edit Overlays ===
   optionsOpen = false;
@@ -138,4 +136,9 @@ showContact(id: number) {
     this.toastOpen = false;
     this.optionsOpen = false;
   }
+
+  showEditContact() {
+    return this.fbService.showEditContact;
+  }
+
 }
