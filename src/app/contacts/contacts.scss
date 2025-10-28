@@ -368,6 +368,9 @@ div.contact-row:hover {
     background: #fff; /* wie Figma Mobile-Karte */
     overflow: visible;
     scrollbar-width: auto;
+    .primary-contact {
+      display: none !important;
+    }
   }
   .list-panel__inner::-webkit-scrollbar {
     display: initial;
@@ -518,6 +521,9 @@ div.contact-row:hover {
     width: 400px;
     margin: 0 auto;
     padding: 24px 0;
+    .primary-contact {
+      display: none !important;
+    }
   }
 
   /* Zeilen/Divider/Letters 352px Breite */
@@ -550,6 +556,7 @@ div.contact-row:hover {
   .letter {
     font: 20px/1.2 Inter, system-ui, Arial, sans-serif;
     color: #2a3647;
+    top: 352px;
   }
   a.email {
     color: #007cee;
@@ -577,7 +584,7 @@ div.contact-row:hover {
 .contact-overlay-bg {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -591,13 +598,14 @@ div.contact-row:hover {
   width: 396px;
   max-width: 90%;
   padding: 24px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; } 
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-
-
