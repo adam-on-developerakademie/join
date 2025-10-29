@@ -1,33 +1,32 @@
 <div class="contacts-canvas">
   <section class="list-panel">
     <div class="list-panel__inner">
-      <button class="primary-contact" (click)="showContactOverlay()">
-        <span>Add new contact</span>
-        <img src="assets/components/contacts/add_contact.svg" alt="" />
-      </button>
+      <div class ="primary-contact-container">
+        <button class="primary-contact" (click)="showContactOverlay()">
+          <span>Add new contact</span>
+          <img src="assets/components/contacts/add_contact.svg" alt="" />
+        </button>
+      </div>
 
       @for (group of getContactsGroups(); track group) {
-        <p class="letter">{{ group }}</p>
-        <div class="divider"></div>
+      <p class="letter">{{ group }}</p>
+      <div class="divider"></div>
 
-        @for (item of getContacts(); track item) {
-          @if (item.name.charAt(0).toUpperCase() == group) {
-            <div class="contact-row" (click)="showContact($index)">
-              <div class="badge">
-                <div class="badge__circle" [style.background]="item.color"></div>
-                <div class="badge__initials">
-                  {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
-                </div>
-              </div>
+      @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
+      <div class="contact-row" (click)="showContact($index)">
+        <div class="badge">
+          <div class="badge__circle" [style.background]="item.color"></div>
+          <div class="badge__initials">
+            {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+          </div>
+        </div>
 
-              <div class="contact-row__text">
-                <div class="name">{{ item.name + ' ' + item.surname }}</div>
-                <div class="mail">{{ item.email }}</div>
-              </div>
-            </div>
-          }
-        }
-      }
+        <div class="contact-row__text">
+          <div class="name">{{ item.name + ' ' + item.surname }}</div>
+          <div class="mail">{{ item.email }}</div>
+        </div>
+      </div>
+      } } }
     </div>
   </section>
 
@@ -47,12 +46,12 @@
 
 <!-- Overlay Add Contact -->
 @if (showAddContact) {
-  <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
+<app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
 
 <!-- Desktop-Edit -->
 @if (editContactOpen) {
-  <app-edit-contact-overlay></app-edit-contact-overlay>
+<app-edit-contact-overlay></app-edit-contact-overlay>
 }
 
 <!-- MOBIL-Edit -->
@@ -72,15 +71,16 @@
 } -->
 <!-- Mobile-Kontakt-View -->
 @if (isMobile && selectedContactIndex !== null) {
-  <div class="contact-overlay-bg" (click)="closeContactOverlay()">
-    <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-      <app-contact-view
-        (close)="closeContactOverlay()"
-        (edit)="onEditFromView()"
-        (delete)="onDeleteFromView()">
-      </app-contact-view>
-    </div>
+<div class="contact-overlay-bg" (click)="closeContactOverlay()">
+  <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
+    <app-contact-view
+      (close)="closeContactOverlay()"
+      (edit)="onEditFromView()"
+      (delete)="onDeleteFromView()"
+    >
+    </app-contact-view>
   </div>
+</div>
 }
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
 

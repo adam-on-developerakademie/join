@@ -44,8 +44,8 @@
   justify-content: center;
   flex: 1;
   width: 100%;
-  padding-left: 52px;
-  padding-right: 16px;
+  padding-left: 20%;
+  padding-right: 20%;
   padding-top: 80px;
   gap: 15px;
   box-sizing: border-box;
@@ -65,6 +65,7 @@
 }
 .item:hover {
   background: #2f3b52;
+  transform: scale(1.02);
 }
 .item.active {
   background: #091931;
@@ -103,24 +104,22 @@
 }
 .link {
   display: block;
-  width: 100%;
+  width: 232px;
+  height: 35px;
   color: #a8a8a8;
   text-decoration: none;
   font-size: 13px;
   letter-spacing: 0.1px;
-  padding: 4px 12px;
   border-radius: 6px;
   transition: background 0.15s;
 }
 .link:hover {
-  background: #2f3b52;
+  color: #29abe2;
   text-decoration: none;
+  transform: scale(1.02);
 }
 
-/* Tablet-Phase: Sidebar bleibt sichtbar (schmalere --sidebar-w aus :root) */
-
-/* Mobile: komplett ausblenden */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .figma-sidenav {
     display: none;
   }
