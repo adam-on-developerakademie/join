@@ -20,8 +20,8 @@ import { ContactViewComponent } from './contact-view/contact-view';
     EditContactOverlayComponent,   // Desktop-Edit
     OverlayEditContactComponent,   // Mobile-Edit
     ContactCreatedToast,
-    ContactViewComponent,          // Mobile-Contact-View (Overlay)
-    ContactOptionsComponent
+    //ContactViewComponent,          // Mobile-Contact-View (Overlay)
+    //ContactOptionsComponent
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
