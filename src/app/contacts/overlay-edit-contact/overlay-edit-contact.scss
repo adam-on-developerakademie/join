@@ -1,0 +1,109 @@
+/* ===== Backdrop: fixed, volle Fläche, zentriert ===== */
+.mobile-edit-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4600; /* über Bottom-Nav & FAB */
+}
+
+/* ===== Dialog ===== */
+.overlay-edit-contact{
+  position: relative;
+  width: min(396px, 94vw);
+  height: 760px;
+  max-height: 92vh;             /* nie aus dem Screen laufen */
+  background:#fff;
+  box-shadow:0 0 12px rgba(0,0,0,.2);
+  border-radius:30px;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  overflow: hidden;              /* Außen: Panel-Kanten bleiben sauber */
+}
+
+/* Scroll-Inhalt für kleine Displays */
+@supports (height: 100dvh) {
+  .overlay-edit-contact{ max-height: 92dvh; }
+}
+
+/* ===== Dark Panel ===== */
+.panel-dark{
+  position:absolute;left:0;top:0;width:100%;height:351px;
+  background:#2A3647;
+  padding:66px 24px;display:flex;flex-direction:column;gap:12px;
+}
+.panel-dark h1{ margin:0;font-weight:700;font-size:47px;line-height:56px;color:#fff; }
+.divider{
+  position:absolute;right:-90px;top:14px;width:0;height:90px;
+  border:3px solid #29ABE2;transform:rotate(90deg);
+}
+
+/* ===== Avatar ===== */
+.avatar{
+  position:absolute;left:50%;top:292px;transform:translateX(-50%);
+  width:120px;height:120px;border-radius:70px;
+  border:3px solid #fff;background:#FFC700;
+  box-shadow:0 0 4px rgba(0,0,0,.1);
+  display:grid;place-items:center;font-size:47px;color:#fff;font-weight:500;
+}
+
+/* ===== Form Fields ===== */
+.form-fields{
+  position:absolute;left:16px;top:444px;width:calc(100% - 32px);
+  display:flex;flex-direction:column;gap:15px;
+}
+.field{ position:relative;width:100%;height:41px; }
+.field input{
+  width:100%;height:100%;
+  padding:13px 21px;border:1px solid #D1D1D1;border-radius:10px;
+  font-size:20px;line-height:24px;color:#000;
+}
+.field .icon{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  width:24px;height:24px;background:#A8A8A8;border-radius:3px;
+}
+
+/* ===== Buttons ===== */
+.buttons{
+  position:absolute;left:50%;top:647px;transform:translateX(-50%);
+  display:flex;gap:20px;align-items:center;
+}
+.btn-cancel{
+  width:82px;height:51px;border:1px solid #2A3647;
+  border-radius:10px;background:#fff;
+  color:#2A3647;font-size:20px;cursor:pointer;
+}
+.btn-save{
+  width:99px;height:51px;border:0;border-radius:10px;
+  background:#2A3647;color:#fff;font-weight:700;font-size:21px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  cursor:pointer;
+}
+.icon-check{width:24px;height:24px;background:#fff;border-radius:3px;}
+
+/* ===== Close (unsichtbare Klickfläche wie Figma) ===== */
+.btn-close{
+  position:absolute;right:16px;top:24px;
+  width:32px;height:32px;border-radius:50%;border:0;
+  background:#2A3647;opacity:0;
+}
+
+/* ===== Sichtbarkeit je nach Breakpoint ===== */
+/* Mobile & Tablet zeigen (<= 1439px) */
+@media (max-width: 1439px) {
+  .mobile-edit-backdrop{ display: flex; }
+}
+/* Desktop verstecken (Desktop nutzt den großen Edit-Overlay) */
+@media (min-width: 1440px) {
+  .mobile-edit-backdrop{ display: none !important; }
+}
+
+/* Kleinere Phones: etwas kompakter */
+@media (max-width: 428px){
+  .overlay-edit-contact{ width: 100vw; border-radius: 20px; }
+  .panel-dark{ height: 328px; padding: 52px 20px; }
+  .avatar{ top: 276px; }
+  .form-fields{ top: 418px; }
+  .buttons{ top: 626px; }
+}

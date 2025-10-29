@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* Vollbild-Overlay (nur wenn !inline) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 4500;
+}
+
+/* Panel – kann im Overlay oder inline benutzt werden */
+.panel {
+  width: 116px; /* Figma */
+  background: #ffffff;
+  border-radius: 20px 20px 0 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); /* "stronger" */
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+
+  /* Wenn im Overlay gerendert, unten rechts am Bildschirm andocken */
+  .overlay & {
+    position: absolute;
+    right: 16px;
+    bottom: calc(96px + 56px + 12px); /* gleiche Position wie Inline-Anker */
+    z-index: 4550;
+  }
+  animation: slideIn 0.15s ease !important;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.row {
+  height: 40px;
+  width: 96px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #2a3647;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.row:hover {
+  background: #f6f7f8;
+}
