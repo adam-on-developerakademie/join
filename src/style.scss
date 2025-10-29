@@ -1,10 +1,10 @@
-:root{
-  --bg: #F6F7F8;
-  --topbar-bg: #FFFFFF;
-  --sidebar-bg: #2A3647;
-  --ink: #2A3647;
-  --ink-muted: #CDCDCD;
-  --accent: #29ABE2;
+:root {
+  --bg: #f6f7f8;
+  --topbar-bg: #ffffff;
+  --sidebar-bg: #2a3647;
+  --ink: #2a3647;
+  --ink-muted: #cdcdcd;
+  --accent: #29abe2;
 
   --header-h: 96px;
   --sidebar-w: 232px;
@@ -13,14 +13,14 @@
   --z-header: 1500;
 }
 
-@media (max-width: 1024px){
-  :root{
+@media (max-width: 1024px) {
+  :root {
     --sidebar-w: 200px;
     --header-h: 96px;
   }
 }
-@media (max-width: 768px){
-  :root{
+@media (max-width: 768px) {
+  :root {
     --sidebar-w: 0px;
     --header-h: 80px;
   }
@@ -28,10 +28,11 @@
 
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
 }
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   background: var(--bg);
@@ -39,34 +40,71 @@ html, body{
   color: #000;
   scroll-behavior: smooth;
 }
-img{ max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 /* Keine pauschale header/main/section/footer-Formatierung mehr! */
 /* Seiten-Container sollen ihre eigenen Layouts haben. */
 
 /* ===== Utilities ===== */
-.d-none { display: none !important; }
-.cursor-pointer { cursor: pointer; }
-.flex-center { display:flex; justify-content:center; align-items:center; }
+.d-none {
+  display: none !important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* ===== Checkbox (deine bestehende Logik) ===== */
-.accept-checkbox{
-  display:flex; justify-content:center; align-items:center; gap:4px;
+.accept-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
-.accept-me{ content: url('/assets/img/blue-checkbox.svg'); appearance: none; }
-.accept-me:hover{ content: url('/assets/img/blue-checkbox-hover.svg'); }
-.accept-me:checked{ content: url('/assets/img/blue-checkbox-checked.svg'); }
-.accept-me:checked:hover{ content: url('/assets/img/blue-checkbox-checked-hover.svg'); }
-.accept-checkbox span{ margin-left: 8px; }
-.accept-checkbox a{
-  color:#005dff; text-decoration:none; margin-left:8px; margin-right:4px;
+.accept-me {
+  content: url('/assets/img/blue-checkbox.svg');
+  appearance: none;
 }
-.accept-checkbox a:hover{
-  font-weight:600; text-decoration-line:underline; margin-left:3px;
+.accept-me:hover {
+  content: url('/assets/img/blue-checkbox-hover.svg');
+}
+.accept-me:checked {
+  content: url('/assets/img/blue-checkbox-checked.svg');
+}
+.accept-me:checked:hover {
+  content: url('/assets/img/blue-checkbox-checked-hover.svg');
+}
+.accept-checkbox span {
+  margin-left: 8px;
+}
+.accept-checkbox a {
+  color: #005dff;
+  text-decoration: none;
+  margin-left: 8px;
+  margin-right: 4px;
+}
+.accept-checkbox a:hover {
+  font-weight: 600;
+  text-decoration-line: underline;
+  margin-left: 3px;
 }
 
-@media (max-width: 900px){
-  .main{ padding-bottom: 88px; } 
+@media (max-width: 950px) {
+  .main {
+    padding-bottom: 88px;
+  }
 }
 
-html, body { min-height: 100dvh; }
+html,
+body {
+  min-height: 100dvh;
+    font-family: 'Inter';
+    font-size:14px;
+}

@@ -1,6 +1,5 @@
 //TODO: .list-panel / list-panel__inner Doppelung entfernen
 //TODO: .contact-row / .contact-row__text Doppelung entfernen
-//TODO: button muss sticky top sein bei scroll in list-panel
 :host {
   display: block;
 }
@@ -81,44 +80,44 @@
 }
 
 .list-panel__inner {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  height: 1188px;
+  max-height: 90.33dvh;
+  div {
+    .primary-contact {
+      width: 352px;
+      height: 56px;
+      margin: 0;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #2a3647;
+      color: #fff;
+      border: 1px solid #2a3647;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 21px;
+      cursor: pointer;
+    }
+    .primary-contact:hover {
+      background-color: #29abe2;
+      border-style: none;
+      box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+.primary-contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: sticky;
+  top: 0;
+  left: 52px;
+  right: 52px;
   background: #fff;
-  padding: 32px 24px;
-  overflow-y: auto;
-  scrollbar-width: none;
-}
-
-.list-panel__inner::-webkit-scrollbar {
-  display: none;
-}
-
-.list-panel__inner {
-  .primary-contact {
-    width: 352px;
-    height: 56px;
-    margin: 0 auto 17px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    background: #2a3647;
-    color: #fff;
-    border: 1px solid #2a3647;
-    border-radius: 10px;
-    font-weight: 700;
-    font-size: 21px;
-    cursor: pointer;
-  }
-  .primary-contact:hover {
-    background-color: #29abe2;
-    border-style: none;
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
-  }
+  z-index: 10;
+  width: 456px;
+  height: 105px;
 }
 
 .primary-contact .plus {
@@ -127,6 +126,7 @@
 }
 
 .letter {
+  width: 20px;
   padding: 17px 36px 0;
   font-size: 20px;
   color: #000;
@@ -223,7 +223,7 @@ div.contact-row:active {
 
   .list-panel {
     position: static;
-    left: auto;
+    left: 232px;
     top: auto;
     width: 100%;
     height: auto;
@@ -257,12 +257,12 @@ div.contact-row:active {
   .divider,
   .contact-row {
     width: 352px;
-    max-width: 100%;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
   }
 
   .primary-contact {
+    position: relative;
     height: 56px;
     border-radius: 10px;
     margin-bottom: 16px;
@@ -328,47 +328,40 @@ div.contact-row:active {
 
 .blue_line {
   background-color: #007cee;
-} /* Alias für bestehende Klasse */
+}
 
-@media (max-width: 1300px) {
+@media (max-width: 1350px) {
   .heading {
     display: none !important;
   }
   .list-panel,
   .list-panel__inner {
-    width: 100%;
+    width: 74dvw;
+  }
+  .primary-contact-container {
+    left: 0;
+    width: 74dvw;
+  }
+  h2{
+    font-size: small;
   }
 }
 
-/* Mobile Container exakt wie Figma: 400px innen, 24px Padding */
-@media (max-width: 900px) {
-  .contacts-canvas,
-  .contacts-page,
+@media (max-width: 950px) {
   .list-panel,
-  .detail-panel {
-    width: 100%;
-    max-width: 428px; /* Außenrahmen */
-    margin: 0 auto;
-    background: transparent;
+  .list-panel__inner {
+    width: 100dvw;
+    top: 0;
+    left: 0;
   }
 
-  /* Divider, Zeilen, Avatar usw. sind schon bei dir gestylt;
-     stelle sicher: Zeilenbreite 352px + 24px Seitenabstand */
-  .contact-row,
-  .divider,
-  .letter {
-    width: 352px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 900px) {
   /* Außenrahmen wie Figma: 428px */
   :host,
   .contacts-canvas,
   .contacts-page {
-    max-width: 428px;
+    width: 100dvw;
+    top: 0;
+    left: 0;
     margin: 0 auto;
   }
 
@@ -379,7 +372,9 @@ div.contact-row:active {
 
   /* Innen 400px, 24px Padding oben/unten */
   .list-panel__inner {
-    width: 400px;
+    width: 100dvw;
+    top: 0;
+    left: 0;
     margin: 0 auto;
     padding: 24px 0;
     .primary-contact {
@@ -391,7 +386,7 @@ div.contact-row:active {
   .contact-row,
   .divider,
   .letter {
-    width: 352px;
+    width: 100dvw;
     margin-left: auto;
     margin-right: auto;
   }
@@ -425,11 +420,11 @@ div.contact-row:active {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .fab {
     position: fixed;
     right: 16px;
-    bottom: 96px; /* etwas über der Bottom-Nav (80px) */
+    bottom: 96px;
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -441,7 +436,7 @@ div.contact-row:active {
     place-items: center;
   }
 }
-/* ===== Overlay ContactView ===== */
+
 .contact-overlay-bg {
   position: fixed;
   inset: 0;
@@ -461,7 +456,6 @@ div.contact-row:active {
   padding: 24px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 @keyframes fadeIn {
   from {
     opacity: 0;

@@ -18,8 +18,7 @@
   padding-left: var(--sidenav-w);
 }
 
-/* ===== Mobile ≤900px ===== */
-@media (max-width: 900px){
+@media (max-width: 950px){
   .sidenav{ display: none; }
   .main{
     padding-top: var(--header-h-mobile);
