@@ -347,18 +347,30 @@ div.contact-row:active {
 @media (max-width: 900px) {
   .list-panel,
   .list-panel__inner {
-    width: 100dvw;
-    top: 0;
+    width: 60dvw;
+  }
+  .primary-contact-container {
     left: 0;
+    display:none;
   }
 
+  /* Divider, Zeilen, Avatar usw. sind schon bei dir gestylt;
+     stelle sicher: Zeilenbreite 352px + 24px Seitenabstand */
+  .contact-row,
+  .divider,
+  .letter {
+    width: 352px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 900px) {
   /* Außenrahmen wie Figma: 428px */
   :host,
   .contacts-canvas,
   .contacts-page {
-    width: 100dvw;
-    top: 0;
-    left: 0;
+    max-width: 428px;
     margin: 0 auto;
   }
 
@@ -369,9 +381,7 @@ div.contact-row:active {
 
   /* Innen 400px, 24px Padding oben/unten */
   .list-panel__inner {
-    width: 100dvw;
-    top: 0;
-    left: 0;
+    width: 400px;
     margin: 0 auto;
     padding: 24px 0;
     .primary-contact {
@@ -383,7 +393,7 @@ div.contact-row:active {
   .contact-row,
   .divider,
   .letter {
-    width: 100dvw;
+    width: 352px;
     margin-left: auto;
     margin-right: auto;
   }
