@@ -1,5 +1,5 @@
 <section>
-  <div class="floating-contact" [class.slideInFromRight]="setSlide()">
+  <div class="floating-contact" >
     <!-- Header section with avatar and name -->
     <div class="header-frame">
       <!-- Avatar circle -->
@@ -57,7 +57,3 @@
     </div>
   </div>
 </section>
-
-<!-- Overlays global am Card-Container montieren -->
-<app-edit-contact-overlay *ngIf="fbService.showEditContact && !isMobile"></app-edit-contact-overlay>
-<app-overlay-edit-contact *ngIf="fbService.showEditContact && isMobile"></app-overlay-edit-contact>

@@ -61,12 +61,12 @@
 @if (isMobile && selectedContactIndex !== null) {
 <div class="contact-overlay-bg" (click)="closeContactOverlay()">
   <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-    <app-contact-view
+<!--     <app-contact-view
       (close)="closeContactOverlay()"
       (edit)="onEditFromView()"
       (delete)="onDeleteFromView()"
     >
-    </app-contact-view>
+    </app-contact-view> -->
   </div>
 </div>
 }
