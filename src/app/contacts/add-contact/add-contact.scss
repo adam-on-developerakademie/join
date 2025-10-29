@@ -9,7 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 4000;
   animation: fadeIn 0.2s ease;
 }
 
@@ -64,6 +64,7 @@
   padding: 64px 48px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
@@ -239,8 +240,9 @@ h1 {
   flex: 1;
   
   &:hover {
-    background: #1a2332;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #29abe2;
+    border-style: none;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
   }
   
   svg path {
@@ -248,7 +250,6 @@ h1 {
   }
 }
 
-// Animation
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -258,11 +259,18 @@ h1 {
   }
 }
 
-// Responsive (falls nötig)
 @media (max-width: 1280px) {
   .add-contact-container {
     width: 90%;
     max-width: 1212px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .add-contact-container {
+    .right-section {
+      padding: 32px 64px 32px 32px;
+    }
   }
 }
 

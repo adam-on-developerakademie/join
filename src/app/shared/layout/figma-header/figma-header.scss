@@ -1,4 +1,3 @@
-/* === Host = fester Header === */
 :host {
   position: fixed;
   top: 0;
@@ -8,7 +7,6 @@
   z-index: var(--z-header, 1500);
 }
 
-/* === Sichtbarer Balken === */
 .wrap {
   position: relative;
 
@@ -19,25 +17,23 @@
   justify-content: space-between;
   gap: 24px;
 
-  /* Desktop: links Platz = 116px + Sidebarbreite */
   padding: 20px 40px 20px calc(116px + var(--sidebar-w, 232px));
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   font-family: Inter, system-ui, Arial, sans-serif;
 }
 
-/* Linksblock (J-Logo) */
 .left {
   display: flex;
   align-items: center;
 }
+
 .j-logo {
-  width: 24px; /* Figma-Proportionen */
+  width: 24px;
   height: 32px;
   object-fit: contain;
   display: block;
 }
 
-/* Titel absolut zentriert, damit links/rechts nichts verschiebt */
 .title {
   position: absolute;
   left: 96px;
@@ -48,15 +44,13 @@
   white-space: nowrap;
 }
 
-/* Rechte Seite */
 .right {
-  margin-left: auto; /* <-- sorgt dafür, dass rechts bleibt */
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-/* Help-Button */
 .help {
   width: 32px;
   height: 32px;
@@ -66,6 +60,7 @@
   cursor: pointer;
   position: relative;
 }
+
 .help-dot {
   position: absolute;
   inset: 0;
@@ -81,9 +76,12 @@
   background: #fff;
 }
 
-/* User */
 .user {
   position: relative;
+  .initials {
+    color:#29abe2;
+  }
+
 }
 .circle {
   width: 40px;
@@ -141,7 +139,6 @@
   background: #fdebea;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   .wrap {
     padding: 16px 24px 16px calc(72px + var(--sidebar-w, 232px));
@@ -149,7 +146,6 @@
   }
 }
 
-/* Mobile: kein Sidebar-Offset, 80px hoch, Titel ausgeblendet */
 @media (max-width: 900px) {
   :host {
     left: 0;
@@ -162,13 +158,18 @@
   }
   .title {
     display: none;
-  } /* Figma: kein Desktop-Titel auf Mobile */
+  }
   .j-logo {
     width: 24px;
     height: 32px;
-  } /* J links */
+  }
+  .right{
+    button{
+      display: none;
+    }
+  }
 }
-/* ===== Sichtbarkeit nur auf Mobile ===== */
+
 .mobile-only {
   display: none;
 }
