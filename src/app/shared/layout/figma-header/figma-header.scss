@@ -84,8 +84,8 @@
 
 }
 .circle {
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #2a3647;
@@ -167,6 +167,10 @@
     button{
       display: none;
     }
+  }
+  .circle {
+    width: 40px;
+    height: 40px;
   }
 }
 
