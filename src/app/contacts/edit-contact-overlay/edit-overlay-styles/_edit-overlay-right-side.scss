@@ -1,0 +1,230 @@
+.right-side {
+  width: 759px;
+  height: 592px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F6F7F8;
+  border-radius: 0 30px 30px 0;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  @media (max-width: 1480px) {
+    width: 396px;
+    height: 409px;
+    min-height: 409px;
+    max-height: 409px;
+    flex: 0 0 409px;
+    padding: 0;
+    border-radius: 0 0 30px 30px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 450px) {
+    width: 100%;
+    height: auto;
+    min-height: 380px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  @media (max-width: 400px) {
+    min-height: 380px;
+  }
+
+  @media (max-width: 350px) {
+    min-height: 380px;
+  }
+
+  @media (max-width: 320px) {
+    min-height: 370px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 48px;
+    right: 48px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s;
+    width: 32px;
+    height: 32px;
+    border-radius: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 1480px) {
+      display: none;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    img {
+      width: 32px;        
+      height: 32px;       
+      display: block;
+    }
+  }
+
+  .contact-form {
+    position: absolute;
+    top: 137px;
+    left: 289px;  
+    width: 422px;  
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @media (max-width: 1480px) {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 93px;
+      width: 364px;
+      height: auto;
+      bottom: 145px;
+      gap: 16px;
+      padding: 0;
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    @media (max-width: 450px) {
+      left: 16px;
+      right: 16px;
+      width: auto;
+      top: 80px;
+      bottom: 130px;
+      gap: 14px;
+    }
+
+    @media (max-width: 400px) {
+      left: 14px;
+      right: 14px;
+      top: 75px;
+      bottom: 125px;
+      gap: 12px;
+    }
+
+    @media (max-width: 350px) {
+      left: 12px;
+      right: 12px;
+      top: 70px;
+      bottom: 120px;
+      gap: 12px;
+    }
+
+    @media (max-width: 320px) {
+      left: 12px;
+      right: 12px;
+      top: 65px;
+      bottom: 115px;
+      gap: 10px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 0;
+      width: 100%;
+
+      input {
+        width: 100%;
+        padding: 15px 50px 15px 20px;
+        border: 1px solid #D1D1D1;
+        border-radius: 10px;
+        font-size: 16px;
+        font-family: 'Inter', sans-serif;
+        outline: none;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+
+        &:focus {
+          border-color: #29ABE2;
+        }
+
+        &::placeholder {
+          color: #D1D1D1;
+        }
+
+        @media (max-width: 1480px) {
+          padding: 11px 40px 11px 15px;
+          font-size: 13px;
+          border-radius: 8px;
+        }
+
+        @media (max-width: 450px) {
+          padding: 10px 36px 10px 12px;
+          font-size: 12px;
+          border-radius: 7px;
+        }
+
+        @media (max-width: 400px) {
+          padding: 9px 34px 9px 11px;
+          font-size: 11px;
+        }
+
+        @media (max-width: 350px) {
+          padding: 8px 32px 8px 10px;
+          font-size: 11px;
+        }
+
+        @media (max-width: 320px) {
+          padding: 8px 30px 8px 10px;
+          font-size: 10px;
+        }
+      }
+
+      .input-icon {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 20px;
+        height: 20px;
+        display: block;
+
+        @media (max-width: 1480px) {
+          right: 15px;
+          width: 17px;
+          height: 17px;
+        }
+
+        @media (max-width: 450px) {
+          right: 12px;
+          width: 15px;
+          height: 15px;
+        }
+
+        @media (max-width: 400px) {
+          right: 11px;
+          width: 14px;
+          height: 14px;
+        }
+
+        @media (max-width: 350px) {
+          right: 10px;
+          width: 13px;
+          height: 13px;
+        }
+
+        @media (max-width: 320px) {
+          right: 10px;
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}
