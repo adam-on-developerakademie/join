@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { FbService } from '../../services/fb-service';
 import { IContact } from  '../../interfaces/i-contact';
 
@@ -87,5 +87,31 @@ export class AddContactComponent {
     if (event.target === event.currentTarget) {
       this.closeOverlay();
     }
+  }
+
+  /** Prüft ob das gesamte Formular gültig ist, inkl. custom phone validation */
+  isFormValid(form: any): boolean {
+    // Standard Form-Validierung
+    if (form.invalid) {
+      return false;
+    }
+    
+    // Custom Phone-Validierung
+    if (this.hasInvalidPhoneFormat(this.contact.phone)) {
+      return false;
+    }
+    
+    // Custom Name/Surname-Kapitalisierung
+    if (this.hasInvalidCapitalization(this.contact.name) || 
+        this.hasInvalidCapitalization(this.contact.surname)) {
+      return false;
+    }
+    
+    // Custom Email-Format
+    if (this.hasInvalidEmailFormat(this.contact.email)) {
+      return false;
+    }
+    
+    return true;
   }
 }
