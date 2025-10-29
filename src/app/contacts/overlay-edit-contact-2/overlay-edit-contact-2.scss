@@ -149,8 +149,5 @@
   opacity: 0;
 }
 
-@media (max-width: 428px) {
-  .overlay-edit-contact-2 {
-    width: 100vw;
-  }
-}
+@media(max-width:428px){.overlay-edit-contact-2{width:100vw;}}
+@media(max-width: 2500px){.overlay-edit-contact-2{display: none;}}
