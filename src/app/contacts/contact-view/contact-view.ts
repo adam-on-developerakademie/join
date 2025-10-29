@@ -1,53 +1,61 @@
 // src/app/contacts/contact-view/contact-view.ts
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-
-import { ContactsStoreService, ContactItem } from '../../services/contacts-store.service';
 import { ContactOptionsComponent } from '../contact-options/contact-options';
 import { FbService } from '../../services/fb-service';
+import { OverlayEditContactComponent } from '../overlay-edit-contact/overlay-edit-contact';
+import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
 
 @Component({
   selector: 'app-contact-view',
   standalone: true,
-  imports: [CommonModule, RouterModule, ContactOptionsComponent],
+  imports: [CommonModule, ContactOptionsComponent, OverlayEditContactComponent, EditContactOverlayComponent],
   templateUrl: './contact-view.html',
-  styleUrl: './contact-view.scss',
+  styleUrls: ['./contact-view.scss'],
 })
 export class ContactViewComponent {
-  private route = inject(ActivatedRoute);
-  private store = inject(ContactsStoreService);
-  private fb = inject(FbService);
+  public fb = inject(FbService);
 
-  @Output() close = new EventEmitter<void>();  // ← NEU: für Overlay-Schließen
+  @Output() close  = new EventEmitter<void>();
+  @Output() edit   = new EventEmitter<void>();
+  @Output() delete = new EventEmitter<void>();
 
-  contact: ContactItem | null = null;
+  contact: any | null = null;
   showOptions = false;
 
   ngOnInit() {
-    const idx = Number(this.route.snapshot.paramMap.get('id') ?? -1);
-
-    let fromStore = this.store.getByIndex(idx)?.item ?? this.store.getSelected()?.item ?? null;
-    if (!fromStore) {
-      const arr = this.fb.contactsArray || [];
-      if (idx >= 0 && idx < arr.length) fromStore = arr[idx] as unknown as ContactItem;
-    }
-    if (!fromStore && (this.fb as any).currentContact) {
-      fromStore = (this.fb as any).currentContact as ContactItem;
-    }
-    this.contact = fromStore;
-
+    const idx = typeof this.fb.id === 'number' ? this.fb.id : -1;
+    const arr = this.fb.contactsArray || [];
+    let fromService: any | null = null;
+    if (idx >= 0 && idx < arr.length) fromService = arr[idx];
+    if (!fromService && this.fb.currentContact) fromService = this.fb.currentContact;
+    this.contact = fromService ?? null;
     if (!this.contact) this.goBack();
   }
 
-  // ← WICHTIG: innerer Pfeil triggert jetzt dieses Event
   goBack() { this.close.emit(); }
 
   toggleOptions() { this.showOptions = !this.showOptions; }
-  onEdit()  { this.showOptions = false; /* TODO */ }
-  onDelete(){ this.showOptions = false; /* TODO */ }
 
-  initials(c: ContactItem | null) {
+  // Mobile: Edit öffnet den mobilen (bzw. globalen) Edit-Overlay
+  onEdit() {
+    this.showOptions = false;
+    this.fb.showEditContact = true;   // Flag setzen → passende Edit-Komponente wird sichtbar
+    this.edit.emit();
+  }
+
+  // Mobile: Delete löscht und schließt Karte
+  onDelete() {
+    this.showOptions = false;
+    const idx = this.fb.id;
+    if (typeof idx === 'number') {
+      this.fb.delContact(idx);
+    }
+    this.delete.emit();
+    this.goBack();
+  }
+
+  initials(c: any | null) {
     if (!c) return '';
     const n = (c.name || '').trim();
     const s = (c.surname || '').trim();

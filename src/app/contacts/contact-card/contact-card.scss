@@ -10,14 +10,15 @@
   padding: 0px;
   gap: 21px;
   position: absolute;
-  height: 100dvh;
+  height: calc(1024px - 96px);
   left: 750px;
   top: 311px;
   font-family: 'Inter', sans-serif;
-  background: white;
+  background-color: #f6f7f8;
   border-radius: 8px;
   padding: 20px;
   animation: slideIn 0.15s ease !important;
+  overflow: hidden;
 }
 
 @keyframes slideIn {
@@ -157,6 +158,11 @@
 .edit-contact:hover,
 .delete-contact:hover {
   opacity: 0.7;
+  transform: translate(1%);
+  //TODO: change color of svg icon on hover
+  // img {
+  //   fill: #29abe2;
+  // }
 }
 
 .edit-contact {
@@ -330,10 +336,7 @@
     font-size: 32px;
   }
 }
-
-
 .slideInFromRight {
-  background-color: red;
   display: none;
   animation: slideIn 0.2s ease !important;
 
