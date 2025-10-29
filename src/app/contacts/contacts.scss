@@ -330,7 +330,7 @@ div.contact-row:active {
   background-color: #007cee;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1350px) {
   .heading {
     display: none !important;
   }
@@ -342,9 +342,12 @@ div.contact-row:active {
     left: 0;
     width: 74dvw;
   }
+  h2{
+    font-size: small;
+  }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .list-panel,
   .list-panel__inner {
     width: 100dvw;
@@ -417,7 +420,7 @@ div.contact-row:active {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .fab {
     position: fixed;
     right: 16px;

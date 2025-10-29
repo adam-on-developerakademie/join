@@ -10,8 +10,7 @@ figma-bottom-nav:host {
   display: none; /* Desktop aus */
 }
 
-/* Nur ≤900px anzeigen */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   figma-bottom-nav,
   figma-bottom-nav:host {
     display: block;

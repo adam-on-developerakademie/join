@@ -44,7 +44,7 @@ export class Contacts {
   editContact2Open = false;
 
   /** Responsive-Schalter: true = Mobile */
-  isMobile = window.innerWidth <= 900;
+  isMobile = window.innerWidth <= 950;
 
   constructor(public fbService: FbService) {}
 
@@ -52,7 +52,7 @@ export class Contacts {
   @HostListener('window:resize')
   onResize() {
     const wasMobile = this.isMobile;
-    this.isMobile = window.innerWidth <= 900;
+    this.isMobile = window.innerWidth <= 950;
     // Wenn von Mobile → Desktop gewechselt: mobile Overlays schließen
     if (wasMobile && !this.isMobile) {
       this.selectedContactIndex = null;
