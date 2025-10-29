@@ -13,7 +13,7 @@ import { FbService } from '../../services/fb-service';
 })
 export class ContactCard {
 
-  adamTestOn = false;
+  slide = false;
   currentContactId = -1;
   constructor(private fbService: FbService) { }
 
@@ -36,13 +36,13 @@ export class ContactCard {
   setSlide() {
 
     if (this.fbService.id != this.currentContactId) {
-      this.adamTestOn = true
+      this.slide = true
       setTimeout(() => {
         this.currentContactId = this.fbService.id;
-        this.adamTestOn = false
+        this.slide = false
       }, 100);
     }
-    return this.adamTestOn;
+    return this.slide;
 
   }
 }
