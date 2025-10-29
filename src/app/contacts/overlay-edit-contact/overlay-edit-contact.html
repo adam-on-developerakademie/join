@@ -14,32 +14,102 @@
     </div>
 
     <!-- Form -->
-    <form class="form-fields">
-      <label class="field">
-        <input type="text" [(ngModel)]="editedContact.name" name="name" placeholder="Name" required />
-        <span class="icon i-person"></span>
-      </label>
+    <form class="form-fields" #f="ngForm" novalidate>
+      <div class="field-wrapper">
+        <label class="field">
+          <input 
+            type="text" 
+            [(ngModel)]="editedContact.name" 
+            name="name" 
+            placeholder="Name" 
+            required 
+            #nameInput="ngModel"
+            [class.invalid]="nameInput.invalid && nameInput.touched" />
+          <span class="icon i-person"></span>
+        </label>
+        <div class="validation-message">
+          @if (nameInput.invalid && nameInput.touched) {
+            @if (nameInput.errors?.['required']) {
+              <span>Name ist ein Pflichtfeld.</span>
+            }
+          } @else if (nameInput.touched && hasInvalidCapitalization(editedContact.name)) {
+            <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+          }
+        </div>
+      </div>
 
-      <label class="field">
-        <input type="text" [(ngModel)]="editedContact.surname" name="surname" placeholder="Surname" required />
-        <span class="icon i-person"></span>
-      </label>
+      <div class="field-wrapper">
+        <label class="field">
+          <input 
+            type="text" 
+            [(ngModel)]="editedContact.surname" 
+            name="surname" 
+            placeholder="Surname" 
+            required 
+            #surnameInput="ngModel"
+            [class.invalid]="surnameInput.invalid && surnameInput.touched" />
+          <span class="icon i-person"></span>
+        </label>
+        <div class="validation-message">
+          @if (surnameInput.invalid && surnameInput.touched) {
+            @if (surnameInput.errors?.['required']) {
+              <span>Nachname ist ein Pflichtfeld.</span>
+            }
+          } @else if (surnameInput.touched && hasInvalidCapitalization(editedContact.surname)) {
+            <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+          }
+        </div>
+      </div>
 
-      <label class="field">
-        <input type="email" [(ngModel)]="editedContact.email" name="email" placeholder="Email" required />
-        <span class="icon i-mail"></span>
-      </label>
+      <div class="field-wrapper">
+        <label class="field">
+          <input 
+            type="email" 
+            [(ngModel)]="editedContact.email" 
+            name="email" 
+            placeholder="Email" 
+            required 
+            email
+            #emailInput="ngModel"
+            [class.invalid]="emailInput.invalid && emailInput.touched" />
+          <span class="icon i-mail"></span>
+        </label>
+        <div class="validation-message">
+          @if (emailInput.invalid && emailInput.touched) {
+            @if (emailInput.errors?.['required']) {
+              <span>Email ist ein Pflichtfeld.</span>
+            } @else if (emailInput.errors?.['email']) {
+              <span>Bitte geben Sie eine gültige Email-Adresse ein.</span>
+            }
+          } @else if (emailInput.touched && hasInvalidEmailFormat(editedContact.email)) {
+            <span>Email muss das Format name@domain.endung haben.</span>
+          }
+        </div>
+      </div>
 
-      <label class="field">
-        <input type="tel" [(ngModel)]="editedContact.phone" name="phone" placeholder="Phone" required />
-        <span class="icon i-call"></span>
-      </label>
+      <div class="field-wrapper">
+        <label class="field">
+          <input 
+            type="tel" 
+            [(ngModel)]="editedContact.phone" 
+            name="phone" 
+            placeholder="Phone" 
+            #phoneInput="ngModel"
+            [class.invalid]="(phoneInput.invalid && phoneInput.touched) || (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone))" />
+          <span class="icon i-call"></span>
+        </label>
+        <div class="validation-message">
+          @if (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone)) {
+            <span>Telefonnummer muss mind. 6 Ziffern lang sein (+ am Anfang erlaubt).</span>
+          }
+        </div>
+      </div>
     </form>
 
     <!-- Action Buttons -->
     <div class="buttons">
       <button class="btn-cancel" type="button" (click)="onClose()">Cancel</button>
-      <button class="btn-save" type="button" (click)="upContact()">
+      <button class="btn-save" type="button" (click)="upContact()" [disabled]="!isFormValid(f)">
         <span>Save</span>
         <span class="icon-check"></span>
       </button>
