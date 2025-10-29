@@ -7,11 +7,18 @@
           <img src="assets/components/contacts/add_contact.svg" alt="" />
         </button>
       </div>
+      <div class ="primary-contact-container">
+        <button class="primary-contact" (click)="showContactOverlay()">
+          <span>Add new contact</span>
+          <img src="assets/components/contacts/add_contact.svg" alt="" />
+        </button>
+      </div>
 
       @for (group of getContactsGroups(); track group) {
       <p class="letter">{{ group }}</p>
       <div class="divider"></div>
 
+      @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
       @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
       <div class="contact-row" (click)="showContact($index)">
         <div class="badge">
@@ -26,6 +33,7 @@
           <div class="mail">{{ item.email }}</div>
         </div>
       </div>
+      } } }
       } } }
     </div>
   </section>
@@ -51,6 +59,8 @@
 
 <!-- Desktop-Edit -->
 @if (editContactOpen) {
+<!-- Desktop-Edit -->
+@if (editContactOpen) {
 <app-edit-contact-overlay></app-edit-contact-overlay>
 }
 
@@ -73,6 +83,12 @@
 
 <!-- Toast -->
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>
+
+<!-- <app-contact-list></app-contact-list> -->
+
+<!-- Edit und Delete für mobile Ansicht -->
+<!--  <app-contact-options></app-contact-options> -->
+
 
 <!-- <app-contact-list></app-contact-list> -->
 

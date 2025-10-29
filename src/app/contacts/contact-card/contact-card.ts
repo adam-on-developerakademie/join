@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IContact } from '../../interfaces/i-contact';
 import { FbService } from '../../services/fb-service';
+import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
+import { OverlayEditContactComponent } from '../overlay-edit-contact/overlay-edit-contact';
 import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
 import { OverlayEditContactComponent } from '../overlay-edit-contact/overlay-edit-contact';
 
 @Component({
   selector: 'app-contact-card',
   standalone: true,
+  imports: [CommonModule, EditContactOverlayComponent, OverlayEditContactComponent],
   imports: [CommonModule, EditContactOverlayComponent, OverlayEditContactComponent],
   templateUrl: './contact-card.html',
   styleUrls: ['./contact-card.scss']
