@@ -143,8 +143,15 @@ h1 {
   max-width: 422px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 12px;
   margin-left: 80px;
+}
+
+// Form Field Container - fester Platz für Input + Validierung
+.form-field {
+  display: flex;
+  flex-direction: column;
+  min-height: 62px; // Feste Höhe: 48px Input + 14px Validierung
 }
 
 // Input Wrapper
@@ -174,6 +181,15 @@ h1 {
       outline: none;
       border-color: #29ABE2;
     }
+
+    // Invalid state styling
+    &.invalid {
+      border-color: #FF8190;
+      
+      &:focus {
+        border-color: #FF8190;
+      }
+    }
   }
   
   .input-icon {
@@ -184,6 +200,21 @@ h1 {
     width: 20px;
     height: 20px;
     pointer-events: none;
+  }
+}
+
+// Validation Message - fester reservierter Platz
+.validation-message {
+  height: 14px; // Feste Höhe für Validierungsbereich
+  padding: 2px 8px 0;
+  display: flex;
+  align-items: flex-start;
+  
+  span {
+    font-size: 12px;
+    color: #FF8190;
+    font-weight: 400;
+    line-height: 1.2;
   }
 }
 

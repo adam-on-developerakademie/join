@@ -36,64 +36,124 @@
 
       <!-- Form -->
       <form (ngSubmit)="onSubmit()" #f="ngForm" class="contact-form" novalidate>
-        <!-- Name Input (required) -->
-        <div class="input-wrapper">
-          <input
-            type="text"
-            id="name"
-            [(ngModel)]="contact.name"
-            name="name"
-            placeholder="Name"
-            required
-            autocomplete="name">
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
-            <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
-          </svg>
+        <!-- Name Input with Validation -->
+        <div class="form-field">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="contact.name"
+              name="name"
+              placeholder="Name"
+              required
+              autocomplete="name"
+              #nameInput="ngModel"
+              [class.invalid]="nameInput.invalid && nameInput.touched">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
+              <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
+            </svg>
+          </div>
+          
+          <!-- Reserved space for validation message -->
+          <div class="validation-message">
+            @if (nameInput.invalid && nameInput.touched) {
+              @if (nameInput.errors?.['required']) {
+                <span>Name ist ein Pflichtfeld.</span>
+              }
+            } @else if (nameInput.touched && hasInvalidCapitalization(contact.name)) {
+              <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+            }
+          </div>
         </div>
 
-        <!-- Surname Input (optional) -->
-        <div class="input-wrapper">
-          <input
-            type="text"
-            id="surname"
-            [(ngModel)]="contact.surname"
-            name="surname"
-            placeholder="Surname"
-            autocomplete="family-name">
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
-            <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
-          </svg>
+        <!-- Surname Input with Validation -->
+        <div class="form-field">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="surname"
+              [(ngModel)]="contact.surname"
+              name="surname"
+              placeholder="Surname"
+              required
+              autocomplete="family-name"
+              #surnameInput="ngModel"
+              [class.invalid]="surnameInput.invalid && surnameInput.touched">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M10 10C12.7614 10 15 7.76142 15 5C15 2.23858 12.7614 0 10 0C7.23858 0 5 2.23858 5 5C5 7.76142 7.23858 10 10 10Z" fill="#A8A8A8"/>
+              <path d="M10 12C5.58172 12 2 14.6863 2 18V20H18V18C18 14.6863 14.4183 12 10 12Z" fill="#A8A8A8"/>
+            </svg>
+          </div>
+          
+          <!-- Reserved space for validation message -->
+          <div class="validation-message">
+            @if (surnameInput.invalid && surnameInput.touched) {
+              @if (surnameInput.errors?.['required']) {
+                <span>Nachname ist ein Pflichtfeld.</span>
+              }
+            } @else if (surnameInput.touched && hasInvalidCapitalization(contact.surname)) {
+              <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+            }
+          </div>
         </div>
 
-        <!-- Email Input (required) -->
-        <div class="input-wrapper">
-          <input
-            type="email"
-            id="email"
-            [(ngModel)]="contact.email"
-            name="email"
-            placeholder="Email"
-            required
-            autocomplete="email">
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M2 4L10 10L18 4M2 4V16H18V4H2Z" stroke="#A8A8A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <!-- Email Input with Validation -->
+        <div class="form-field">
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              [(ngModel)]="contact.email"
+              name="email"
+              placeholder="Email"
+              required
+              email
+              autocomplete="email"
+              #emailInput="ngModel"
+              [class.invalid]="emailInput.invalid && emailInput.touched">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M2 4L10 10L18 4M2 4V16H18V4H2Z" stroke="#A8A8A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          
+          <!-- Reserved space for validation message -->
+          <div class="validation-message">
+            @if (emailInput.invalid && emailInput.touched) {
+              @if (emailInput.errors?.['required']) {
+                <span>Email ist ein Pflichtfeld.</span>
+              } @else if (emailInput.errors?.['email']) {
+                <span>Bitte geben Sie eine gültige Email-Adresse ein.</span>
+              }
+            } @else if (emailInput.touched && hasInvalidEmailFormat(contact.email)) {
+              <span>Email muss das Format name@domain.endung haben.</span>
+            }
+          </div>
         </div>
 
-        <!-- Phone Input (optional) -->
-        <div class="input-wrapper">
-          <input
-            type="tel"
-            id="phone"
-            [(ngModel)]="contact.phone"
-            name="phone"
-            placeholder="Phone"
-            autocomplete="tel">
-          <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L8 8L5.5 9.5C7 12.5 9.5 15 12.5 16.5L14 14L19.1644 14.8607C19.6466 14.9411 20 15.3583 20 15.8471V19C20 19.5523 19.5523 20 19 20H17C8.71573 20 2 13.2843 2 5V3Z" fill="#A8A8A8"/>
-          </svg>
+        <!-- Phone Input with Validation -->
+        <div class="form-field">
+          <div class="input-wrapper">
+            <input
+              type="tel"
+              id="phone"
+              [(ngModel)]="contact.phone"
+              name="phone"
+              placeholder="Phone"
+              autocomplete="tel"
+              #phoneInput="ngModel"
+              [class.invalid]="phoneInput.invalid && phoneInput.touched">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M2 3C2 2.44772 2.44772 2 3 2H6.15287C6.64171 2 7.0589 2.35341 7.13927 2.8356L8 8L5.5 9.5C7 12.5 9.5 15 12.5 16.5L14 14L19.1644 14.8607C19.6466 14.9411 20 15.3583 20 15.8471V19C20 19.5523 19.5523 20 19 20H17C8.71573 20 2 13.2843 2 5V3Z" fill="#A8A8A8"/>
+            </svg>
+          </div>
+          
+          <!-- Reserved space for validation message -->
+          <div class="validation-message">
+            @if (phoneInput.touched && hasInvalidPhoneFormat(contact.phone)) {
+              <span>Telefonnummer muss mind. 6 Ziffern lang sein (+ am Anfang erlaubt).</span>
+            }
+          </div>
         </div>
 
         <!-- Buttons -->
