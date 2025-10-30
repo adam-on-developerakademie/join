@@ -136,7 +136,8 @@ $--panel-dark-correction: 25px;
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  background: #A8A8A8;
+  background-image: url('/assets/img/person-icon.svg')  ;
+  //background: #A8A8A8;
   border-radius: 3px;
 }
 
@@ -208,8 +209,11 @@ $--panel-dark-correction: 25px;
 .icon-check {
   width: 24px;
   height: 24px;
-  background: #fff;
+  //background: #fff;
   border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ===== Close (unsichtbare Klickfläche wie Figma) ===== */
