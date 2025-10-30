@@ -1,4 +1,3 @@
-/* ====== GLOBAL BASE & TOKENS ====== */
 :root{
   --bg: #F6F7F8;
   --topbar-bg: #FFFFFF;
@@ -7,16 +6,13 @@
   --ink-muted: #CDCDCD;
   --accent: #29ABE2;
 
-  /* Layout-Sizes (Desktop) */
   --header-h: 96px;
   --sidebar-w: 232px;
 
-  /* Z-Index */
   --z-sidenav: 2000;
   --z-header: 1500;
 }
 
-/* Breakpoints – nur Variablen anpassen */
 @media (max-width: 1024px){
   :root{
     --sidebar-w: 200px;
@@ -25,12 +21,11 @@
 }
 @media (max-width: 768px){
   :root{
-    --sidebar-w: 0px;    /* Mobile: Off-Canvas / ausgeblendet */
-    --header-h: 80px;    /* Mobile Header */
+    --sidebar-w: 0px;
+    --header-h: 80px;
   }
 }
 
-/* ====== BASE RESET (vorsichtig) ====== */
 *,
 *::before,
 *::after{
@@ -70,12 +65,8 @@ img{ max-width: 100%; display: block; }
   font-weight:600; text-decoration-line:underline; margin-left:3px;
 }
 
-/* (Optional) bottom mobile menu aus Altcode vollständig entfernt, 
-   weil wir figma-sidenav/figma-header verwenden. */
-
-   /* Platz unten, damit Content nicht von der Leiste überdeckt wird */
 @media (max-width: 900px){
-  .main{ padding-bottom: 88px; } /* 80px + Luft */
+  .main{ padding-bottom: 88px; } 
 }
-/* Body voll hochziehen (hilft bei fixed bottom auf manchen Setups) */
+
 html, body { min-height: 100dvh; }

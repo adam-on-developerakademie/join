@@ -1,34 +1,31 @@
-/* ===== Overlay Background ===== */
+// Overlay Background
 .overlay {
   position: fixed;
   top: 0;
-  left: 232px;                 /* Abstand zur Figma-Sidebar */
-  width: calc(100% - 232px);   /* nur den rechten Bereich abdunkeln */
-  height: 100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 3000;
+  z-index: 1000;
   animation: fadeIn 0.2s ease;
-  overflow-y: auto;
 }
 
-/* ===== Main Container ===== */
+// Main Container
 .add-contact-container {
   position: relative;
   display: flex;
-  width: 100%;
-  max-width: 960px;            /* Desktop kleiner als 1212px */
-  height: auto;
-  max-height: 90vh;
-  background: #ffffff;
+  width: 1212px;
+  height: 594px;
+  background: white;
   border-radius: 30px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
-/* ===== Close Button ===== */
+// Close Button (Top Right)
 .close-btn {
   position: absolute;
   top: 32px;
@@ -38,54 +35,75 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  padding: 0;
   transition: opacity 0.2s;
 
-  &:hover { opacity: 0.7; }
+  &:hover {
+    opacity: 0.7;
+  }
 
-  svg { width: 24px; height: 24px; }
-  svg path { stroke: #2a3647; stroke-width: 2; }
+  svg {
+    width: 24px;
+    height: 24px;
+    
+    path {
+      stroke: #2A3647;
+      stroke-width: 2;
+    }
+  }
 }
 
-/* ===== Left Section (Dark Blue) ===== */
+// Left Section (Dark Blue)
 .left-section {
-  width: 360px;
-  background: #2a3647;
-  padding: 48px 36px;
+  width: 453px;
+  background: #2A3647;
+  padding: 64px 48px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
+.logo {
+    margin-bottom: 12px;
+}
+
+svg {
+    width: 56px;
+    height: 67px;
+}
+
 h1 {
-  font-size: 54px;
+  font-size: 61px;
   font-weight: 700;
-  color: #fff;
-  margin: 0 0 12px 0;
-  line-height: 120%;
+  color: white;
+  margin: 0;
+  margin-bottom: 12px;
+  line-height: 73px;
 }
+
 .subtitle {
-  font-size: 24px;
+  font-size: 27px;
   font-weight: 400;
-  color: #fff;
-  margin: 0 0 16px 0;
+  color: white;
+  margin: 0;
+  margin-bottom: 12px;
 }
+
 .blue-line {
   width: 90px;
   height: 3px;
-  background: #29abe2;
-  border-radius: 2px;
+  background: #29ABE2;
 }
 
-/* ===== Right Section (White) ===== */
+// Right Section (White)
 .right-section {
   flex: 1;
-  padding: 64px 64px 64px 80px;
+  padding: 48px 48px 48px 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -93,26 +111,32 @@ h1 {
   position: relative;
 }
 
-/* ===== Avatar Circle (Desktop) ===== */
+// Avatar Circle
 .avatar-circle {
   position: absolute;
-  left: 370px;                 /* Desktop-Wert: ein Stück weiter rechts als vorher */
+  left: -60px;
   top: 50%;
   transform: translateY(-50%);
   width: 120px;
   height: 120px;
-  background: #eff0f0;
+  background: #EFF0F0;
   border-radius: 50%;
-  border: 3px solid #fff;
+  border: 3px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  svg { width: 64px; height: 64px; }
-  svg circle, svg path { fill: #d1d1d1; }
+  
+  svg {
+    width: 64px;
+    height: 64px;
+    
+    circle, path {
+      fill: #D1D1D1;
+    }
+  }
 }
 
-/* ===== Contact Form ===== */
+// Form
 .contact-form {
   width: 100%;
   max-width: 422px;
@@ -122,268 +146,153 @@ h1 {
   margin-left: 80px;
 }
 
-/* ===== Input Wrapper ===== */
+// Input Wrapper
 .input-wrapper {
-  position: relative; width: 100%;
-
+  position: relative;
+  width: 100%;
+  
   input {
     width: 100%;
-    height: 50px;
+    height: 48px;
     padding: 12px 16px;
     padding-right: 48px;
-    border: 1px solid #d1d1d1;
+    border: 1px solid #D1D1D1;
     border-radius: 10px;
     font-size: 20px;
+    font-weight: 400;
     color: #000;
+    background: white;
     transition: border-color 0.2s;
-
-    &::placeholder { color: #d1d1d1; }
-    &:focus { outline: none; border-color: #29abe2; }
+    
+    &::placeholder {
+      color: #D1D1D1;
+      font-size: 20px;
+    }
+    
+    &:focus {
+      outline: none;
+      border-color: #29ABE2;
+    }
   }
-
+  
   .input-icon {
-    position: absolute; right: 16px; top: 50%;
+    position: absolute;
+    right: 16px;
+    top: 50%;
     transform: translateY(-50%);
-    width: 20px; height: 20px; pointer-events: none;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
   }
 }
 
-/* ===== Button Group ===== */
+// Button Group
 .button-group {
-  display: flex; gap: 24px; margin-top: 8px;
-
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+  
   button {
-    height: 56px; padding: 16px 24px;
-    border-radius: 10px; font-size: 20px; font-weight: 700;
-    cursor: pointer; border: none;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    transition: all 0.2s;
-
-    svg { width: 16px; height: 16px; }
-  }
-}
-.btn-cancel {
-  background: transparent; color: #2a3647; border: 1px solid #2a3647; min-width: 120px;
-  &:hover { background: #2a3647; color: #fff; }
-  &:hover svg path { stroke: #fff; }
-  svg path { stroke: #2a3647; }
-}
-.btn-create {
-  background: #2a3647; color: #fff; flex: 1;
-  &:hover { background: #1a2332; box-shadow: 0 4px 8px rgba(0,0,0,.2); }
-  svg path { stroke: #fff; }
-}
-
-/* ===== Animation ===== */
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* ===================================================================== */
-/* =========================== Responsive =============================== */
-/* ===================================================================== */
-
-/* 1) Großer Desktop → etwas kleiner skalieren */
-@media (max-width: 1440px) {
-  .add-contact-container { max-width: 920px; }
-  h1 { font-size: 51px; }
-}
-
-/* 2) ≤1280px: Container schmaler halten */
-@media (max-width: 1280px) {
-  .add-contact-container { width: 92%; max-width: 880px; }
-  .left-section { width: 340px; padding: 40px 32px; }
-  .right-section { padding: 56px 56px 56px 72px; }
-  .avatar-circle { left: -36px; }       /* leicht angepasst für diese Breite */
-  h1 { font-size: 47px; }
-  .subtitle { font-size: 22px; }
-}
-
-/* 3) ≤1024px: Sidebar oft eingeklappt → Overlay über die ganze Breite */
-@media (max-width: 1024px) {
-  .overlay { left: 0; width: 100%; }
-  .add-contact-container { width: 92%; max-width: 760px; max-height: 90vh; }
-  .left-section { width: 320px; }
-  .right-section { padding: 48px 48px 48px 64px; }
-  .avatar-circle { left: -28px; }
-  .contact-form { margin-left: 72px; }
-}
-
-/* 4) ≤768px: Mobile/Tablet – Figma 396×760 */
-@media (max-width: 768px) {
-  /* Vollflächiger Dimmer – OHNE Sidebar-Offset */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    width: 100% !important;
-    height: 100vh;
+    height: 56px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
-    padding: 16px 0;
-    overflow-y: auto;
-    z-index: 3000;
-    background-color: rgba(0,0,0,0.2);
+    gap: 8px;
+    transition: all 0.2s;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
+}
 
-  /* Dialog genau wie Figma */
+.btn-cancel {
+  background: transparent;
+  color: #2A3647;
+  border: 1px solid #2A3647;
+  min-width: 120px;
+  
+  &:hover {
+    background: #2A3647;
+    color: white;
+    
+    svg path {
+      stroke: white;
+    }
+  }
+  
+  svg path {
+    stroke: #2A3647;
+  }
+}
+
+.btn-create {
+  background: #2A3647;
+  color: white;
+  flex: 1;
+  
+  &:hover {
+    background: #1a2332;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  svg path {
+    stroke: white;
+  }
+}
+
+// Animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive (falls nötig)
+@media (max-width: 1280px) {
+  .add-contact-container {
+    width: 90%;
+    max-width: 1212px;
+  }
+}
+
+@media (max-width: 768px) {
   .add-contact-container {
     flex-direction: column;
-    width: 396px;
-    max-width: calc(100% - 32px); /* 16px links + 16px rechts */
-    height: 760px;
-    max-height: none;
-    border-radius: 30px;
-    overflow: hidden;
-    margin: 0 auto;
-    background: #fff;
+    width: 90%;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   }
-
-  /* Top-Panel */
+  
   .left-section {
     width: 100%;
-    height: 352px;
     padding: 32px 24px;
-    background: #2A3647;
-    border-radius: 30px 30px 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
-
-  /* Avatar mittig und EIN TICK höher */
+  
   .avatar-circle {
-    position: absolute;
-    left: 50%;
-    top: 308px;                         /* höher als vorher */
-    transform: translate(-50%, -50%);
-    width: 120px;
-    height: 120px;
-    background: #EFF0F0;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-  }
-
-  /* Formular */
-  .right-section {
-    width: 100%;
-    flex: 1;
-    padding: 32px 24px 40px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin-bottom: 24px;
   }
+  
+  .right-section {
+    padding: 32px 24px;
+  }
+  
   .contact-form {
-    width: 100%;
-    max-width: 364px;
     margin-left: 0;
-    margin-top: 48px;                  /* Platz unter dem Avatar */
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .input-wrapper input {
-    height: 41px;
-    font-size: 16px;
-    padding: 10px 16px;
-    padding-right: 44px;
-    border-radius: 10px;
-  }
-
-  /* Single Center Button (Figma) */
-  .button-group.single-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 48px;
-  }
-  .button-group.single-btn .btn-create {
-    width: 202px;
-    height: 51px;
-    border-radius: 10px;
-    font-size: 21px;
-    font-weight: 700;
-    background: #2A3647;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-    border: none;
-    cursor: pointer;
-
-    &:hover { background: #1a2332; }
-    svg path { stroke: #fff; }
   }
 }
-
-/* ===== Desktop-Feinjustierung (zusätzlicher Rechts-Shift) ===== */
-@media (min-width: 1281px) {
-  .add-contact-container { margin-left: 32px; }  /* „ein Stück“ nach rechts */
-}
-
-/* ===== Mobile: Nur "Create contact" sichtbar ===== */
-@media (max-width: 768px) {
-  /* "Cancel" ausblenden */
-  .btn-cancel {
-    display: none !important;
-  }
-
-  /* Primary Button mittig (Figma-Style) */
-  .button-group {
-    display: flex;
-    justify-content: center;
-    margin-top: 48px;
-  }
-
-  .btn-create {
-    width: 202px;
-    height: 51px;
-    border-radius: 10px;
-    font-size: 21px;
-    font-weight: 700;
-    background: #2A3647;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
-    border: none;
-    cursor: pointer;
-
-    &:hover { background: #1a2332; }
-    svg path { stroke: #fff; }
-  }
-}
-
-/* ===== Mobile Close Button (oben rechts) ===== */
-.close-btn-mobile {
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 4000;
-
-  svg path {
-    stroke: #fff;
-  }
-
-  /* Nur auf mobilen Breakpoints zeigen */
-  @media (min-width: 901px) {
-    display: none;
-  }
-}
-
