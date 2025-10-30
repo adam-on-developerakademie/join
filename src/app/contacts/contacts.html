@@ -19,7 +19,7 @@
               <div class="badge">
                 <div class="badge__circle" [style.background]="item.color"></div>
                 <div class="badge__initials">
-                  {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+                  {{ item.name.substring(0, 1).toUpperCase() + item.surname.substring(0, 1).toUpperCase() }}
                 </div>
               </div>
 
