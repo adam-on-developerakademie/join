@@ -77,11 +77,34 @@
   top: 96px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
-  overflow-y: scroll;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  .contacts-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    flex: 1;
+
+    .contacts-list-center {
+      width: 352px;
+      height: auto;
+      overflow: hidden !important;
+      padding-bottom: 100px;
+
+
+    }
+  }
+
 }
 
 .list-panel__inner {
-  max-height: 90.33dvh;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   div {
     .primary-contact {
@@ -116,12 +139,11 @@
   align-items: flex-end;
   position: sticky;
   top: 0;
-  left: 52px;
-  right: 52px;
   background: #fff;
   z-index: 10;
   width: 100%;
   height: 105px;
+  flex-shrink: 0;
 }
 
 .primary-contact .plus {
@@ -235,24 +257,24 @@ div.contact-row:active {
     position: absolute;
     left: 0px;
     top: 80px;
-    height: auto;
+    max-height: calc(100vh - 172px);
   }
 
-    .contacts-list {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  .contacts-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+    .contacts-list-center {
+      width: 352px;
       height: auto;
+      overflow: hidden !important;
 
-      .contacts-list-center {
-        width: 352px;
-        height: auto;
-        overflow: hidden !important;
 
-        
-      }
     }
+  }
 }
 
 @media (max-width: 1100px) {
@@ -269,10 +291,9 @@ div.contact-row:active {
     width: 100%;
     height: auto;
     max-height: calc(100vh - 172px);
-   
+
     .primary-contact-container {
       width: 100%;
-      max-height: calc(100vh - 172px);
     }
 
     .contacts-list {
@@ -280,14 +301,9 @@ div.contact-row:active {
       display: flex;
       justify-content: center;
       height: auto;
-      
+
       .contacts-list-center {
         width: 352px;
-        height: auto;
-        overflow: hidden !important;
-        
-   
-
       }
     }
 
