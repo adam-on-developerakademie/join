@@ -106,4 +106,5 @@ export class OverlayEditContactComponent {
     
     return true;
   }
+  
 }
