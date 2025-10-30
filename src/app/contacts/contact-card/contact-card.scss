@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 .floating-contact {
-  width: 40dvw;
+  width: 500px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -109,7 +109,7 @@
 }
 
 .contact-name {
-  width: 50%;
+  width: auto;
   min-width:450px;
   height: 56px;
   font-family: 'Inter';
@@ -288,7 +288,14 @@
 
 @media (max-width: 1350px) {
   .floating-contact {
+ 
+    left: 500px !important;
+  }}
+
+@media (max-width: 1100px) {
+  .floating-contact {
     display: none !important;
+    left: 300px !important;
   }
 
   header,

@@ -1,47 +1,54 @@
 <div class="contacts-canvas">
-  <section class="list-panel">
-    <div class="list-panel__inner">
-      <div class ="primary-contact-container">
-        <button class="primary-contact" (click)="showContactOverlay()">
-          <span>Add new contact</span>
-          <img src="assets/components/contacts/add_contact.svg" alt="" />
-        </button>
-      </div>
+  <section>
+    <div class="list-panel">
+      <div class="list-panel__inner">
+        <div class="primary-contact-container">
+          <button class="primary-contact" (click)="showContactOverlay()">
+            <span>Add new contact</span>
+            <img src="assets/components/contacts/add_contact.svg" alt="" />
+          </button>
+        </div>
+        <div class="contacts-list">
+          <div class="contacts-list-center">
+            @for (group of getContactsGroups(); track group) {
+            <p class="letter">{{ group }}</p>
+            <div class="divider"></div>
 
-      @for (group of getContactsGroups(); track group) {
-      <p class="letter">{{ group }}</p>
-      <div class="divider"></div>
+            @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
+            <div class="contact-row" (click)="showContact($index)">
+              <div class="badge">
+                <div class="badge__circle" [style.background]="item.color"></div>
+                <div class="badge__initials">
+                  {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+                </div>
+              </div>
 
-      @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
-      <div class="contact-row" (click)="showContact($index)">
-        <div class="badge">
-          <div class="badge__circle" [style.background]="item.color"></div>
-          <div class="badge__initials">
-            {{ item.name.substring(0, 1) + item.surname.substring(0, 1) }}
+              <div class="contact-row__text">
+                <div class="name">{{ item.name + ' ' + item.surname }}</div>
+                <div class="mail">{{ item.email }}</div>
+              </div>
+            </div>
+            } } }
           </div>
         </div>
-
-        <div class="contact-row__text">
-          <div class="name">{{ item.name + ' ' + item.surname }}</div>
-          <div class="mail">{{ item.email }}</div>
-        </div>
       </div>
-      } } }
     </div>
-  </section>
 
-  <section class="detail-panel">
-    <div class="heading">
-      <h1>Contacts</h1>
-      <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
-      <p>Better with a team</p>
+
+    <div class="detail-panel">
+      <div class="heading">
+        <h1>Contacts</h1>
+        <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
+        <p>Better with a team</p>
+      </div>
     </div>
   </section>
 
   <!-- FAB -->
-  <button class="fab" type="button" (click)="showContactOverlay()" aria-label="Add contact">
+  <!--   <button class="fab" type="button" (click)="showContactOverlay()" aria-label="Add contact">
     <img src="assets/components/contacts/add_contact.svg" alt="" />
-  </button>
+  </button> -->
+
 </div>
 
 <!-- Overlay Add Contact -->
@@ -73,11 +80,7 @@
 @if (isMobile && selectedContactIndex !== null) {
 <div class="contact-overlay-bg" (click)="closeContactOverlay()">
   <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-    <app-contact-view
-      (close)="closeContactOverlay()"
-      (edit)="onEditFromView()"
-      (delete)="onDeleteFromView()"
-    >
+    <app-contact-view (close)="closeContactOverlay()" (edit)="onEditFromView()" (delete)="onDeleteFromView()">
     </app-contact-view>
   </div>
 </div>

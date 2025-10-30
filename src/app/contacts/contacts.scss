@@ -81,6 +81,7 @@
 
 .list-panel__inner {
   max-height: 90.33dvh;
+
   div {
     .primary-contact {
       width: 352px;
@@ -99,6 +100,7 @@
       font-size: 21px;
       cursor: pointer;
     }
+
     .primary-contact:hover {
       background-color: #29abe2;
       border-style: none;
@@ -106,6 +108,7 @@
     }
   }
 }
+
 .primary-contact-container {
   display: flex;
   justify-content: center;
@@ -201,16 +204,95 @@ div.contact-row:hover {
 div.contact-row:active {
   background-color: #2a3647;
   color: white;
+
   .contact-row__text {
     .name {
       color: white;
     }
+
     .mail {
       color: #007cee;
     }
   }
 }
 
+.blue_line {
+  background-color: #007cee;
+}
+
+
+
+@media (max-width: 1350px) {
+  .detail-panel {
+    .heading {
+      position: absolute;
+      left: 500px;
+    }
+  }
+
+  .list-panel {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .detail-panel {
+    .heading {
+      display: none !important;
+    }
+  }
+
+  .list-panel {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+    width: 100%;
+    max-height: calc(100vh - 172px);
+
+
+    .primary-contact-container {
+      width: 100%;
+      max-height: calc(100vh - 172px);
+    }
+
+    .contacts-list {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: calc(100vh - 172px);
+
+      .contacts-list-center {
+        width: 352px;
+        height: auto;
+        overflow: hidden !important;
+
+      }
+    }
+
+    .contact-row {
+      width: 352px;
+    }
+  }
+
+}
+
+@media (max-width: 350px) {
+  .detail-panel {
+    display: none !important;
+  }
+
+  .list-panel {
+    position: absolute;
+    left: 0px;
+    top: 80px;
+  }
+}
+
+
+/* 
 @media (max-width: 768px) {
   .contacts-page {
     position: relative;
@@ -303,7 +385,7 @@ div.contact-row:active {
   }
   .heading h1 {
     width: auto;
-    font-size: 47px; /* Mobile Spec */
+    font-size: 47px; 
     line-height: 120%;
     text-align: left;
   }
@@ -326,10 +408,11 @@ div.contact-row:active {
   }
 }
 
-.blue_line {
-  background-color: #007cee;
-}
+ */
 
+
+
+/* 
 @media (max-width: 1350px) {
   .heading {
     display: none !important;
@@ -346,7 +429,9 @@ div.contact-row:active {
     font-size: small;
   }
 }
+ */
 
+/* 
 @media (max-width: 950px) {
   .list-panel,
   .list-panel__inner {
@@ -355,7 +440,7 @@ div.contact-row:active {
     left: 0;
   }
 
-  /* Außenrahmen wie Figma: 428px */
+
   :host,
   .contacts-canvas,
   .contacts-page {
@@ -365,12 +450,11 @@ div.contact-row:active {
     margin: 0 auto;
   }
 
-  /* Nur die Liste zeigen */
+
   .detail-panel {
     display: none !important;
   }
 
-  /* Innen 400px, 24px Padding oben/unten */
   .list-panel__inner {
     width: 100dvw;
     top: 0;
@@ -382,7 +466,6 @@ div.contact-row:active {
     }
   }
 
-  /* Zeilen/Divider/Letters 352px Breite */
   .contact-row,
   .divider,
   .letter {
@@ -391,7 +474,6 @@ div.contact-row:active {
     margin-right: auto;
   }
 
-  /* Typo/Abstände wie Figma */
   .contact-row {
     padding: 15px 24px;
     gap: 35px;
@@ -419,7 +501,9 @@ div.contact-row:active {
     text-decoration: none;
   }
 }
+ */
 
+/* 
 @media (max-width: 950px) {
   .fab {
     position: fixed;
@@ -436,6 +520,8 @@ div.contact-row:active {
     place-items: center;
   }
 }
+
+ */
 
 .contact-overlay-bg {
   position: fixed;
@@ -456,10 +542,12 @@ div.contact-row:active {
   padding: 24px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

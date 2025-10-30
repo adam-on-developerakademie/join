@@ -139,14 +139,14 @@
   background: #fdebea;
 }
 
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .wrap {
     padding: 16px 24px 16px calc(72px + var(--sidebar-w, 232px));
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
   }
 }
-
-@media (max-width: 950px) {
+ */
+@media (max-width: 1350px) {
   :host {
     left: 0;
     height: var(--header-h-mobile, 80px);
@@ -178,7 +178,7 @@
   display: none;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1350px) {
   .mobile-only {
     display: flex;
     align-items: center;

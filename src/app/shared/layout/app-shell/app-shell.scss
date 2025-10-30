@@ -18,14 +18,14 @@
   padding-left: var(--sidenav-w);
 }
 
-@media (max-width: 950px){
+/* @media (max-width: 950px){
   .sidenav{ display: none; }
   .main{
     padding-top: var(--header-h-mobile);
     padding-left: 0;
-    padding-bottom: 88px; /* 80px Nav + etwas Luft */
-    display: flex;
+    padding-bottom: 88px; 
     justify-content: center;
   }
   .main > *{ width: 100%; max-width: 428px; }
 }
+ */
