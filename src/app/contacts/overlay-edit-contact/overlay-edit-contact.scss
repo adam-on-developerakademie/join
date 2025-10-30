@@ -260,6 +260,10 @@ $--panel-dark-correction: 25px;
   .panel-dark {
     height: 328px - 2 * $--panel-dark-correction;
     padding: 52px 20px;
+
+    h1 {
+      letter-spacing: -1px;
+    }
   }
 
   .avatar {
