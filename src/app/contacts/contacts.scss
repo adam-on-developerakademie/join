@@ -77,7 +77,7 @@
   top: 96px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
- overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .list-panel__inner {
@@ -235,8 +235,24 @@ div.contact-row:active {
     position: absolute;
     left: 0px;
     top: 80px;
-    max-height: calc(100vh - 172px);
+    height: auto;
   }
+
+    .contacts-list {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+
+      .contacts-list-center {
+        width: 352px;
+        height: auto;
+        overflow: hidden !important;
+
+        
+      }
+    }
 }
 
 @media (max-width: 1100px) {
@@ -251,9 +267,9 @@ div.contact-row:active {
     left: 0px;
     top: 80px;
     width: 100%;
+    height: auto;
     max-height: calc(100vh - 172px);
-
-
+   
     .primary-contact-container {
       width: 100%;
       max-height: calc(100vh - 172px);
@@ -263,13 +279,14 @@ div.contact-row:active {
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: center;
-      max-height: calc(100vh - 172px);
-
+      height: auto;
+      
       .contacts-list-center {
         width: 352px;
         height: auto;
         overflow: hidden !important;
+        
+   
 
       }
     }
