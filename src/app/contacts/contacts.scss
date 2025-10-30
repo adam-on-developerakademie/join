@@ -6,6 +6,7 @@
 
 * {
   box-sizing: border-box;
+
 }
 
 :root {
@@ -72,7 +73,6 @@
   position: absolute;
   left: 232px;
   width: 456px;
-  height: calc(1024px + 96px);
   top: 96px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
@@ -119,7 +119,7 @@
   right: 52px;
   background: #fff;
   z-index: 10;
-  width: 456px;
+  width: 100%;
   height: 105px;
 }
 
@@ -234,6 +234,7 @@ div.contact-row:active {
     position: absolute;
     left: 0px;
     top: 80px;
+    max-height: calc(100vh - 172px);
   }
 }
 
