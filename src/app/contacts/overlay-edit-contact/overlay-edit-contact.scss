@@ -251,26 +251,26 @@ $--panel-dark-correction: 25px;
 }
 
 /* Kleinere Phones: etwas kompakter */
-@media (max-width: 428px) {
+@media (max-width: 410px) {
   .overlay-edit-contact {
     width: 100vw;
     border-radius: 20px;
   }
 
   .panel-dark {
-    height: 328px;
+    height: 328px - 2 * $--panel-dark-correction;
     padding: 52px 20px;
   }
 
   .avatar {
-    top: 276px;
+    top: 276px - 2 * $--panel-dark-correction;
   }
 
   .form-fields {
-    top: 418px;
+    top: 418px  - 2 * $--panel-dark-correction - 8px;
   }
 
   .buttons {
-    top: 626px;
+    top: 626px - 8px
   }
 }
