@@ -73,10 +73,11 @@
   position: absolute;
   left: 232px;
   width: 456px;
+  max-height: calc(100vh - 96px);
   top: 96px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
-  overflow-y: scroll;
+ overflow-y: scroll;
 }
 
 .list-panel__inner {
