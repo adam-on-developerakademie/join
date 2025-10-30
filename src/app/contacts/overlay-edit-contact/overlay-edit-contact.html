@@ -25,7 +25,7 @@
             required 
             #nameInput="ngModel"
             [class.invalid]="nameInput.invalid && nameInput.touched" />
-          <span class="icon i-person"></span>
+          <span class="icon i-person"><img src="/assets/img/person-icon.svg" alt="Person Icon" /></span>
         </label>
         <div class="validation-message">
           @if (nameInput.invalid && nameInput.touched) {
@@ -48,7 +48,7 @@
             required 
             #surnameInput="ngModel"
             [class.invalid]="surnameInput.invalid && surnameInput.touched" />
-          <span class="icon i-person"></span>
+          <span class="icon i-person"><img src="/assets/img/person-icon.svg" alt="Person Icon" /></span>
         </label>
         <div class="validation-message">
           @if (surnameInput.invalid && surnameInput.touched) {
@@ -72,7 +72,7 @@
             email
             #emailInput="ngModel"
             [class.invalid]="emailInput.invalid && emailInput.touched" />
-          <span class="icon i-mail"></span>
+          <span class="icon i-mail"><img src="/assets/img/mail-icon.svg" alt="Mail Icon" /></span>
         </label>
         <div class="validation-message">
           @if (emailInput.invalid && emailInput.touched) {
@@ -96,11 +96,11 @@
             placeholder="Phone" 
             #phoneInput="ngModel"
             [class.invalid]="(phoneInput.invalid && phoneInput.touched) || (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone))" />
-          <span class="icon i-call"></span>
+          <span class="icon i-call"><img src="/assets/img/call_with_background.svg" alt="Call Icon" /></span>
         </label>
         <div class="validation-message">
           @if (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone)) {
-            <span>Telefonnummer muss mind. 6 Ziffern lang sein (+ am Anfang erlaubt).</span>
+            <span>Telefonnummer muss mind. 6 Ziffern lang sein.</span>
           }
         </div>
       </div>

@@ -89,7 +89,7 @@ $--panel-dark-correction: 25px;
 .form-fields {
   position: absolute;
   left: 16px;
-  top: 444px  - $--panel-dark-correction - 8px;
+  top: 444px - $--panel-dark-correction - 8px;
   width: calc(100% - 32px);
   display: flex;
   flex-direction: column;
@@ -131,12 +131,11 @@ $--panel-dark-correction: 25px;
 
 .field .icon {
   position: absolute;
-  right: 16px;
   top: 50%;
   transform: translateY(-50%);
+  right: 16px;
   width: 24px;
   height: 24px;
-  background-image: url('/assets/img/person-icon.svg')  ;
   //background: #A8A8A8;
   border-radius: 3px;
 }
@@ -162,7 +161,7 @@ $--panel-dark-correction: 25px;
 .buttons {
   position: absolute;
   left: 50%;
-  top: 647px +  $--panel-dark-correction;
+  top: 647px + $--panel-dark-correction;
   transform: translateX(-50%);
   display: flex;
   gap: 20px;
@@ -275,7 +274,7 @@ $--panel-dark-correction: 25px;
   }
 
   .form-fields {
-    top: 418px  - 2 * $--panel-dark-correction - 8px;
+    top: 418px - 2 * $--panel-dark-correction - 8px;
   }
 
   .buttons {
