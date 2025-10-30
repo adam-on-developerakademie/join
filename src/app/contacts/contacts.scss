@@ -1,5 +1,3 @@
-//TODO: .list-panel / list-panel__inner Doppelung entfernen
-//TODO: .contact-row / .contact-row__text Doppelung entfernen
 :host {
   display: block;
 }
@@ -69,55 +67,58 @@
 }
 
 .list-panel {
+  width: 352px;
+  height: 100%;
   position: absolute;
   left: 232px;
-  width: 456px;
-  height: calc(1024px + 96px);
   top: 96px;
+  width: 456px;
+  padding: 0 36px;
   background: #fff;
   box-shadow: 4px 0 6px rgba(0, 0, 0, 0.08);
   overflow-y: scroll;
+  z-index: 2000;
+}
+
+.primary-contact-container {
+  height: 100%;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
 }
 
 .list-panel__inner {
-  max-height: 90.33dvh;
-  div {
-    .primary-contact {
-      width: 352px;
-      height: 56px;
-      margin: 0;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      background: #2a3647;
-      color: #fff;
-      border: 1px solid #2a3647;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 21px;
-      cursor: pointer;
-    }
-    .primary-contact:hover {
-      background-color: #29abe2;
-      border-style: none;
-      box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
-    }
+  width: 352px;
+  .primary-contact {
+    width: 352px;
+    height: 58px;
+    margin: 25px 0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: #2a3647;
+    color: #fff;
+    border: 1px solid #2a3647;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 21px;
   }
-}
-.primary-contact-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: sticky;
-  top: 0;
-  left: 52px;
-  right: 52px;
-  background: #fff;
-  z-index: 10;
-  width: 456px;
-  height: 105px;
+  .primary-contact:hover {
+    background-color: #29abe2;
+    border-style: none;
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.5);
+  }
+  .primary-contact:active {
+    background-color: #2a3647;
+  }
 }
 
 .primary-contact .plus {
@@ -342,7 +343,7 @@ div.contact-row:active {
     left: 0;
     width: 74dvw;
   }
-  h2{
+  h2 {
     font-size: small;
   }
 }
