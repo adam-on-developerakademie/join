@@ -19,7 +19,7 @@ $--panel-dark-correction: 25px;
   height: 760px;
   max-height: 92vh;
   /* nie aus dem Screen laufen */
-  background: #fff;
+  background-image: linear-gradient(to bottom, #2A3647, #fff, #fff, #fff, #fff);
   box-shadow: 0 0 12px rgba(0, 0, 0, .2);
   border-radius: 30px;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -255,7 +255,7 @@ $--panel-dark-correction: 25px;
 }
 
 /* Kleinere Phones: etwas kompakter */
-@media (max-width: 410px) {
+@media (max-width: 420px) {
   .overlay-edit-contact {
     width: 100vw;
     border-radius: 20px;
