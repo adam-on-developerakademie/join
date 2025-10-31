@@ -7,7 +7,7 @@ import { AddContactComponent } from './add-contact/add-contact';
 import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact-overlay';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 
-import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
+import { ContactEditMobileComponent } from './contact-edit-mobile/contact-edit-mobile';
 import { ContactEditActivationComponent } from './contact-edit-activation/contact-edit-activation';
 
 @Component({
@@ -18,7 +18,7 @@ import { ContactEditActivationComponent } from './contact-edit-activation/contac
     FormsModule,
     AddContactComponent,
     EditContactOverlayComponent,   // Desktop-Edit
-    OverlayEditContactComponent,   // Mobile-Edit
+    ContactEditMobileComponent,   // Mobile-Edit
     ContactCreatedToast,
     ContactEditActivationComponent          // Mobile-Contact-Edit-Activation (Overlay)
   ],

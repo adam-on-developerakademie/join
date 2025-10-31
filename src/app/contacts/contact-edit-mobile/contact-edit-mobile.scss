@@ -13,7 +13,7 @@ $--panel-dark-correction: 25px;
 }
 
 /* ===== Dialog ===== */
-.overlay-edit-contact {
+.contact-edit-mobile {
   position: relative;
   width: min(396px, 94vw);
   height: 760px;
@@ -29,7 +29,7 @@ $--panel-dark-correction: 25px;
 
 /* Scroll-Inhalt für kleine Displays */
 @supports (height: 100dvh) {
-  .overlay-edit-contact {
+  .contact-edit-mobile {
     max-height: 92dvh;
   }
 }
@@ -255,7 +255,7 @@ $--panel-dark-correction: 25px;
 
 /* Kleinere Phones: etwas kompakter */
 @media (max-width: 420px) {
-  .overlay-edit-contact {
+  .contact-edit-mobile {
     width: 100vw;
     border-radius: 20px;
   }

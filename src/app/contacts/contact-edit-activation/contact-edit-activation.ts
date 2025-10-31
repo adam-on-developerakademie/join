@@ -5,13 +5,13 @@ import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactOptionsComponent } from '../contact-options/contact-options';
 import { FbService } from '../../services/fb-service';
-import { OverlayEditContactComponent } from '../overlay-edit-contact/overlay-edit-contact';
+import { ContactEditMobileComponent } from '../contact-edit-mobile/contact-edit-mobile';
 import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
 
 @Component({
   selector: 'app-contact-edit-activation',
   standalone: true,
-  imports: [CommonModule, ContactOptionsComponent, OverlayEditContactComponent, EditContactOverlayComponent],
+  imports: [CommonModule, ContactOptionsComponent, ContactEditMobileComponent, EditContactOverlayComponent],
   templateUrl: './contact-edit-activation.html',
   styleUrls: ['./contact-edit-activation.scss'],
 })

@@ -7,13 +7,13 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-overlay-edit-contact',
+  selector: 'app-contact-edit-mobile',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './overlay-edit-contact.html',
-  styleUrls: ['./overlay-edit-contact.scss'],
+  templateUrl: './contact-edit-mobile.html',
+  styleUrls: ['./contact-edit-mobile.scss'],
 })
-export class OverlayEditContactComponent {
+export class ContactEditMobileComponent {
   constructor(private fbService: FbService) { this.getCurrentContact(); }
 
   contact: IContact = { name: '', surname: '', email: '', phone: '' };
