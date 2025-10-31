@@ -24,6 +24,10 @@
   background-color: #007cee;
 }
 
+.dnone {
+  display: none;
+}
+
 .contacts-page {
   position: relative;
   width: 1440px;
@@ -243,6 +247,14 @@ div.contact-row:active {
   background-color: #007cee;
 }
 
+.detail-panel-mobile {
+  position: absolute;
+  display: border-box;
+  top: 100px;
+  width: 500px;
+  height: 100px;
+
+}
 
 
 @media (max-width: 1350px) {
@@ -314,6 +326,7 @@ div.contact-row:active {
     .contact-row {
       width: 352px;
     }
+
   }
 
 

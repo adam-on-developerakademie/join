@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="contacts-list">
-          <div class="contacts-list-center">
+          <div class="contacts-list-center" [class.dnone]="this.contactlistHidden">
             @for (group of getContactsGroups(); track group) {
             <p class="letter">{{ group }}</p>
             <div class="divider"></div>
@@ -41,6 +41,18 @@
         <p>Better with a team</p>
       </div>
     </div>
+
+    <div class="detail-panel-mobile">
+      <div class="heading-mobile">
+        <h1>Contacts</h1>
+        <p>Better with a team2</p>
+        <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
+      </div>
+    </div>
+
+
+
+
   </section>
 </div>
 

@@ -19,6 +19,7 @@ export class Contacts {
   contact: IContact = {} as IContact;
   id = 0;
   showAddContact = false;
+  contactlistHidden = false;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
@@ -58,6 +59,7 @@ export class Contacts {
   showContact(index: number) {
     this.fbService.id = index;
     this.fbService.setCurrentContact(index);
+    this.contactlistHidden = true;
   }
 
   showEditContact() { return this.fbService.showEditContact; }
@@ -65,12 +67,13 @@ export class Contacts {
   showContactOverlay() { this.showAddContact = true; }
 
   onCloseOverlay() { this.showAddContact = false; }
-  
+
   onContactCreated() {
     this.showAddContact = false;
     if (this.toastTimer) clearTimeout(this.toastTimer);
     this.toastOpen = true;
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
+
 
 }
