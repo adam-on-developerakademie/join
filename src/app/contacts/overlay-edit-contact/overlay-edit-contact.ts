@@ -1,3 +1,5 @@
+// auf contact-edit-mobile umstellen
+
 import { Component } from '@angular/core';
 import { IContact } from '../../interfaces/i-contact';
 import { FbService } from '../../services/fb-service';

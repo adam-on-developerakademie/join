@@ -1,3 +1,5 @@
+// auf contact-edit-desktop umstellen
+
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';

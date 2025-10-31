@@ -1,4 +1,5 @@
-// src/app/contacts/contact-view/contact-view.ts
+// auf contact-edit-activation umstellen
+
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactOptionsComponent } from '../contact-options/contact-options';
