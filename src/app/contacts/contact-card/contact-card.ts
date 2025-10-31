@@ -15,28 +15,14 @@ import { ContactEditMobileComponent } from '../contact-edit-mobile/contact-edit-
 export class ContactCard {
   slide = false;
   currentContactId = -1;
-  onEdit(): void {
-    console.log('Edit contact clicked');
-    // Implement edit functionality
-  }
 
-  constructor(public fbService: FbService) {}
-
-  onDelete(): void {
-    console.log('Delete contact clicked');
-    // Implement delete functionality
-  }
+  constructor(private fbService: FbService) {}
 
   get currentContact(): IContact {
     return this.fbService.currentContact;
   }
 
   delContact() {
-    console.log(
-      this.fbService.contactsGroups.length,
-      this.fbService.id,
-      this.fbService.addContact.length
-    );
     this.fbService.contactsArray.length > 0 &&
     this.fbService.contactsGroups.length > 0 &&
     this.fbService.contactsArray.length > this.fbService.id
@@ -46,7 +32,13 @@ export class ContactCard {
 
   setEditContact() {
     this.fbService.showEditContact = true;
+    return this.fbService.showEditContact;
   }
+
+  showMobile() {
+    return this.fbService.showEditContact;
+  }
+
   setSlide() {
     if (this.fbService.id != this.currentContactId) {
       this.slide = true;
@@ -58,16 +50,4 @@ export class ContactCard {
     return this.slide;
   }
 
-  // Desktop-Delete
-  // delContact() {
-  //   const idx = this.fbService.id;
-  //   if (typeof idx === 'number') {
-  //     this.fbService.delContact(idx);
-  //   }
-  // }
-
-  // Helper: simple breakpoint
-  get isMobile(): boolean {
-    return window.innerWidth <= 1439;
-  }
 }

@@ -10,27 +10,27 @@
             }}</span>
         </div>
       </div>
- 
-        <!-- Name and actions section -->
-        <div class="name-section">
-          <div class="name-container">
-            <h2 class="contact-name">{{ currentContact.name + ' ' + currentContact.surname }}</h2>
 
-          </div>
-          <!-- Action buttons -->
-          <div class="actions-container">
-            <!-- Edit button -->
-            <button class="edit-contact" (click)="setEditContact()">
-              <img src="assets/components/contact-card/edit.svg" alt="Edit contact button" />
-              <span>Edit</span>
-            </button>
+      <!-- Name and actions section -->
+      <div class="name-section">
+        <div class="name-container">
+          <h2 class="contact-name">{{ currentContact.name + ' ' + currentContact.surname }}</h2>
 
-            <!-- Delete button -->
-            <button class="delete-contact" (click)="delContact()">
-              <img src="assets/components/contact-card/delete.svg" alt="Delete contact button" />
-              <span>Delete</span>
-            </button>
-          </div>
+        </div>
+        <!-- Action buttons -->
+        <div class="actions-container">
+          <!-- Edit button -->
+          <button class="edit-contact" (click)="setEditContact()">
+            <img src="assets/components/contact-card/edit.svg" alt="Edit contact button" />
+            <span>Edit</span>
+          </button>
+
+          <!-- Delete button -->
+          <button class="delete-contact" (click)="delContact()">
+            <img src="assets/components/contact-card/delete.svg" alt="Delete contact button" />
+            <span>Delete</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -58,6 +58,10 @@
   </div>
 </section>
 
-<!-- Overlays global am Card-Container montieren -->
-<app-contact-edit-desktop *ngIf="fbService.showEditContact && !isMobile"></app-contact-edit-desktop>
-<app-contact-edit-mobile *ngIf="fbService.showEditContact && isMobile"></app-contact-edit-mobile>
+
+<app-contact-edit-desktop></app-contact-edit-desktop>
+@if(showMobile()) {
+<app-contact-edit-mobile></app-contact-edit-mobile>
+}
+
+
