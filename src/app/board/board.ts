@@ -1,13 +1,5 @@
 import { Component } from '@angular/core';
 import { BoardCard } from './board-card/board-card';
-import {
-  CdkDragDrop,
-  CdkDrag,
-  CdkDropList,
-  CdkDropListGroup,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 
 interface Task {
@@ -23,7 +15,7 @@ interface Task {
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [BoardCard, CommonModule, CdkDropList, CdkDrag, CdkDropListGroup],
+  imports: [BoardCard, CommonModule],
   templateUrl: './board.html',
   styleUrl: './board.scss',
 })
@@ -77,19 +69,6 @@ export class Board {
   ];
 
   // #region methods
-
-  drop(event: CdkDragDrop<Task[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  }
 
   // #endregion methods
 }
