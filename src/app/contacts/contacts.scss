@@ -217,7 +217,7 @@
 
 .mail {
   font-size: 16px;
-  color: var(--link);
+  color: #007cee;
 }
 
 div.contact-row:hover {
@@ -284,6 +284,10 @@ div.contact-row:active {
     }
   }
 
+  .primary-contact-container {
+    height: 10px;
+  }
+
   .list-panel {
     position: absolute;
     left: 0px;
@@ -311,6 +315,26 @@ div.contact-row:active {
       width: 352px;
     }
   }
+
+
+  .primary-contact {
+    position: fixed;
+    right: 20px !important;
+    bottom: 120px !important;
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+
+    span {
+      display: none !important;
+    }
+  }
+
+
+  .primary-contact:after {
+    visibility: hidden;
+  }
+
 
 }
 
