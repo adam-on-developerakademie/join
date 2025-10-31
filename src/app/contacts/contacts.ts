@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
-import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact-overlay';
+import { ContactEditDesktopComponent } from './contact-edit-desktop/contact-edit-desktop';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 
 import { ContactEditMobileComponent } from './contact-edit-mobile/contact-edit-mobile';
@@ -17,7 +17,7 @@ import { ContactEditActivationComponent } from './contact-edit-activation/contac
     CommonModule,
     FormsModule,
     AddContactComponent,
-    EditContactOverlayComponent,   // Desktop-Edit
+    ContactEditDesktopComponent,   // Desktop-Edit
     ContactEditMobileComponent,   // Mobile-Edit
     ContactCreatedToast,
     ContactEditActivationComponent          // Mobile-Contact-Edit-Activation (Overlay)

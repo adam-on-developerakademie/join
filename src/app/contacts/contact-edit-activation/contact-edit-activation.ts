@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ContactOptionsComponent } from '../contact-options/contact-options';
 import { FbService } from '../../services/fb-service';
 import { ContactEditMobileComponent } from '../contact-edit-mobile/contact-edit-mobile';
-import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
+import { ContactEditDesktopComponent } from '../contact-edit-desktop/contact-edit-desktop';
 
 @Component({
   selector: 'app-contact-edit-activation',
   standalone: true,
-  imports: [CommonModule, ContactOptionsComponent, ContactEditMobileComponent, EditContactOverlayComponent],
+  imports: [CommonModule, ContactOptionsComponent, ContactEditMobileComponent, ContactEditDesktopComponent],
   templateUrl: './contact-edit-activation.html',
   styleUrls: ['./contact-edit-activation.scss'],
 })

@@ -8,15 +8,15 @@ import { FbService } from '../../services/fb-service';
 
 
 @Component({
-    selector: 'app-edit-contact-overlay',
+    selector: 'app-contact-edit-desktop',
     standalone: true,
     imports: [CommonModule, FormsModule],
-    templateUrl: './edit-contact-overlay.html',
-    styleUrls: ['./edit-contact-overlay.scss']
+    templateUrl: './contact-edit-desktop.html',
+    styleUrls: ['./contact-edit-desktop.scss']
 })
 
 
-export class EditContactOverlayComponent {
+export class ContactEditDesktopComponent {
     showEditContact: boolean = false;
 
     constructor(private fbService: FbService) { this.getCurrentContact() }
