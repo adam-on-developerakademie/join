@@ -1,26 +1,4 @@
 <div class="board-page">
-  <header class="board-header">
-    <div class="title">Kanban Project Management Tool</div>
-    <div class="right">
-      <button class="help"></button>
-      <div class="user">SM</div>
-    </div>
-  </header>
-
-  <aside class="sidebar">
-    <div class="logo"></div>
-    <nav>
-      <a href="/summary">Summary</a>
-      <a href="/add-task">Add Task</a>
-      <a class="active" href="/board">Board</a>
-      <a href="/contacts">Contacts</a>
-    </nav>
-    <footer>
-      <a href="/legal">Legal notice</a>
-      <a href="/privacy">Privacy Policy</a>
-    </footer>
-  </aside>
-
   <main class="board-content">
     <section class="board-head">
       <h1>Board</h1>
@@ -34,6 +12,8 @@
     </section>
 
     <section class="board-columns board-added">
+      <!-- MYA: gap 24 laut Figma -->
+      <!-- Column: To do (JETZT mit 1 Karte) -->
       <div class="column">
         <h2>To do</h2>
         <app-board-card
@@ -47,6 +27,7 @@
         </app-board-card>
       </div>
 
+      <!-- Column: In progress -->
       <div class="column">
         <h2>In progress</h2>
         <app-board-card
@@ -60,6 +41,7 @@
         </app-board-card>
       </div>
 
+      <!-- Column: Await feedback -->
       <div class="column">
         <h2>Await feedback</h2>
         <app-board-card
@@ -73,6 +55,7 @@
         </app-board-card>
       </div>
 
+      <!-- Column: Done -->
       <div class="column">
         <h2>Done</h2>
         <app-board-card
