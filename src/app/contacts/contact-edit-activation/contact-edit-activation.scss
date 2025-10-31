@@ -154,7 +154,7 @@
   background: var(--ink);
   border: none;
   cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, .2);
+  box-shadow: 6px 0px 12px rgba(0, 0, 1, 0.5);
   display: grid;
   place-items: center;
   rotate: 90deg;
@@ -166,10 +166,7 @@
 
 }
 
-.fab {
-  box-shadow: 0 6px 12px rgba(0, 0, 1, .2);
 
-}
 
 /* Ankerpunkt direkt über dem FAB */
 .options-anchor {
