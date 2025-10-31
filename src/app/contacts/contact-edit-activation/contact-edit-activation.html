@@ -10,7 +10,7 @@
     <!-- Zurück-Pfeil rechts oben -->
     <button class="back-btn" (click)="goBack()" aria-label="Back">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
-        <path d="M15 18l-6-6 6-6" stroke="#29ABE2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 18l-6-6 6-6" stroke="#29ABE2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </button>
   </div>
@@ -44,25 +44,21 @@
   <!-- FAB -->
   <button class="fab" (click)="toggleOptions()" aria-label="More">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="5" cy="12" r="2" fill="#ffffff"/>
-      <circle cx="12" cy="12" r="2" fill="#ffffff"/>
-      <circle cx="19" cy="12" r="2" fill="#ffffff"/>
+      <circle cx="5" cy="12" r="2" fill="#ffffff" />
+      <circle cx="12" cy="12" r="2" fill="#ffffff" />
+      <circle cx="19" cy="12" r="2" fill="#ffffff" />
     </svg>
   </button>
 
-<!-- Options: inline an den FAB angedockt -->
-<div class="options-anchor" *ngIf="showOptions">
-  <app-contact-options
-    [inline]="true"
-    [contactId]="fb.id.toString()"
-    (close)="showOptions=false"
-    (edit)="onEdit()"
-    (delete)="onDelete()">
-  </app-contact-options>
-</div>
+  <!-- Options: inline an den FAB angedockt -->
+  <div class="options-anchor" *ngIf="showOptions">
+    <app-contact-options [inline]="true" [contactId]="fb.id.toString()" (close)="showOptions=false" (edit)="onEdit()"
+      (delete)="onDelete()">
+    </app-contact-options>
+  </div>
 
-<!-- Sichtbar je nach Media-Query -->
-<app-contact-edit-mobile *ngIf="fb.showEditContact"></app-contact-edit-mobile>
-<app-contact-edit-desktop *ngIf="fb.showEditContact"></app-contact-edit-desktop>
+  <!-- Sichtbar je nach Media-Query -->
+  <app-contact-edit-mobile *ngIf="fb.showEditContact"></app-contact-edit-mobile>
+  <app-contact-edit-desktop *ngIf="fb.showEditContact"></app-contact-edit-desktop>
 
 </div>
