@@ -1,4 +1,5 @@
-<div class="modal-backdrop" *ngIf="getShowEditContact()" (click)="onClose()">
+@if(getShowEditContact()){
+<div class="modal-backdrop" (click)="onClose()">
   <div class="modal-container" (click)="$event.stopPropagation()">
     <!-- Left Side - Frame 194 (Dark Blue) -->
     <div class="left-side">
@@ -34,21 +35,15 @@
         </svg>
       </button>
 
-      <div class="avatar"  [style.background]="editedContact.color">
+      <div class="avatar" [style.background]="editedContact.color">
         <span class="initials">{{ getInitials() }}</span>
       </div>
 
       <form class="contact-form" #f="ngForm" novalidate>
         <div class="form-field">
           <div class="input-group">
-            <input 
-              type="text" 
-              [(ngModel)]="editedContact.name" 
-              name="name" 
-              placeholder="Name" 
-              required 
-              #nameInput="ngModel"
-              [class.invalid]="nameInput.invalid && nameInput.touched" />
+            <input type="text" [(ngModel)]="this.editedContact.name" name="name" placeholder="Name" required
+              #nameInput="ngModel" [class.invalid]="nameInput.invalid && nameInput.touched" />
             <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -59,29 +54,23 @@
                 fill="#2A3647" />
             </svg>
           </div>
-          
+
           <!-- Reserved space for validation message -->
           <div class="validation-message">
             @if (nameInput.invalid && nameInput.touched) {
-              @if (nameInput.errors?.['required']) {
-                <span>Name ist ein Pflichtfeld.</span>
-              }
+            @if (nameInput.errors?.['required']) {
+            <span>Name ist ein Pflichtfeld.</span>
+            }
             } @else if (nameInput.touched && hasInvalidCapitalization(editedContact.name)) {
-              <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+            <span>Der erste Buchstabe muss groß geschrieben werden.</span>
             }
           </div>
         </div>
 
         <div class="form-field">
           <div class="input-group">
-            <input 
-              type="text" 
-              [(ngModel)]="editedContact.surname" 
-              name="surname" 
-              placeholder="Surname" 
-              required 
-              #surnameInput="ngModel"
-              [class.invalid]="surnameInput.invalid && surnameInput.touched" />
+            <input type="text" [(ngModel)]="editedContact.surname" name="surname" placeholder="Surname" required
+              #surnameInput="ngModel" [class.invalid]="surnameInput.invalid && surnameInput.touched" />
             <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -92,30 +81,23 @@
                 fill="#2A3647" />
             </svg>
           </div>
-          
+
           <!-- Reserved space for validation message -->
           <div class="validation-message">
             @if (surnameInput.invalid && surnameInput.touched) {
-              @if (surnameInput.errors?.['required']) {
-                <span>Nachname ist ein Pflichtfeld.</span>
-              }
+            @if (surnameInput.errors?.['required']) {
+            <span>Nachname ist ein Pflichtfeld.</span>
+            }
             } @else if (surnameInput.touched && hasInvalidCapitalization(editedContact.surname)) {
-              <span>Der erste Buchstabe muss groß geschrieben werden.</span>
+            <span>Der erste Buchstabe muss groß geschrieben werden.</span>
             }
           </div>
         </div>
 
         <div class="form-field">
           <div class="input-group">
-            <input 
-              type="email" 
-              [(ngModel)]="editedContact.email" 
-              name="email" 
-              placeholder="Email" 
-              required 
-              email
-              #emailInput="ngModel"
-              [class.invalid]="emailInput.invalid && emailInput.touched" />
+            <input type="email" [(ngModel)]="editedContact.email" name="email" placeholder="Email" required email
+              #emailInput="ngModel" [class.invalid]="emailInput.invalid && emailInput.touched" />
             <svg class="input-icon" width="20" height="16" viewBox="0 0 20 16" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -123,29 +105,24 @@
                 fill="#2A3647" />
             </svg>
           </div>
-          
+
           <!-- Reserved space for validation message -->
           <div class="validation-message">
             @if (emailInput.invalid && emailInput.touched) {
-              @if (emailInput.errors?.['required']) {
-                <span>Email ist ein Pflichtfeld.</span>
-              } @else if (emailInput.errors?.['email']) {
-                <span>Bitte geben Sie eine gültige Email-Adresse ein.</span>
-              }
+            @if (emailInput.errors?.['required']) {
+            <span>Email ist ein Pflichtfeld.</span>
+            } @else if (emailInput.errors?.['email']) {
+            <span>Bitte geben Sie eine gültige Email-Adresse ein.</span>
+            }
             } @else if (emailInput.touched && hasInvalidEmailFormat(editedContact.email)) {
-              <span>Email muss das Format name@domain.endung haben.</span>
+            <span>Email muss das Format name@domain.endung haben.</span>
             }
           </div>
         </div>
 
         <div class="form-field">
           <div class="input-group">
-            <input 
-              type="tel" 
-              [(ngModel)]="editedContact.phone" 
-              name="phone" 
-              placeholder="Phone" 
-              #phoneInput="ngModel"
+            <input type="tel" [(ngModel)]="editedContact.phone" name="phone" placeholder="Phone" #phoneInput="ngModel"
               [class.invalid]="(phoneInput.invalid && phoneInput.touched) || (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone))" />
             <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -154,29 +131,29 @@
                 fill="#2A3647" />
             </svg>
           </div>
-          
+
           <!-- Reserved space for validation message -->
           <div class="validation-message">
             @if (phoneInput.touched && hasInvalidPhoneFormat(editedContact.phone)) {
-              <span>Telefonnummer muss mind. 6 Ziffern lang sein.</span>
+            <span>Telefonnummer muss mind. 6 Ziffern lang sein.</span>
             }
           </div>
         </div>
 
-          <div class="button-group">
-            <button type="button" class="btn-delete" (click)="delContact()">
-              Delete
-            </button>
-            <button type="button" class="btn-save" (click)="upContact()" [disabled]="!isFormValid(f)">
-              Save
-              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 6L6 11L15 1" stroke="white" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </button>
-          </div>
-        </form>
+        <div class="button-group">
+          <button type="button" class="btn-delete" (click)="delContact()">
+            Delete
+          </button>
+          <button type="button" class="btn-save" (click)="upContact()" [disabled]="!isFormValid(f)">
+            Save
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 6L6 11L15 1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </form>
     </div>
 
   </div>
 </div>
+}

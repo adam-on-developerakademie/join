@@ -16,7 +16,7 @@ export class ContactCard {
   slide = false;
   currentContactId = -1;
 
-  constructor(private fbService: FbService) {}
+  constructor(private fbService: FbService) { }
 
   get currentContact(): IContact {
     return this.fbService.currentContact;
@@ -24,8 +24,8 @@ export class ContactCard {
 
   delContact() {
     this.fbService.contactsArray.length > 0 &&
-    this.fbService.contactsGroups.length > 0 &&
-    this.fbService.contactsArray.length > this.fbService.id
+      this.fbService.contactsGroups.length > 0 &&
+      this.fbService.contactsArray.length > this.fbService.id
       ? this.fbService.delContact(this.fbService.id)
       : null;
   }

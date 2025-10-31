@@ -111,7 +111,6 @@ export class FbService {
 
   setCurrentContact(id: number): IContact {
     this.currentContact = this.contactsArray.length > 0 ? this.contactsArray[id] : { name: '', surname: '', email: '', phone: '' } as IContact;
-    // console.log(id, this.contactsArray.length, this.currentContact);
     return this.currentContact;
   }
 

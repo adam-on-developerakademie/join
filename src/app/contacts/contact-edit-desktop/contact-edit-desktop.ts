@@ -17,8 +17,6 @@ import { FbService } from '../../services/fb-service';
 
 
 export class ContactEditDesktopComponent {
-    showEditContact: boolean = false;
-
     constructor(private fbService: FbService) { this.getCurrentContact() }
 
     contact: IContact = { name: '', surname: '', email: '', phone: '' };
@@ -47,11 +45,9 @@ export class ContactEditDesktopComponent {
         this.fbService.showEditContact = false;
     }
 
-    getShowEditContact() {
-        return this.fbService.showEditContact;
-    }
-
     upContact() {
+        console.log(this.editedContact);
+        
         if (!this.editedContact.name || !this.editedContact.surname || !this.editedContact.email) {
             alert('Please fill in all required fields: Name, Surname, and Email.');
             return;
@@ -63,7 +59,14 @@ export class ContactEditDesktopComponent {
 
     getCurrentContact() {
         this.editedContact = { ...this.fbService.currentContact };
+        return this.editedContact;
     }
+
+    getShowEditContact() {
+        return this.fbService.showEditContact;
+    }
+
+
 
     /** Prüft ob der erste Buchstabe eines Namens klein geschrieben ist */
     hasInvalidCapitalization(name: string | undefined): boolean {
@@ -78,12 +81,12 @@ export class ContactEditDesktopComponent {
         if (!email || email.length === 0) {
             return false; // Leer ist kein Format-Fehler (wird durch required behandelt)
         }
-        
+
         // Prüfe ob Email mit Punkt endet
         if (email.endsWith('.')) {
             return true;
         }
-        
+
         // Erweiterte Regex: mindestens 1 Zeichen vor @, dann @, dann Domain (min. 2 Buchstaben), dann Punkt, dann TLD (min. 2 Buchstaben)
         const emailRegex = /^[^\s@]+@[^\s@]{1,}\.[a-zA-Z]{2,}$/;
         return !emailRegex.test(email);
@@ -94,7 +97,7 @@ export class ContactEditDesktopComponent {
         if (!phone || phone.length === 0) {
             return false; // Leer ist kein Format-Fehler (Phone ist optional)
         }
-        
+
         // Regex: Optional + am Anfang, dann mindestens 6 Ziffern
         const phoneRegex = /^\+?[0-9]{6,}$/;
         return !phoneRegex.test(phone);
@@ -106,23 +109,23 @@ export class ContactEditDesktopComponent {
         if (form.invalid) {
             return false;
         }
-        
+
         // Custom Phone-Validierung
         if (this.hasInvalidPhoneFormat(this.editedContact.phone)) {
             return false;
         }
-        
+
         // Custom Name/Surname-Kapitalisierung
-        if (this.hasInvalidCapitalization(this.editedContact.name) || 
+        if (this.hasInvalidCapitalization(this.editedContact.name) ||
             this.hasInvalidCapitalization(this.editedContact.surname)) {
             return false;
         }
-        
+
         // Custom Email-Format
         if (this.hasInvalidEmailFormat(this.editedContact.email)) {
             return false;
         }
-        
+
         return true;
     }
 }

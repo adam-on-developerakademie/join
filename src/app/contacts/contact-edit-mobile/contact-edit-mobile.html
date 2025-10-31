@@ -1,4 +1,5 @@
 <!-- MOBILE EDIT OVERLAY: zentriert mit Backdrop -->
+ @if(getShowEditContact()){
 <div class="mobile-edit-backdrop" (click)="onClose()">
   <div class="contact-edit-mobile" (click)="$event.stopPropagation()">
 
@@ -121,3 +122,4 @@
     </button>
   </div>
 </div>
+ }
