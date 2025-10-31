@@ -36,13 +36,13 @@
       </button>
 
       <div class="avatar" [style.background]="editedContact.color">
-        <span class="initials">{{ getInitials() }}</span>
+        <span class="initials">{{ editedContact.name.substring(0, 1).toUpperCase() + editedContact.surname.substring(0, 1).toUpperCase() }}</span>
       </div>
 
       <form class="contact-form" #f="ngForm" novalidate>
         <div class="form-field">
           <div class="input-group">
-            <input type="text" [(ngModel)]="this.editedContact.name" name="name" placeholder="Name" required
+            <input type="text" [(ngModel)]="editedContact.name" name="name" placeholder="Name" required
               #nameInput="ngModel" [class.invalid]="nameInput.invalid && nameInput.touched" />
             <svg class="input-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
               xmlns="http://www.w3.org/2000/svg">

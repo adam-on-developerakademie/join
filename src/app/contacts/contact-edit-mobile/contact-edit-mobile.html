@@ -11,7 +11,7 @@
 
     <!-- Avatar -->
     <div class="avatar" [style.background]="editedContact.color">
-      <span>{{ editedContact.name.substring(0, 1) + editedContact.surname.substring(0, 1) }}</span>
+      <span>{{ editedContact.name.substring(0, 1).toUpperCase() + editedContact.surname.substring(0, 1).toUpperCase() }}</span>
     </div>
 
     <!-- Form -->
