@@ -17,6 +17,7 @@ export class Contacts {
   topbarTitle = 'Kanban Project Management Tool';
 
   contact: IContact = {} as IContact;
+  currentContact: IContact = {} as IContact;
   id = 0;
   showAddContact = false;
   contactlistHidden = false;
@@ -58,7 +59,7 @@ export class Contacts {
 
   showContact(index: number) {
     this.fbService.id = index;
-    this.fbService.setCurrentContact(index);
+    this.currentContact = this.fbService.setCurrentContact(index);
     this.contactlistHidden = true;
   }
 
