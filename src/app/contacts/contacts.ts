@@ -6,9 +6,9 @@ import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
 import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact-overlay';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
-import { ContactOptionsComponent } from './contact-options/contact-options';
+
 import { OverlayEditContactComponent } from './overlay-edit-contact/overlay-edit-contact';
-import { ContactViewComponent } from './contact-view/contact-view';
+import { ContactEditActivationComponent } from './contact-edit-activation/contact-edit-activation';
 
 @Component({
   selector: 'app-contacts',
@@ -20,8 +20,7 @@ import { ContactViewComponent } from './contact-view/contact-view';
     EditContactOverlayComponent,   // Desktop-Edit
     OverlayEditContactComponent,   // Mobile-Edit
     ContactCreatedToast,
-    ContactViewComponent,          // Mobile-Contact-View (Overlay)
-    ContactOptionsComponent
+    ContactEditActivationComponent          // Mobile-Contact-Edit-Activation (Overlay)
   ],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']

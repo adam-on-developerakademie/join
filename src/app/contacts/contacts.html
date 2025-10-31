@@ -64,15 +64,15 @@
 <!-- MOBIL-Edit -->
 <app-overlay-edit-contact *ngIf="fbService.showEditContact"></app-overlay-edit-contact>
 
-<!-- Overlay ContactView -->
+<!-- Overlay ContactEditActivation -->
 <!-- @if (selectedContactIndex !== null) {
   <div class="contact-overlay-bg" (click)="closeContactOverlay()">
     <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-      <app-contact-view
+      <app-contact-edit-activation
         (close)="closeContactOverlay()"
         (edit)="onEditFromView()"
         (delete)="onDeleteFromView()">
-      </app-contact-view>
+      </app-contact-edit-activation>
     </div>
   </div>
 } -->
@@ -80,8 +80,8 @@
 @if (isMobile && selectedContactIndex !== null) {
 <div class="contact-overlay-bg" (click)="closeContactOverlay()">
   <div class="contact-overlay-dialog" (click)="$event.stopPropagation()">
-    <app-contact-view (close)="closeContactOverlay()" (edit)="onEditFromView()" (delete)="onDeleteFromView()">
-    </app-contact-view>
+    <app-contact-edit-activation (close)="closeContactOverlay()" (edit)="onEditFromView()" (delete)="onDeleteFromView()">
+    </app-contact-edit-activation>
   </div>
 </div>
 }

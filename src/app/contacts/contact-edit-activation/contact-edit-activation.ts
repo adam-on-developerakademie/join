@@ -1,3 +1,4 @@
+// C:\angular\Join\join\src\app\contacts\contact-edit-activation\
 // auf contact-edit-activation umstellen
 
 import { Component, EventEmitter, Output, inject } from '@angular/core';
@@ -8,13 +9,13 @@ import { OverlayEditContactComponent } from '../overlay-edit-contact/overlay-edi
 import { EditContactOverlayComponent } from '../edit-contact-overlay/edit-contact-overlay';
 
 @Component({
-  selector: 'app-contact-view',
+  selector: 'app-contact-edit-activation',
   standalone: true,
   imports: [CommonModule, ContactOptionsComponent, OverlayEditContactComponent, EditContactOverlayComponent],
-  templateUrl: './contact-view.html',
-  styleUrls: ['./contact-view.scss'],
+  templateUrl: './contact-edit-activation.html',
+  styleUrls: ['./contact-edit-activation.scss'],
 })
-export class ContactViewComponent {
+export class ContactEditActivationComponent {
   public fb = inject(FbService);
 
   @Output() close  = new EventEmitter<void>();
