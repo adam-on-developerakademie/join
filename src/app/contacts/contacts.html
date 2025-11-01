@@ -1,48 +1,50 @@
 <div class="contacts-canvas">
-  <section>
-    <div class="list-panel">
-      <div class="list-panel__inner">
-        <div class="primary-contact-container">
-          <button class="primary-contact" (click)="showContactOverlay()">
-            <span>Add new contact</span>
-            <img src="assets/components/contacts/add_contact.svg" alt="" />
-          </button>
-        </div>
-        <div class="contacts-list">
-          <div class="contacts-list-center" [class.dnone]="this.contactlistHidden">
-            @for (group of getContactsGroups(); track group) {
-            <p class="letter">{{ group }}</p>
-            <div class="divider"></div>
+  <div class="list-panel">
+    <div class="list-panel__inner">
+      <div class="primary-contact-container">
+        <button class="primary-contact" (click)="showContactOverlay()">
+          <span>Add new contact</span>
+          <img src="assets/components/contacts/add_contact.svg" alt="" />
+        </button>
+      </div>
+      <div class="contacts-list">
+        <div class="contacts-list-center" [class.dnone]="this.contactlistHidden">
+          @for (group of getContactsGroups(); track group) {
+          <p class="letter">{{ group }}</p>
+          <div class="divider"></div>
 
-            @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
-            <div class="contact-row" (click)="showContact($index)">
-              <div class="badge">
-                <div class="badge__circle" [style.background]="item.color"></div>
-                <div class="badge__initials">
-                  {{ item.name.substring(0, 1).toUpperCase() + item.surname.substring(0, 1).toUpperCase() }}
-                </div>
-              </div>
-              <div class="contact-row__text">
-                <div class="name">{{ item.name + ' ' + item.surname }}</div>
-                <div class="mail">{{ item.email }}</div>
+          @for (item of getContacts(); track item) { @if (item.name.charAt(0).toUpperCase() == group) {
+          <div class="contact-row" (click)="showContact($index)">
+            <div class="badge">
+              <div class="badge__circle" [style.background]="item.color"></div>
+              <div class="badge__initials">
+                {{ item.name.substring(0, 1).toUpperCase() + item.surname.substring(0, 1).toUpperCase() }}
               </div>
             </div>
-            } } }
+            <div class="contact-row__text">
+              <div class="name">{{ item.name + ' ' + item.surname }}</div>
+              <div class="mail">{{ item.email }}</div>
+            </div>
           </div>
+          } } }
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div class="detail-panel">
-      <div class="heading">
-        <h1>Contacts</h1>
-        <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
-        <p>Better with a team</p>
-      </div>
+  <div class="detail-panel">
+    <div class="heading">
+      <h1>Contacts</h1>
+      <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
+      <p>Better with a team</p>
     </div>
+  </div>
 
-    <div class="detail-panel-mobile" [class.dnone]="!this.contactlistHidden">
+
+  <section class="contactMobileList" [class.dnone]="!this.contactlistHidden">
+
+    <div class="detail-panel-mobile">
       <div class="panel-width">
         <div class="heading-mobile">
           <div class="heading-mobile-title">
@@ -52,42 +54,38 @@
           <img src="assets/components/contact-card/heading_blue_line.svg" class="blue-line" alt="" />
         </div>
 
+
+
         <div class="detail-panel-mobile-content">
-          <div class="avatar-container">
-            <div class="avatar-circle" [style.background]="currentContact.color">
-              <span class="avatar-initials">
-                {{ currentContact.name.substring(0, 1).toUpperCase() + currentContact.surname.substring(0,
-                1).toUpperCase()
-                }}</span>
-            </div>
-          </div>
-          <div class="name-section">
-            <div class="name-container">
-              <h2 class="contact-name">{{ currentContact.name + ' ' + currentContact.surname }}</h2>
-            </div>
-          </div>
-          <div class="contact-info-section">
-            <h3 class="section-title">Contact Information</h3>
-          </div>
-          <div class="contact-details">
-            <div class="detail-group">
-              <label class="detail-label">Email</label>
-              <a href="mailto:{{currentContact.email }}" class="email-link">{{ currentContact.email }}</a>
-            </div>
-            <div class="detail-group">
-              <label class="detail-label">Phone</label>
-              <span class="phone-number">{{ currentContact.phone }}</span>
+          <div class="name">
+            <span class="avatar-container">
+              <span class="avatar-circle" [style.background]="currentContact.color">
+                <span class="avatar-initials">{{currentContactInitials}}</span>
+              </span>
+            </span>
+            <span>
+              <span class="contact-name">{{ currentContact.name }} </span>
+              <span class="contact-name">{{ currentContact.surname }}</span>
+            </span>
+            <div class="section-title">Contact Information
+              <div class="detail-group">
+                <label class="detail-label">Email</label>
+                <a href="mailto:{{currentContact.email }}" class="email-link">{{ currentContact.email }}</a>
+              </div>
+              <div class="detail-group">
+                <label class="detail-label">Phone</label>
+                <span class="phone-number">{{ currentContact.phone }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <img class="go-back" src="/assets/img/arrow-left-line.svg" alt="go back" (click)="closeMobileContact()"
+        [class.dnone]="!this.contactlistHidden" />
     </div>
-
-
-
-
-
   </section>
+
+
 </div>
 
 <app-contact-created-toast [show]="toastOpen"></app-contact-created-toast>

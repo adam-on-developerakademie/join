@@ -18,6 +18,7 @@ export class Contacts {
 
   contact: IContact = {} as IContact;
   currentContact: IContact = {} as IContact;
+  currentContactInitials = '';
   id = 0;
   showAddContact = false;
   contactlistHidden = false;
@@ -60,14 +61,23 @@ export class Contacts {
   showContact(index: number) {
     this.fbService.id = index;
     this.currentContact = this.fbService.setCurrentContact(index);
-    this.contactlistHidden = true;
+    this.currentContactInitials =
+    this.currentContact.name.substring(0, 1).toUpperCase() + this.currentContact.surname.substring(0, 1).toUpperCase();
+    this.fbService.myWidth < 1100 ? this.contactlistHidden = true : this.contactlistHidden = false;
+    console.log(this.fbService.myWidth);
+    
   }
+
 
   showEditContact() { return this.fbService.showEditContact; }
 
   showContactOverlay() { this.showAddContact = true; }
 
   onCloseOverlay() { this.showAddContact = false; }
+
+  closeMobileContact() {
+    this.contactlistHidden = false;
+  }
 
   onContactCreated() {
     this.showAddContact = false;
