@@ -21,6 +21,7 @@ export class FbService {
   contactsArray: IContact[] = [];
   contactsGroups: string[] = [];
   showEditContact: boolean = false;
+  contactlistHidden = false;
   myWidth: number = window.innerWidth;
   id: number = 0;
   myData;

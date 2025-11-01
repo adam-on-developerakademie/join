@@ -22,20 +22,15 @@ export class ContactOptionsComponent {
   @Output() close = new EventEmitter<void>();
 
   onEdit(): void {
-    // immer emitten, auch wenn contactId leer ist
     this.edit.emit(this.contactId ?? '');
   }
 
   onDelete(): void {
-    // immer emitten, auch wenn contactId leer ist
     this.delete.emit(this.contactId ?? '');
   }
 
-  /** Backdrop-Klick nur schließen, wenn nicht inline */
   onBackdropClick(ev: MouseEvent): void {
-    if (this.inline) return;
     const target = ev.target as HTMLElement;
-    // Nur schließen, wenn wirklich der Backdrop (overlay) angeklickt wurde:
     if (target.classList.contains('overlay')) {
       this.close.emit();
     }

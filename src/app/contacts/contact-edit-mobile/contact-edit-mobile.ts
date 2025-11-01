@@ -1,5 +1,3 @@
-// auf contact-edit-mobile umstellen
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,12 +20,7 @@ editedContact: IContact = { ...this.contact };
 
 onClose() {
 this.fbService.showEditContact = false;
-}
-
-delContact() {
-this.fbService.contactsArray.length > 0 && this.fbService.contactsGroups.length > 0 &&
-this.fbService.contactsArray.length > this.fbService.id ? this.fbService.delContact(this.fbService.id) : null;
-this.fbService.showEditContact = false;
+this.fbService.contactlistHidden = false;
 }
 
 async upContact() {
@@ -37,6 +30,7 @@ return;
 } else {
 await this.fbService.updateContact(this.fbService.id, this.editedContact);
 this.fbService.showEditContact = false;
+this.fbService.contactlistHidden = false;
 }
 }
 

@@ -7,7 +7,7 @@
           <img src="assets/components/contacts/add_contact.svg" alt="" />
         </button>
       </div>
-      <div class="contacts-list" [class.dnone]="this.contactlistHidden">
+      <div class="contacts-list" [class.dnone]="getContactlistHidden()">
         <div class="contacts-list-center">
           @for (group of getContactsGroups(); track group) {
           <p class="letter">{{ group }}</p>
@@ -42,7 +42,7 @@
   </div>
 
 
-  <section class="contactMobileList" [class.dnone]="!this.contactlistHidden">
+  <section class="contactMobileList" [class.dnone]="!getContactlistHidden()">
 
     <div class="detail-panel-mobile">
       <div class="panel-width">
@@ -63,10 +63,11 @@
                 <span class="avatar-initials">{{currentContactInitials}}</span>
               </span>
             </span>
-            <span>
+            <div>
               <span class="contact-name">{{ currentContact.name }} </span>
-              <span class="contact-name">{{ currentContact.surname }}</span>
-            </span>
+              <span class="contact-name">{{ currentContact.surname }} </span>
+            </div>
+            <p>.                                  .</p>
             <div class="section-title">Contact Information
               <div class="detail-group">
                 <label class="detail-label">Email</label>
@@ -81,8 +82,29 @@
         </div>
       </div>
       <img class="go-back" src="/assets/img/arrow-left-line.svg" alt="go back" (click)="closeMobileContact()"
-        [class.dnone]="!this.contactlistHidden" />
+        [class.dnone]="!getContactlistHidden()" />
     </div>
+  <div class="contact-edit-activation">
+
+  <!-- FAB -->
+  <button class="fab" (click)="toggleOptions()" aria-label="More">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="5" cy="12" r="2" fill="#ffffff" />
+      <circle cx="12" cy="12" r="2" fill="#ffffff" />
+      <circle cx="19" cy="12" r="2" fill="#ffffff" />
+    </svg>
+  </button>
+
+  <!-- Options: inline an den FAB angedockt -->
+  <div class="options-anchor" *ngIf="showOptions">
+    <app-contact-options [inline]="true" [contactId]="fbService.id.toString()" (close)="showOptions=false" (edit)="onEdit()"
+      (delete)="onDelete()">
+    </app-contact-options>
+  </div>
+
+  <!-- Sichtbar je nach Media-Query -->
+  <app-contact-edit-mobile *ngIf="fbService.showEditContact"></app-contact-edit-mobile>
+</div>
   </section>
 
 

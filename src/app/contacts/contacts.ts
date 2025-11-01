@@ -6,11 +6,13 @@ import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactCard } from './contact-card/contact-card';
+import { ContactOptionsComponent } from './contact-options/contact-options';
+import { ContactEditMobileComponent } from './contact-edit-mobile/contact-edit-mobile';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast, ContactCard],
+  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast, ContactCard, ContactOptionsComponent, ContactEditMobileComponent],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
@@ -22,13 +24,14 @@ export class Contacts {
   currentContactInitials = '';
   id = 0;
   showAddContact = false;
-  contactlistHidden = false;
   myWidth = window.innerWidth;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
+  showOptions = false;
 
   constructor(public fbService: FbService) { }
 
+  getContactlistHidden() { return this.fbService.contactlistHidden; }
   getContactsGroups() { return this.fbService.contactsGroups; }
   getContacts() { return this.fbService.contactsArray; }
   getData() { return this.fbService.data; }
@@ -65,10 +68,7 @@ export class Contacts {
     this.currentContact = this.fbService.setCurrentContact(index);
     this.currentContactInitials =
       this.currentContact.name.substring(0, 1).toUpperCase() + this.currentContact.surname.substring(0, 1).toUpperCase();
-    this.myWidth < 1100 ? this.contactlistHidden = true : null;
-    console.log(this.contactlistHidden, this.myWidth );
-    
-
+    this.myWidth < 1100 ? this.fbService.contactlistHidden = true : null;
   }
 
 
@@ -79,7 +79,7 @@ export class Contacts {
   onCloseOverlay() { this.showAddContact = false; }
 
   closeMobileContact() {
-    this.contactlistHidden = false;
+    this.fbService.contactlistHidden = false;
   }
 
   onContactCreated() {
@@ -93,10 +93,33 @@ export class Contacts {
   onResize(event: Event) {
     this.myWidth = window.innerWidth;
     if (this.myWidth > 1100) {
-      this.contactlistHidden = false;
+      this.fbService.contactlistHidden = false;
     }
   }
   ngOnInit() {
     this.myWidth = window.innerWidth;
   }
+
+
+  toggleOptions() { this.showOptions = !this.showOptions; }
+
+  onEdit() {
+    this.fbService.contactlistHidden = true;
+    this.showOptions = false;
+    this.fbService.showEditContact = true;   // Flag setzen → passende Edit-Komponente wird sichtbar
+    // this.edit.emit();
+  }
+  // Mobile: Delete löscht und schließt Karte
+  onDelete() {
+    this.fbService.contactlistHidden = true;
+    this.showOptions = false;
+    const idx = this.fbService.id;
+    if (typeof idx === 'number') {
+      this.fbService.delContact(idx);
+    }
+    // this.delete.emit();
+    // this.goBack();
+  }
+
+
 }

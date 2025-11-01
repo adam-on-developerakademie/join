@@ -50,4 +50,9 @@ export class ContactCard {
     return this.slide;
   }
 
+  closeMobileContactCard() {
+    this.fbService.showEditContact = false;
+    return this.fbService.showEditContact;
+  }
+
 }

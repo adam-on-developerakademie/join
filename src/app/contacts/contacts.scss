@@ -566,3 +566,43 @@ div.contact-row:active {
 .dnone {
   display: none !important;
 }
+
+
+/* FAB */
+/* FAB sitzt über der Bottom-Nav */
+.fab {
+  position: fixed;
+  //top: 758px;
+  //left: 356px;
+  right: 20px;
+  bottom: 120px;
+  /* Bottom-Nav = 80px → +16px Abstand */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: none;
+  cursor: pointer;
+  box-shadow: 6px 0px 12px rgba(0, 0, 1, 0.5);
+  display: grid;
+  place-items: center;
+  rotate: 90deg;
+  z-index: 1000;
+
+  &:active {
+    background: #29abe2;
+  }
+
+}
+
+/* Ankerpunkt direkt über dem FAB */
+.options-anchor {
+  position: fixed;
+  right: 16px;
+  bottom: calc(96px + 56px + 12px);
+  /* FAB-Unterkante + FAB-Höhe + Luft */
+  z-index: 4200;
+  /* höher als FAB & Bottom-Nav */
+
+}
+
