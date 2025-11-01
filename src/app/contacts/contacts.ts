@@ -22,6 +22,7 @@ export class Contacts {
   id = 0;
   showAddContact = false;
   contactlistHidden = false;
+  myWidth = window.innerWidth;
   toastOpen = false;
   private toastTimer?: ReturnType<typeof setTimeout>;
 
@@ -62,10 +63,9 @@ export class Contacts {
     this.fbService.id = index;
     this.currentContact = this.fbService.setCurrentContact(index);
     this.currentContactInitials =
-    this.currentContact.name.substring(0, 1).toUpperCase() + this.currentContact.surname.substring(0, 1).toUpperCase();
-    this.fbService.myWidth < 1100 ? this.contactlistHidden = true : this.contactlistHidden = false;
-    console.log(this.fbService.myWidth);
-    
+      this.currentContact.name.substring(0, 1).toUpperCase() + this.currentContact.surname.substring(0, 1).toUpperCase();
+    this.myWidth < 1100 ? this.contactlistHidden = true : null;
+
   }
 
 
@@ -86,5 +86,14 @@ export class Contacts {
     this.toastTimer = setTimeout(() => (this.toastOpen = false), 2000);
   }
 
-
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.myWidth = window.innerWidth;
+    if (this.myWidth > 1100) {
+      this.contactlistHidden = false;
+    }
+  }
+  ngOnInit() {
+    this.myWidth = window.innerWidth;
+  }
 }

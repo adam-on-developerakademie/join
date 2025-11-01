@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, HostListener } from '@angular/core';
 import { Firestore, collectionData, collection, doc, onSnapshot, orderBy, query, where } from '@angular/fire/firestore';
 import { addDoc, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import { IContact } from '../interfaces/i-contact';
@@ -114,7 +114,5 @@ export class FbService {
     this.currentContact = this.contactsArray.length > 0 ? this.contactsArray[id] : { name: '', surname: '', email: '', phone: '' } as IContact;
     return this.currentContact;
   }
-
-
 
 }
