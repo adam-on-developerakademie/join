@@ -5,11 +5,12 @@ import { FbService } from '../services/fb-service';
 import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
+import { ContactCard } from './contact-card/contact-card';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast],
+  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast, ContactCard],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })
@@ -65,6 +66,8 @@ export class Contacts {
     this.currentContactInitials =
       this.currentContact.name.substring(0, 1).toUpperCase() + this.currentContact.surname.substring(0, 1).toUpperCase();
     this.myWidth < 1100 ? this.contactlistHidden = true : null;
+    console.log(this.contactlistHidden, this.myWidth );
+    
 
   }
 

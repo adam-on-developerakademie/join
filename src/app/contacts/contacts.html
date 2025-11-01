@@ -7,8 +7,8 @@
           <img src="assets/components/contacts/add_contact.svg" alt="" />
         </button>
       </div>
-      <div class="contacts-list">
-        <div class="contacts-list-center" [class.dnone]="this.contactlistHidden">
+      <div class="contacts-list" [class.dnone]="this.contactlistHidden">
+        <div class="contacts-list-center">
           @for (group of getContactsGroups(); track group) {
           <p class="letter">{{ group }}</p>
           <div class="divider"></div>
@@ -93,3 +93,4 @@
 @if (showAddContact) {
 <app-add-contact (close)="onCloseOverlay()" (created)="onContactCreated()"></app-add-contact>
 }
+<app-contact-card></app-contact-card> 

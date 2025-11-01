@@ -25,10 +25,6 @@
   background-color: #007cee;
 }
 
-.dnone {
-  display: none;
-}
-
 .contacts-page {
   position: relative;
   width: 1440px;
@@ -564,4 +560,9 @@ div.contact-row:active {
   to {
     opacity: 1;
   }
+}
+
+
+.dnone {
+  display: none !important;
 }
