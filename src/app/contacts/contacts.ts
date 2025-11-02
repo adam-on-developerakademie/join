@@ -96,6 +96,7 @@ export class Contacts {
       this.fbService.contactlistHidden = false;
     }
   }
+  
   ngOnInit() {
     this.myWidth = window.innerWidth;
   }
