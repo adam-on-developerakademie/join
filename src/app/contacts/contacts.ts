@@ -6,13 +6,13 @@ import { IContact } from '../interfaces/i-contact';
 import { AddContactComponent } from './add-contact/add-contact';
 import { ContactCreatedToast } from './contact-created-toast/contact-created-toast';
 import { ContactCard } from './contact-card/contact-card';
-import { ContactOptionsComponent } from './contact-options/contact-options';
+import { ContactEditMobileMenuComponent } from './contact-edit-mobile-menu/contact-edit-mobile-menu';
 import { ContactEditMobileComponent } from './contact-edit-mobile/contact-edit-mobile';
 
 @Component({
   selector: 'app-contacts',
   standalone: true,
-  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast, ContactCard, ContactOptionsComponent, ContactEditMobileComponent],
+  imports: [CommonModule, FormsModule, AddContactComponent, ContactCreatedToast, ContactCard, ContactEditMobileMenuComponent, ContactEditMobileComponent],
   templateUrl: './contacts.html',
   styleUrls: ['./contacts.scss']
 })

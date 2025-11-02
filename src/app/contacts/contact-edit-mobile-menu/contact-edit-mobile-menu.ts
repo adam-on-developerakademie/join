@@ -1,16 +1,16 @@
-// src/app/contacts/contact-options/contact-options.ts
+// src/app/contacts/contact-edit-mobile-menu/contact-edit-mobile-menu.ts
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FbService } from '../../services/fb-service';
 
 @Component({
-  selector: 'app-contact-options',
+  selector: 'app-contact-edit-mobile-menu',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './contact-options.html',
-  styleUrls: ['./contact-options.scss'],
+  templateUrl: './contact-edit-mobile-menu.html',
+  styleUrls: ['./contact-edit-mobile-menu.scss'],
 })
-export class ContactOptionsComponent {
+export class ContactEditMobileMenuComponent {
   constructor(public fbService: FbService) { }
 
 
